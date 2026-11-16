@@ -1,16 +1,29 @@
 # Andes Wild Trek · Apolobamba
 
-Web estàtica del projecte TD2, edició 1.3. L’entrada és `index.html`.
-Inclou el disseny, el cercador, les imatges, els mapes i els dossiers.
+Web estàtica del projecte TD2, edició 1.4 (16.11.2026). L’entrada és `index.html`.
 No necessita instal·lar dependències ni executar cap compilació.
 
-## Publicació amb GitHub Pages
+Web publicada (és l’adreça del QR del flyer): https://7m5n2m6tv8-eng.github.io/apolobamba/
 
-1. Crea un repositori públic anomenat `apolobamba`.
-2. Puja tot el contingut d’aquesta carpeta a l’arrel de la branca `main`, inclòs `.nojekyll`.
-3. A **Settings → Pages**, tria **Deploy from a branch**, selecciona **main** i **/(root)**, i desa.
-4. Quan GitHub mostri l’adreça publicada, obre-la en una finestra privada i comprova els PDF.
-5. Fes servir l’adreça publicada per crear el QR de GitHub Pages i prova'l amb el mòbil abans d'imprimir.
+## Què hi ha a cada fitxer
 
-El QR del flyer de l’edició 1.3 obre la web pública actual:
-https://andes-wild-trek-apolobamba.slatedrive.chatgpt.site/
+| Fitxer | Contingut |
+| --- | --- |
+| `index.html` | Capçalera, metadades i primera pintada en català |
+| `content.js` | Tots els textos (català i castellà) i les dades de les sis jornades |
+| `site.js` | Construcció de la pàgina, pestanyes de les jornades, llista de material i diàlegs |
+| `modules.js` · `modules.json` | Apartat «Treball acadèmic»: sis blocs amb cercador |
+| `site.css` | Estils |
+| `assets/` | Fotografies, mapes de les etapes (WebP) i crèdits |
+| `dossiers/` | PDF del treball, atles A3, formularis i Word editable |
+
+## Com actualitzar-la
+
+- **Textos de la web:** edita `content.js`. Cada clau existeix en `ca` i `es`.
+- **Treball escrit:** edita `dossiers/Apolobamba_TD2_Treball_Complet.docx`, exporta’l a PDF amb el mateix nom i substitueix els fitxers de `dossiers/` sense canviar-ne els noms.
+- **Publicació:** GitHub Pages serveix la branca `main` des de l’arrel. Quan una pull request s’integra a `main`, la web s’actualitza a la mateixa adreça.
+
+## Crèdits
+
+Fotografies de Wikimedia Commons (CC BY-SA 4.0), detallades a `assets/PHOTOGRAPHY.md`.
+Mapes: dades © OpenStreetMap i SRTM, estil © OpenTopoMap (CC-BY-SA).
