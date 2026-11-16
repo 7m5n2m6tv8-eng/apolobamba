@@ -1,6 +1,6 @@
 # Andes Wild Trek · Apolobamba
 
-Web estàtica del projecte TD2, edició 1.4 (16.11.2026). L’entrada és `index.html`.
+Web estàtica del projecte TD2. Té dues pàgines: `index.html`, la web del viatge per al client, i `treball.html`, el treball acadèmic per presentar-lo.
 No necessita instal·lar dependències ni executar cap compilació.
 
 Web publicada (és l’adreça del QR del flyer): https://7m5n2m6tv8-eng.github.io/apolobamba/
@@ -9,13 +9,15 @@ Web publicada (és l’adreça del QR del flyer): https://7m5n2m6tv8-eng.github.
 
 | Fitxer | Contingut |
 | --- | --- |
-| `index.html` | Capçalera, metadades i primera pintada en català |
+| `index.html` | Web del client: viatge, etapes, programa, preu, condicions i documents per al client |
+| `treball.html` | Pàgina «Treball TD2»: treball complet, blocs amb cercador, eines del guia, fonts i mode exposició |
 | `content.js` | Tots els textos (català i castellà) i les dades de les sis jornades |
 | `site.js` | Construcció de la pàgina, pestanyes de les jornades, llista de material i diàlegs |
-| `modules.js` · `modules.json` | Apartat «Treball acadèmic»: sis blocs amb cercador |
+| `modules.js` · `modules.json` | Blocs del treball amb cercador (només a `treball.html`) |
 | `site.css` | Estils |
 | `assets/` | Fotografies, mapes de les etapes (WebP) i crèdits |
-| `dossiers/` | PDF del treball, atles A3, formularis i Word editable |
+| `dossiers/` | Treball complet (PDF i Word), sis blocs, atles A3 i formularis |
+| `dossiers/client/` | Documents per al client en català i castellà: fitxa del viatge i preparació i material |
 
 ## Com actualitzar-la
 
