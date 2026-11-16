@@ -67,3 +67,41 @@ dialog{border:0;border-radius:5px;padding:0;max-width:650px;width:calc(100% - 40
  .itinerary tbody th{font-size:16px;margin-bottom:4px}.itinerary .itin-night{margin-top:6px;font-size:13px;white-space:normal}
  .closing-pdf{display:flex;justify-content:center;margin:18px auto 0;width:max-content}}
 @media(max-width:600px){.stage-tabs button>span:nth-child(2){font-size:11px;max-width:none}.stage-tabs button{padding:12px 4px}.stage-points table{font-size:13px}}
+
+/* ===== Web del client i pàgina Treball TD2 ===== */
+.nav-treball{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:13px;font-weight:600;color:var(--forest);border:1px solid var(--forest);background:transparent;padding:9px 14px;border-radius:var(--radius);cursor:pointer;white-space:nowrap}
+.nav-treball:hover{background:var(--forest);color:#fff}
+#mobile-nav .mobile-treball{display:flex;justify-content:space-between;align-items:center;width:100%;margin-top:10px;padding:14px 0 4px;border:0;border-top:1px solid var(--line);background:none;font:inherit;font-size:15px;font-weight:600;color:var(--forest);cursor:pointer}
+@media(max-width:1280px){.desktop-nav{gap:13px;font-size:12px}.nav-treball{padding:8px 11px;font-size:12px}.languages{gap:4px}}
+@media(max-width:1100px){.nav-treball:not(.present-toggle){display:none}}
+@media(max-width:800px){.header .present-toggle{display:none}}
+.conditions{margin-top:72px;padding-top:56px;border-top:1px solid rgba(22,62,51,.15);scroll-margin-top:90px}
+.conditions h3{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.2vw,40px);line-height:1.1;margin:10px 0 28px;max-width:640px}
+.cond-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+.cond-grid details{border-top:1px solid rgba(22,62,51,.18)}
+.cond-grid summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;cursor:pointer;font-weight:600;font-size:16px;list-style:none}
+.cond-grid summary::-webkit-details-marker{display:none}
+.cond-grid details[open] summary svg{transform:rotate(45deg)}
+.cond-grid p{margin:0 0 20px;color:var(--muted);font-size:15px;line-height:1.6}
+.cond-note{margin-top:26px;font-size:14px;color:var(--muted)}
+@media(max-width:800px){.cond-grid{grid-template-columns:1fr}.conditions{margin-top:48px;padding-top:40px}}
+.tw-hero{background:var(--forest);color:#f4f1e6;padding:120px 0 90px}
+.tw-hero .eyebrow{color:#e5c98d}
+.tw-hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,7vw,96px);line-height:.98;letter-spacing:-.02em;margin:18px 0 26px}
+.tw-lead{font-size:clamp(18px,1.7vw,22px);max-width:700px;line-height:1.5;margin:0}
+.tw-meta{opacity:.8;margin:14px 0 34px;font-size:15px}
+.tw-actions{display:flex;flex-wrap:wrap;align-items:center;gap:20px 30px}
+.tw-hero .button-forest{background:#e5c98d;color:var(--forest)}
+.tw-hero .text-link{color:#f4f1e6;border-color:rgba(244,241,230,.5)}
+.tw-key-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:22px}
+.tw-key-grid article{border-top:2px solid var(--forest);padding-top:18px}
+.tw-key-grid span{font-family:var(--serif);font-size:28px;color:#9a8a5e}
+.tw-key-grid h3{font-size:19px;margin:8px 0}
+.tw-key-grid p{color:var(--muted);font-size:15px;line-height:1.55;margin:0}
+.treball-page #fonts .source-list{margin-top:10px}
+@media(max-width:1000px){.tw-key-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.tw-key-grid{grid-template-columns:1fr}.tw-hero{padding:80px 0 60px}}
+.presenting{font-size:110%}
+.presenting .tw-key-grid p,.presenting .module li{font-size:18px}
+.presenting .tw-hero h1{font-size:clamp(60px,9vw,120px)}
+.presenting #mobile-nav,.presenting .skip{display:none}
