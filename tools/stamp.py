@@ -6,7 +6,7 @@ Executa-ho des de l'arrel del repositori abans de fer commit:  python3 tools/sta
 import hashlib, pathlib, re
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 PAGES = ['index.html', 'treball.html']
-ASSETS = r'(site\.css|content\.js|photo-credits\.js|site\.js|modules\.js)'
+ASSETS = r'(site\.css|content\.js|extras\.js|photo-credits\.js|site\.js|modules\.js)'
 STAMP = re.compile(r'\?v=[0-9a-f]{10}')
 VAR = re.compile(r'window\.AWT_VERSION="[0-9a-f]*"')
 

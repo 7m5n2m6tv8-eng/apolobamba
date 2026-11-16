@@ -13,6 +13,9 @@ Web publicada (és l’adreça del QR del flyer): https://7m5n2m6tv8-eng.github.
 | `treball.html` | Pàgina «Treball TD2»: treball complet, blocs amb cercador, eines del guia, fonts i mode exposició |
 | `content.js` | Tots els textos (català i castellà) i les dades de les sis jornades |
 | `site.js` | Construcció de la pàgina, pestanyes de les jornades, llista de material i diàlegs |
+| `presentacio.html` | Presentació del treball en 12 diapositives amb guió (tecla N) |
+| `extras.js` | Guia, perfil interactiu, territori, test i contacte. El número de WhatsApp es posa a la primera línia de configuració |
+| `sw.js` | Permet obrir la web sense connexió un cop visitada |
 | `modules.js` · `modules.json` | Blocs del treball amb cercador (només a `treball.html`) |
 | `site.css` | Estils |
 | `assets/` | Fotografies, mapes de les etapes (WebP) i crèdits |
