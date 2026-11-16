@@ -23,6 +23,7 @@ Web publicada (és l’adreça del QR del flyer): https://7m5n2m6tv8-eng.github.
 
 - **Textos de la web:** edita `content.js`. Cada clau existeix en `ca` i `es`.
 - **Treball escrit:** edita `dossiers/Apolobamba_TD2_Treball_Complet.docx`, exporta’l a PDF amb el mateix nom i substitueix els fitxers de `dossiers/` sense canviar-ne els noms.
+- **Versió:** després de qualsevol canvi, executa `python3 tools/stamp.py` abans de fer commit. Actualitza `version.txt` i els enllaços, i així els navegadors carreguen la versió nova en obrir la web, sense esperar la memòria cau.
 - **Publicació:** GitHub Pages serveix la branca `main` des de l’arrel. Quan una pull request s’integra a `main`, la web s’actualitza a la mateixa adreça.
 
 ## Crèdits
