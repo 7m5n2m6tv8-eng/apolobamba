@@ -76,7 +76,7 @@ ${footerHtml(t,language)}`;
   function selectStage(index,focus=false){
     selectedStage=index;
     document.querySelectorAll('[data-stage]').forEach((tab,i)=>{tab.setAttribute('aria-selected',i===index);tab.tabIndex=i===index?0:-1;if(focus&&i===index)tab.focus();});
-    const panel=document.getElementById('stage-panel');panel.innerHTML=stageContent();panel.setAttribute('aria-labelledby',`stage-tab-${index}`);
+    const panel=document.getElementById('stage-panel');panel.innerHTML=stageContent();stampLinks(panel);panel.setAttribute('aria-labelledby',`stage-tab-${index}`);
     panel.querySelector('[data-dialog]').addEventListener('click',()=>openDialog('map'));
   }
   function openDialog(type){
@@ -104,7 +104,9 @@ ${footerHtml(t,language)}`;
     dialog.addEventListener('click',event=>{if(event.target===dialog){const rect=dialog.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)dialog.close();}});
     document.onkeydown=event=>{if(event.key==='Escape')closeMenu();};
   }
-  function render(){document.documentElement.lang=lang;document.getElementById('app').innerHTML=build();bind();if(PAGE==='treball'){bindTreball();if(window.mountProject)window.mountProject();}else updateGear();}
+  function stampLinks(root=document){const v=window.AWT_VERSION;if(!v)return;root.querySelectorAll('a[href^="dossiers/"],a[href^="assets/"],img[src^="assets/maps/"]').forEach(el=>{const k=el.tagName==='IMG'?'src':'href';const u=el.getAttribute(k);if(!u.includes('?v='))el.setAttribute(k,u+'?v='+v);});}
+  window.AWT_STAMP=stampLinks;
+  function render(){document.documentElement.lang=lang;document.getElementById('app').innerHTML=build();bind();if(PAGE==='treball'){bindTreball();if(window.mountProject)window.mountProject();}else updateGear();stampLinks();}
   function bindTreball(){const t=c().tw;document.querySelectorAll('.present-toggle').forEach(b=>{b.textContent=document.body.classList.contains('presenting')?t.presentOff:t.present;b.addEventListener('click',()=>{const on=document.body.classList.toggle('presenting');document.querySelectorAll('.present-toggle').forEach(x=>x.textContent=on?t.presentOff:t.present);});});}
   window.AWT={build,stageContent};
   if(!window.__AWT_STATIC_RENDER__)render();
