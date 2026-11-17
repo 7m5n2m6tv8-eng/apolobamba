@@ -19,6 +19,7 @@ Web publicada (és l’adreça del QR del flyer): https://7m5n2m6tv8-eng.github.
 | `sw.js` | Permet obrir la web sense connexió un cop visitada |
 | `modules.js` · `modules.json` | Blocs del treball amb cercador (només a `treball.html`) |
 | `site.css` | Estils |
+| `CLAUDE.md` | Context del projecte per a Claude Code (decisions, manera de treballar i pendents) |
 | `assets/` | Fotografies, mapes de les etapes (WebP) i crèdits |
 | `dossiers/` | Treball complet (PDF i Word), sis blocs, atles A3 i formularis |
 | `dossiers/client/` | Documents per al client en català i castellà: fitxa, preparació i material, pla d’entrenament i el **dossier complet** (`Dossier_Viatge_CA.pdf`, `Dossier_Viaje_ES.pdf`), que no s’enllaça a la web: s’envia per WhatsApp quan el client contacta |
