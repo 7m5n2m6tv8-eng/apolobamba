@@ -8,7 +8,7 @@ const { chromium } = require('playwright');
 const ROOT = path.resolve(__dirname, '..');
 const ctx = { window: {} }; ctx.window = ctx; vm.createContext(ctx);
 for (const f of ['content.js', 'guia/track.js']) vm.runInContext(fs.readFileSync(path.join(ROOT, f), 'utf8'), ctx);
-const { COPY, DAYS, TRACK } = ctx;
+const { COPY, DAYS, TRACK, PLANS } = ctx;
 const CONTACT = (fs.readFileSync(path.join(ROOT, 'extras.js'), 'utf8').match(/whatsapp:\s*'(\d+)'/) || [])[1] || '';
 
 let IMG = '';
@@ -21,11 +21,12 @@ const D = {
     file: 'Dossier_Viatge_CA.pdf', title: 'Dossier del viatge', sub: 'Travessa Pelechuco → Charazani · Serralada d’Apolobamba, Bolívia',
     date: 'Proposta de dates: juny de 2027 · Document de novembre de 2026',
     notice: 'Aquest dossier presenta un projecte acadèmic de tècnic esportiu en mitja muntanya (TD2). Les reserves encara no estan obertes. El recorregut està planificat sobre un registre GPS de 2012 i contrastat amb operadors bolivians, però encara no s’ha reconegut sobre el terreny: distàncies, desnivells i horaris són de planificació.',
-    toc: 'Contingut', tocItems: ['El viatge en xifres', 'Programa dia a dia', 'Perfil de la travessa', 'Les sis jornades, punt a punt', 'Clima i meteorologia', 'Altitud i salut', 'Allotjament, àpats i equipatge', 'Material', 'Preu i condicions', 'Contacte'],
+    toc: 'Contingut', tocItems: ['El viatge en xifres', 'Programa dia a dia', 'Perfil de la travessa', 'Les sis jornades, punt a punt', 'Quan anar-hi i plans alternatius', 'Clima i meteorologia', 'Altitud i salut', 'Allotjament, àpats i equipatge', 'Material', 'Preu i condicions', 'Contacte'],
     figures: 'El viatge en xifres', programme: 'Programa dia a dia', profile: 'Perfil de la travessa',
     profileText: 'Altitud al llarg dels 53,4 km de camí. Les tendes marquen on dormim. El punt més alt és el pas Sunchulli (5.032 m), el dia 7.',
     stages: 'Les sis jornades, punt a punt', stagesText: 'Per a cada jornada: dades, horari previst, punts de pas i mapa topogràfic.',
     cols: ['Km', 'Punt', 'Altitud', 'Hora prevista'], plate: 'Mapa de la jornada', mapCredit: 'Mapa: OpenTopoMap · dades © OpenStreetMap i SRTM · CC-BY-SA. Track: Gallotrekk, Wikiloc (2012).',
+    plans: 'Quan anar-hi i plans alternatius', planCHead: 'El pla C, etapa per etapa', planCMaps: 'Mapes del pla C', cStage: 'Etapa', dayW: 'Dia', nightW: 'Nit',
     weather: 'Clima i meteorologia',
     climate: [['Juny, estació seca', 'Dies sovint assolellats i sol intens per l’altitud. Pluja poc freqüent.'], ['Nits fredes', 'Sota zero als campaments; als més alts poden baixar de −10 °C.'], ['Vent i neu puntual', 'Pot fer vent fort als passos i, de manera puntual, nevar. Amb neu dura o gel al pas Sunchulli, no es creua.'], ['Llum', 'Al juny surt el sol cap a les 06.55–07.00 i es pon cap a les 18.15. Caminem de les 07.10 a les 16.40 com a màxim.']],
     forecastTitle: 'Com seguim la previsió',
@@ -42,11 +43,12 @@ const D = {
     file: 'Dossier_Viaje_ES.pdf', title: 'Dossier del viaje', sub: 'Travesía Pelechuco → Charazani · Cordillera de Apolobamba, Bolivia',
     date: 'Propuesta de fechas: junio de 2027 · Documento de noviembre de 2026',
     notice: 'Este dossier presenta un proyecto académico de técnico deportivo en media montaña (TD2). Las reservas todavía no están abiertas. El recorrido está planificado sobre un registro GPS de 2012 y contrastado con operadores bolivianos, pero todavía no se ha reconocido sobre el terreno: distancias, desniveles y horarios son de planificación.',
-    toc: 'Contenido', tocItems: ['El viaje en cifras', 'Programa día a día', 'Perfil de la travesía', 'Las seis jornadas, punto a punto', 'Clima y meteorología', 'Altitud y salud', 'Alojamiento, comidas y equipaje', 'Material', 'Precio y condiciones', 'Contacto'],
+    toc: 'Contenido', tocItems: ['El viaje en cifras', 'Programa día a día', 'Perfil de la travesía', 'Las seis jornadas, punto a punto', 'Cuándo ir y planes alternativos', 'Clima y meteorología', 'Altitud y salud', 'Alojamiento, comidas y equipaje', 'Material', 'Precio y condiciones', 'Contacto'],
     figures: 'El viaje en cifras', programme: 'Programa día a día', profile: 'Perfil de la travesía',
     profileText: 'Altitud a lo largo de los 53,4 km de camino. Las tiendas marcan dónde dormimos. El punto más alto es el paso Sunchulli (5.032 m), el día 7.',
     stages: 'Las seis jornadas, punto a punto', stagesText: 'Para cada jornada: datos, horario previsto, puntos de paso y mapa topográfico.',
     cols: ['Km', 'Punto', 'Altitud', 'Hora prevista'], plate: 'Mapa de la jornada', mapCredit: 'Mapa: OpenTopoMap · datos © OpenStreetMap y SRTM · CC-BY-SA. Track: Gallotrekk, Wikiloc (2012).',
+    plans: 'Cuándo ir y planes alternativos', planCHead: 'El plan C, etapa por etapa', planCMaps: 'Mapas del plan C', cStage: 'Etapa', dayW: 'Día', nightW: 'Noche',
     weather: 'Clima y meteorología',
     climate: [['Junio, estación seca', 'Días a menudo soleados y sol intenso por la altitud. Lluvia poco frecuente.'], ['Noches frías', 'Bajo cero en los campamentos; en los más altos pueden bajar de −10 °C.'], ['Viento y nieve puntual', 'Puede hacer viento fuerte en los pasos y, de forma puntual, nevar. Con nieve dura o hielo en el paso Sunchulli, no se cruza.'], ['Luz', 'En junio sale el sol hacia las 06:55–07:00 y se pone hacia las 18:15. Caminamos de las 07:10 a las 16:40 como máximo.']],
     forecastTitle: 'Cómo seguimos la previsión',
@@ -90,6 +92,7 @@ function html(L) {
   };
   return `<!doctype html><html lang="${L}"><head><meta charset="utf-8"><base href="file://${ROOT}/"><title>${d.title}</title><style>
   @page{size:A4;margin:16mm 15mm 16mm}
+  .months{width:100%;border-collapse:separate;border-spacing:1.2mm 0;margin:3mm 0 2mm}.months td{text-align:center;font:600 8pt Arial,sans-serif;padding:5mm 0 1.5mm;border-radius:1mm;background:#eceee7;color:#7b8378}.months .m-best{background:#163e33;color:#fff}.months .m-ok{background:#9daa86;color:#102c25}.months .m-risk{background:#e2cfa6;color:#102c25}.legend{font-size:8.5pt;color:#5b6b64}.legend span{margin-right:5mm}.legend i{display:inline-block;width:3mm;height:3mm;margin-right:1.5mm;border-radius:.6mm;vertical-align:-.4mm;background:#eceee7}.legend i.m-best{background:#163e33}.legend i.m-ok{background:#9daa86}.legend i.m-risk{background:#e2cfa6}.maps4{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-top:5mm}.maps4 img{width:100%;border:1px solid #d9ddd0}.maps4 figcaption{font-size:8pt;color:#5b6b64}.small{font-size:8pt;color:#5b6b64}
   *{box-sizing:border-box}body{font:10.5pt/1.5 Georgia,'DejaVu Serif',serif;color:#1d2a25;margin:0}
   h1,h2,h3,.kicker,th,dt,.label{font-family:'Helvetica Neue',Arial,'DejaVu Sans',sans-serif}
   .cover{height:262mm;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;padding:18mm 14mm;background:linear-gradient(180deg,#0000 30%,#0d2b22ee 80%),url(file://${IMG}/apolobamba-landscape.jpg) center/cover;page-break-after:always}
@@ -129,24 +132,38 @@ function html(L) {
 
   ${DAYS.map(stage).join('')}
 
-  <section class="page">${h2(5, d.weather)}
+  <section class="page">${h2(5, d.plans)}
+    <h3>${PLANS.season[L].window}</h3><p>${PLANS.season[L].proposal}</p>
+    <table class="months"><tr>${PLANS.season.months.map((m, i) => `<td class="m-${m}">${PLANS.season[L].monthNames[i]}</td>`).join('')}</tr></table>
+    <p class="legend">${['best', 'ok', 'risk', 'no'].map(k => `<span><i class="m-${k}"></i>${PLANS.season[L].legend[k]}</span>`).join('')}</p>
+    <div class="grid2">${PLANS.season[L].reasons.map(([a, b]) => `<div class="card"><b>${a}</b>${b}</div>`).join('')}</div>
+    <h3 style="margin-top:6mm">${c.planTitle}</h3><p>${c.planText}</p>
+    <div class="grid2">${c.planItems.map(([a, b]) => `<div class="card"><b>${a}</b>${b}</div>`).join('')}</div>
+  </section>
+  <section class="page"><h3>${PLANS.c[L].title}</h3><p>${PLANS.c[L].intro}</p>
+    <table><thead><tr><th>${d.cStage}</th><th>${d.dayW}</th><th>km</th><th>+/−</th><th>${c.max}</th><th>${c.duration}</th><th>${d.nightW}</th></tr></thead><tbody>${PLANS.c.stages.map(st => `<tr><th>${st.code} · ${st[L].name}</th><td>${st.day}</td><td>${dec(st.km)}</td><td>+${fmt(st.ascent)}/−${fmt(st.descent)} m</td><td>${fmt(st.max)} m</td><td>${st.hours}</td><td>${st.nightLabel}</td></tr>`).join('')}</tbody></table>
+    <div class="maps4">${PLANS.c.stages.map(st => `<figure><img src="file://${IMG}/maps/pla-c-${st.code.toLowerCase()}-${L}.jpg" alt=""><figcaption>${st.code} · ${st[L].name}</figcaption></figure>`).join('')}</div>
+    <p class="small">${PLANS.c[L].source} ${d.mapCredit}</p>
+  </section>
+
+  <section class="page">${h2(6, d.weather)}
     <div class="grid2">${d.climate.map(([a, b]) => `<div class="card"><b>${a}</b>${b}</div>`).join('')}</div>
     <h3 style="margin-top:6mm">${d.forecastTitle}</h3><p>${d.forecast}</p>
     <h3>${d.whereTitle}</h3><table><tbody>${d.where.map(([a, b, u]) => `<tr><th>${a}</th><td>${b}</td><td>${u}</td></tr>`).join('')}</tbody></table>
-    ${h2(6, d.altitude)}<p>${c.altitudeText}</p><ul>${c.altitudePoints.map(x => `<li>${x}</li>`).join('')}</ul>
+    ${h2(7, d.altitude)}<p>${c.altitudeText}</p><ul>${c.altitudePoints.map(x => `<li>${x}</li>`).join('')}</ul>
   </section>
 
-  <section class="page">${h2(7, d.lodging)}
+  <section class="page">${h2(8, d.lodging)}
     <div class="grid2">${d.lodgingItems.map(([a, b]) => `<div class="card"><b>${a}</b>${b}</div>`).join('')}</div>
-    ${h2(8, d.gear)}<div class="grid2">${c.gearGroups.map(([t, items]) => `<div class="card"><b>${t}</b><ul class="check">${items.map(x => `<li>☐ ${x}</li>`).join('')}</ul></div>`).join('')}</div>
+    ${h2(9, d.gear)}<div class="grid2">${c.gearGroups.map(([t, items]) => `<div class="card"><b>${t}</b><ul class="check">${items.map(x => `<li>☐ ${x}</li>`).join('')}</ul></div>`).join('')}</div>
   </section>
 
-  <section class="page">${h2(9, d.price)}
+  <section class="page">${h2(10, d.price)}
     <p class="price">${c.priceAmount} € <small style="font-size:11pt;font-weight:400">${c.perPerson}</small></p><p>${c.priceNote}</p>
     <div class="grid2"><div class="card"><b>${d.included}</b><ul>${c.includeItems.map(x => `<li>${x}</li>`).join('')}</ul></div><div class="card"><b>${d.excluded}</b><ul>${c.excludeItems.map(x => `<li>${x}</li>`).join('')}</ul></div></div>
     <div style="margin-top:5mm">${c.conds.map(([a, b]) => `<p class="cond"><b>${a}.</b> ${b}</p>`).join('')}</div>
     <p class="notice">${c.priceDisclaimer}</p>
-    <div style="break-inside:avoid">${h2(10, d.contact)}<div class="contact"><p>${d.contactText}</p><p><b>${d.guide}</b><br>WhatsApp: +${CONTACT.slice(0, 2)} ${CONTACT.slice(2).replace(/(\d{3})(?=\d)/g, '$1 ')}<br>${d.web}: 7m5n2m6tv8-eng.github.io/apolobamba</p></div></div>
+    <div style="break-inside:avoid">${h2(11, d.contact)}<div class="contact"><p>${d.contactText}</p><p><b>${d.guide}</b><br>WhatsApp: +${CONTACT.slice(0, 2)} ${CONTACT.slice(2).replace(/(\d{3})(?=\d)/g, '$1 ')}<br>${d.web}: 7m5n2m6tv8-eng.github.io/apolobamba</p></div></div>
   </section>
   </body></html>`;
 }
@@ -157,7 +174,7 @@ function html(L) {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'dossier-'));
   // Les imatges es passen a JPEG de mida moderada perquè el PDF pesi poc i es pugui enviar per WhatsApp.
   const img = await browser.newPage();
-  for (const name of ['apolobamba-landscape', ...DAYS.flatMap(x => ['ca', 'es'].map(l => `maps/jornada-${x.day}-${l}`))]) {
+  for (const name of ['apolobamba-landscape', ...DAYS.flatMap(x => ['ca', 'es'].map(l => `maps/jornada-${x.day}-${l}`)), ...PLANS.c.stages.flatMap(x => ['ca', 'es'].map(l => `maps/pla-c-${x.code.toLowerCase()}-${l}`))]) {
     await img.goto('file://' + path.join(ROOT, 'assets', name + '.webp'));
     const data = await img.evaluate(async () => { const i = document.images[0]; await i.decode(); const w = Math.min(1700, i.naturalWidth), c = document.createElement('canvas'); c.width = w; c.height = Math.round(i.naturalHeight * w / i.naturalWidth); c.getContext('2d').drawImage(i, 0, 0, c.width, c.height); return c.toDataURL('image/jpeg', .8); });
     fs.mkdirSync(path.dirname(path.join(tmp, name)), { recursive: true });

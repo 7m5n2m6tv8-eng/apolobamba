@@ -43,3 +43,9 @@ ul{padding-left:20px;margin:6px 0}li{margin:5px 0}
 .chk input:checked+span{color:var(--muted);text-decoration:line-through}
 @media(max-width:500px){.nums{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:380px){.th,.pt summary{grid-template-columns:34px 1fr 42px 70px 50px;gap:4px;padding:10px 8px;font-size:13px}}
+
+.chips .pc{border-color:#7a4fa0;color:#5b3a7a}.chips .pc.on{background:#7a4fa0;color:#fff}
+.legend{font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;margin:8px 0 0}.legend i{display:inline-block;width:18px;height:0;border-top:3px dashed #7a4fa0;margin-right:4px}.legend .la{border-top-color:#b4573a;border-top-style:dotted}.legend .le{width:10px;height:10px;border:0;background:#b4573a;border-radius:2px}
+.map text.esc{fill:#8a3d22;font-weight:700}
+.months{display:grid;grid-template-columns:repeat(12,1fr);gap:2px;list-style:none;padding:0;margin:10px 0}.months li{margin:0;font-size:10px;text-align:center;padding:12px 0 4px;border-radius:3px;background:#eceee7;color:#7b8378}.months .m-best{background:var(--forest);color:#fff}.months .m-ok{background:#9daa86;color:#102c25}.months .m-risk{background:repeating-linear-gradient(135deg,#e7d6b4 0 5px,#d3b98b 5px 10px);color:#102c25}
+h2 small{font-size:12px;color:var(--muted);font-weight:400}

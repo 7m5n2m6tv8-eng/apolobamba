@@ -10,9 +10,9 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 - **Web publicada (GitHub Pages, rama `main`, raíz):** https://7m5n2m6tv8-eng.github.io/apolobamba/. Es la dirección del **QR del flyer** y no debe cambiar.
   - Web del cliente: `index.html`
   - Trabajo académico: `treball.html`
-  - Presentación (12 diapositivas con guion, tecla N): `presentacio.html`
+  - Presentación (14 diapositivas con guion, tecla N): `presentacio.html`
   - App del guía: `guia/` (…/apolobamba/guia/)
-- Estado a 17/11/2026: último commit en `main` = merge de la PR #8 (atlas redibujado).
+- Estado a 17/11/2026: último commit en `main` = merge de la PR #8 (atlas redibujado). PR #9 abierta: temporada, planes B, plan C y ABC.
 
 ## Forma de trabajar (obligatorio)
 
@@ -32,18 +32,18 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 | --- | --- |
 | `index.html` | Web del cliente: viaje, etapas (datos principales), programa, precio, condiciones, documentos para el cliente y contacto |
 | `treball.html` | Página "Treball TD2": trabajo completo (PDF/Word), seis bloques con buscador, herramientas del guía (incluida la app), fuentes, Instagram y modo exposición |
-| `presentacio.html` | Presentación de 12 diapositivas con guion |
-| `content.js` | Todos los textos (ca/es) y los datos de las seis jornadas |
+| `presentacio.html` | Presentación de 14 diapositivas con guion (la 9 es temporada y planes B; la 10, el plan C) |
+| `content.js` | Todos los textos (ca/es), los datos de las seis jornadas (`window.DAYS`) y la temporada, planes B, plan C, carreteras y criterios (`window.PLANS`, que se escribe con `tools/plans_data.py`) |
 | `site.js` | Construcción de la página, pestañas de jornadas, lista de material y diálogos |
 | `extras.js` | "El teu guia", comparador de altitud, "El territori", test "És per a mi?" y contacto por WhatsApp (número en `CONTACT`, ya configurado) |
 | `sw.js` | Funcionamiento sin conexión de la web |
 | `modules.js` / `modules.json` | Bloques del trabajo con buscador (solo en `treball.html`) |
 | `site.css` | Estilos |
-| `guia/` | App móvil del guía, sin cobertura (PWA): fichas técnicas con horas de control y decisiones, mapa esquemático con "On soc?", GPX, meteo en Bolivia, seguridad, contactos y listas. Track en `guia/track.js` (199 puntos, Gallotrekk, Wikiloc, 2012). Solo se enlaza desde `treball.html` |
+| `guia/` | App móvil del guía, sin cobertura (PWA): fichas técnicas con horas de control y decisiones, plan B de cada jornada, fichas C1–C4 del plan C (`guia/planc.js`), mapa esquemático con "On soc?", GPX, meteo en Bolivia, seguridad, contactos y listas. Track en `guia/track.js` (199 puntos, Gallotrekk, Wikiloc, 2012). Solo se enlaza desde `treball.html` |
 | `assets/` | Fotos WebP, mapas de cada jornada para el dossier (`assets/maps/`, los genera `tools/atles.py`; no se usan en la web), flyer, figuras de la presentación, créditos en `PHOTOGRAPHY.md` |
 | `dossiers/` | Trabajo completo (PDF + DOCX), bloques 01–06, Atles cartogràfic A3 y Formularis operatius |
-| `dossiers/client/` | Para el cliente, en ca y es: ficha del viaje, preparación y material, plan de entrenamiento de 12 semanas, libreta de ruta y **dossier completo** (14 págs.; **no se enlaza en la web**: se envía por WhatsApp cuando el cliente contacta) |
-| `tools/` | `stamp.py` (versión), `dossier.js` (dossier del cliente), `atles.py` (Atles cartogràfic A3, una página por jornada a pie, y los mapas `assets/maps/jornada-<día>-<ca|es>.webp` que usa el dossier), `prerender.js` (HTML estático). La libreta de ruta y la ficha del viaje no tienen generador: si cambian los datos, hay que rehacerlas o corregirlas a mano |
+| `dossiers/client/` | Para el cliente, en ca y es: ficha del viaje, preparación y material, plan de entrenamiento de 12 semanas, libreta de ruta y **dossier completo** (18 págs., con temporada, planes B y plan C; **no se enlaza en la web**: se envía por WhatsApp cuando el cliente contacta) |
+| `tools/` | `stamp.py` (versión), `dossier.js` (dossier del cliente), `plans_data.py` (fuente de temporada, planes B, plan C, ABC y criterios → `window.PLANS`; con `PLANC_WORK` también regenera `guia/planc.js`), `atles.py` (Atles cartogràfic A3: 6 jornadas + 4 etapas del plan C, y los mapas `assets/maps/jornada-*` y `pla-c-*` que usa el dossier), `prerender.js` (HTML estático). La libreta de ruta y la ficha del viaje no tienen generador: si cambian los datos, hay que rehacerlas o corregirlas a mano |
 
 ## Decisiones tomadas (no reabrir sin que Izan lo pida)
 
@@ -61,6 +61,11 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 - **"El teu guia" sin cita inventada** (se quitó). No inventar frases atribuidas a Izan.
 - Topónimos normalizados en catalán ("Pas Sunchulli", no "Paso Sunchulli") y decimales con coma. La referencia es la tabla de normalización del trabajo (cap. 9). Los puntos de agua se llaman **"Agua buena 1–4"** (nombre del GPS, con la nota de que el agua se trata siempre); no se traducen.
 - **Llegada a Charazani (día 10): 15.10–16.40**, igual que la duración de 8–9 h 30 min. La hora límite sigue siendo las 16.40.
+- **Temporada:** ventana recomendada del 15 de junio al 31 de julio; salida propuesta, segunda quincena de junio de 2027. Mayo y septiembre, posibles; agosto, con riesgo de nevadas fuertes (1993, 2019); diciembre–abril, no.
+- **Planes B por jornada** (texto en `tools/plans_data.py`): hora límite 14.40 en el Pas Sunchulli; en el día 8, bajada alternativa a las Mil Corbes por el sur del Pas 5 (2,9 km, −600 m, unos 200 m sin cartografiar), noche en Quellwa Cota o regreso al Campament 2; final en Curva; salidas en vehículo por pistas mineras (≈36 % del camino va por pista, según OpenStreetMap).
+- **Plan C · Cañisaya – Akamani – Charazani:** 4 etapas (C1 Curva→Cañisaya, C2 →Pas d’Akamani→Incacancha, C3 →Pas Lorisani→Huayrapata, C4 →Pas de Chatalayo→RN16→Charazani), 34,6 km, +2.070/−2.440 m, máx. 4.661 m. Datos de OpenStreetMap y SRTM (±10 %), pendientes de reconocer. Se activa antes de salir (paso cerrado, conflicto minero, sin permisos) o desde Incacancha.
+- **Agua:** tratarla no elimina el mercurio: solo fuentes por encima de las minas o confirmadas por la comunidad, y reserva en el valle de Sunchulli. **Permiso escrito del SERNAP** en La Paz y registro en Pelechuco y Lagunillas. **Microcrampones de reserva** para el grupo, no para el cliente.
+- **Carreteras:** consultar la ABC (transitabilidad.abc.gob.bo, @carreterasbo) y transportistas 48 h y 24 h antes de cada traslado. Punto crítico: RN16 Charazani–Apolo (donde termina el plan C). El camino a Pelechuco no está en los informes de la ABC.
 
 ## Programa (datos de referencia)
 
@@ -90,14 +95,17 @@ Fuentes de contraste (cap. 9 y Annex E del trabajo): track de Gallotrekk en Wiki
 6. **#6**: web del cliente sin tracks ni mapas (todo eso pasa al dossier por WhatsApp), dossier completo ca/es con `tools/dossier.js`, app del guía `guia/`, `tools/prerender.js`, meteorología en el cap. 10, Annex C, D y E actualizados y cita de "El teu guia" eliminada.
 7. **#7**: CLAUDE.md con el contexto del proyecto.
 8. **#8**: Atles cartogràfic A3 redibujado con `tools/atles.py` (6 páginas, una por jornada, topónimos normalizados, decimales con coma); el dossier del cliente usa los mismos mapas en ca/es; Annex D actualizado (Word, PDF, bloque 06 y buscador); llegada a Charazani unificada en 15.10–16.40 (web, app, trabajo, dossier y libretas de ruta).
+9. **#9** (abierta): revisión de la ruta (17/11/2026): temporada recomendada, planes B por jornada y vías de evacuación, plan C con fichas técnicas, carreteras (ABC) y criterios de agua y permisos, en la web del cliente, la página del trabajo, la presentación, la app del guía, el atlas (10 láminas), el dossier y el trabajo escrito (cap. 10.2–10.6, Annex D y E).
 
 ## Pendiente
 
 **En el repositorio (lo puede hacer Claude):**
+- Si cambian los planes o el plan C: editar `tools/plans_data.py`, ejecutar `python3 tools/plans_data.py`, `python3 tools/atles.py`, `node tools/dossier.js`, `node tools/prerender.js` y `python3 tools/stamp.py`. El capítulo 10.2–10.6 del Word se generó con estos datos: si cambian, hay que actualizarlo a mano.
 - **Fotos por jornada:** cuando Izan aporte sus fotos, colocarlas en las pestañas de etapa (WebP con versión `-small`) y, si encaja, también en el dossier.
 - Si Izan lo pide, acortar o plegar bloques de la web del cliente, que quedó larga en móvil.
 
 **Fuera del repositorio (Annex D, depende de Izan o del trabajo de campo):**
+- Reconocer la bajada alternativa a las Mil Corbes y las cuatro etapas del plan C; acuerdos de acampada en Cañisaya, Huayrapata y Quellwa Cota; uso de pistas mineras para evacuar.
 - Ratificar el modelo de agencia organizadora (si solo se vende guiado, hay que rehacer contrato, fiscalidad y presupuesto) y el mínimo de 6 clientes (qué hacer con 4–5).
 - Reconocimiento de campo: trazado, tiempos reales, cotas de pernocta, campamentos, nieve o hielo, el puente, agua, comunicaciones y retiradas. Si fallan Hilo Hilo, el Campament 2 o los tiempos de E2b y E5, añadir jornadas o cambiar la ruta.
 - Situar el Campament 2 hacia los 4.500 m: en el punto del GPX (4.717 m) la noche sube 707 m respecto a Hilo Hilo.
