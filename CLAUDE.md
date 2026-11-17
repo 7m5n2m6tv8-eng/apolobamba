@@ -12,18 +12,18 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
   - Trabajo académico: `treball.html`
   - Presentación (14 diapositivas con guion, tecla N): `presentacio.html`
   - App del guía: `guia/` (…/apolobamba/guia/)
-- Estado a 17/11/2026: PR #9 integrada (temporada, planes B, plan C y ABC). PR #10 abierta (`claude/revisio-preu-idiomes`): revisión completa, precio 2.700 € con margen del 20 % y grupo de 8–13, GPX de los planes B y C, y traducción al inglés y al francés.
+- Estado a 17/11/2026: PR #10 integrada en `main`: revisión completa, precio 2.700 € con margen del 20 % y grupo de 8–13, GPX de los planes B y C, y traducción al inglés y al francés.
 
 ## Forma de trabajar (obligatorio)
 
 1. Los cambios van **siempre en una rama** (`claude/<descripcion>`) con **pull request a `main`**. No se toca `main` directamente. Izan revisa la PR y pide integrarla.
 2. Según lo que cambie, antes del commit:
-   - Datos de las jornadas → primero `python3 tools/atles.py` y después `node tools/dossier.js` (regenera `Dossier_Viatge_CA.pdf` y `Dossier_Viaje_ES.pdf` con los mapas nuevos). `tools/atles.py` regenera el Atles cartogràfic A3 y los mapas del dossier; necesita `reportlab`, `Pillow` y acceso a `tile.opentopomap.org`, que está permitido en el entorno «apolobamba».
+   - Datos de las jornadas → primero `python3 tools/atles.py` y después `node tools/dossier.js` (regenera los cuatro dossiers completos, de 15 páginas, con los mapas nuevos). `tools/atles.py` regenera el Atles cartogràfic A3 y los mapas del dossier; necesita `reportlab`, `Pillow` y acceso a `tile.opentopomap.org`, que está permitido en el entorno «apolobamba».
    - Textos o secciones de `index.html` → `node tools/prerender.js` (versión estática).
    - Documentos del cliente (ficha, preparación, plan de entrenamiento, libreta de ruta y encuesta, en 4 idiomas) → `node tools/client_docs.js`.
    - Rutas de los planes B y C → `python3 tools/gpx.py` (GPX en `dossiers/gpx/`).
    - **Siempre, al final:** `python3 tools/stamp.py` (actualiza `version.txt` y los `?v=` para que el móvil cargue la versión nueva sin caché).
-3. No hay dependencias ni build: es una web estática. Para probarla: `python3 -m http.server`. Revisa en móvil (390 px) y escritorio, en **ca y es**, sin errores de consola ni enlaces rotos. La app `guia/` se prueba aparte.
+3. No hay dependencias ni build: es una web estática. Para probarla: `python3 -m http.server`. Revisa en móvil (390 px) y escritorio, en **ca, es, en y fr**, sin errores de consola ni enlaces rotos. La app `guia/` se prueba aparte.
 4. **Trabajo escrito:** se edita `dossiers/Apolobamba_TD2_Treball_Complet.docx` y se exporta a PDF con el **mismo nombre**. Si cambia algún bloque, se regeneran los PDF de los bloques 01–06 y se actualiza el buscador (`modules.json`). **Nunca renombres archivos de `dossiers/`**, porque la web los enlaza.
 5. **Textos de la web:** están en `content.js`. Cada clave existe en `ca`, `es`, `en` y `fr`, y los cuatro idiomas deben ir sincronizados. El inglés y el francés se escriben en `tools/i18n_web.py` (web) y `tools/i18n_plans.py` (planes) y se aplican con `python3 tools/i18n_apply.py` (después de `tools/plans_data.py`).
 6. Los mensajes de las PR y los resúmenes para Izan van en castellano, claros y sin jerga técnica.
@@ -35,7 +35,7 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 | `index.html` | Web del cliente: viaje, etapas (datos principales), programa, precio, condiciones, documentos para el cliente y contacto |
 | `treball.html` | Página "Treball TD2": trabajo completo (PDF/Word), seis bloques con buscador, herramientas del guía (incluida la app), fuentes, Instagram y modo exposición |
 | `presentacio.html` | Presentación de 14 diapositivas con guion (la 9 es temporada y planes B; la 10, el plan C) |
-| `content.js` | Todos los textos (ca/es), los datos de las seis jornadas (`window.DAYS`) y la temporada, planes B, plan C, carreteras y criterios (`window.PLANS`, que se escribe con `tools/plans_data.py`) |
+| `content.js` | Todos los textos (ca/es/en/fr), los datos de las seis jornadas (`window.DAYS`) y la temporada, planes B, plan C, carreteras y criterios (`window.PLANS`, que se escribe con `tools/plans_data.py`) |
 | `site.js` | Construcción de la página, pestañas de jornadas, lista de material y diálogos |
 | `extras.js` | "El teu guia", comparador de altitud, "El territori", test "És per a mi?" y contacto por WhatsApp (número en `CONTACT`, ya configurado) |
 | `sw.js` | Funcionamiento sin conexión de la web |
@@ -45,7 +45,7 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 | `assets/` | Fotos WebP, mapas de cada jornada para el dossier (`assets/maps/`, los genera `tools/atles.py`; no se usan en la web), flyer, figuras de la presentación, créditos en `PHOTOGRAPHY.md` |
 | `dossiers/` | Trabajo completo (PDF + DOCX), bloques 01–06, Atles cartogràfic A3 y Formularis operatius |
 | `dossiers/gpx/` | GPX de la ruta principal, de las rutas de cada plan B (días 5–10) y del plan C (generados con `tools/gpx.py` sobre OpenStreetMap) |
-| `dossiers/client/` | Para el cliente, en ca, es, en y fr: ficha del viaje, preparación y material, plan de entrenamiento de 12 semanas, libreta de ruta y **dossier completo** (`Dossier_Viatge_CA`, `Dossier_Viaje_ES`, `Travel_Dossier_EN`, `Dossier_Voyage_FR`;, con temporada, planes B y plan C; **no se enlaza en la web**: se envía por WhatsApp cuando el cliente contacta) |
+| `dossiers/client/` | Para el cliente, en ca, es, en y fr: ficha del viaje, preparación y material, plan de entrenamiento de 12 semanas, libreta de ruta y **dossier completo** (`Dossier_Viatge_CA`, `Dossier_Viaje_ES`, `Travel_Dossier_EN`, `Dossier_Voyage_FR`; 15 págs., con temporada, planes B y plan C; **no se enlaza en la web**: se envía por WhatsApp cuando el cliente contacta) |
 | `tools/` | `stamp.py` (versión), `dossier.js` (dossier del cliente), `plans_data.py` (fuente de temporada, planes B, plan C, ABC y criterios → `window.PLANS`; con `PLANC_WORK` también regenera `guia/planc.js`), `atles.py` (Atles cartogràfic A3, 11 láminas: mapa general, 6 jornadas y 4 etapas del plan C, con las rutas de los planes B; exporta `assets/maps/jornada-*`, `pla-c-*` y `general-*` para el dossier; `--no-export` para no exportar), `prerender.js` (HTML estático), `client_docs.js` (ficha, preparación, entrenamiento, libreta de ruta y encuesta en 4 idiomas), `gpx.py` (GPX), `grafic_pressupost.py` (gráfico del presupuesto), `i18n_*.py` (inglés y francés) |
 
 ## Decisiones tomadas (no reabrir sin que Izan lo pida)
@@ -100,7 +100,7 @@ Fuentes de contraste (cap. 9 y Annex E del trabajo): track de Gallotrekk en Wiki
 8. **#8**: Atles cartogràfic A3 redibujado con `tools/atles.py` (6 páginas, una por jornada, topónimos normalizados, decimales con coma); el dossier del cliente usa los mismos mapas en ca/es; Annex D actualizado (Word, PDF, bloque 06 y buscador); llegada a Charazani unificada en 15.10–16.40 (web, app, trabajo, dossier y libretas de ruta).
 9. **#9**: revisión de la ruta (17/11/2026): temporada recomendada, planes B por jornada y vías de evacuación, plan C con fichas técnicas, carreteras (ABC) y criterios de agua y permisos, en la web del cliente, la página del trabajo, la presentación, la app del guía, el atlas (10 láminas), el dossier y el trabajo escrito (cap. 10.2–10.6, Annex D y E).
 
-10. **#10** (abierta): revisión completa (coherencia de datos, agua, microcrampones, plan C con noche en Curva, nomenclatura por días), precio 2.700 € con margen del 20 % y grupo de 8–13, GPX y mapas de los planes B y C (atlas de 11 láminas con mapa general), encuesta del cliente, generador de documentos del cliente y traducción al inglés y al francés.
+10. **#10**: revisión completa (coherencia de datos, agua, microcrampones, plan C con noche en Curva, nomenclatura por días), precio 2.700 € con margen del 20 % y grupo de 8–13, GPX y mapas de los planes B y C (atlas de 11 láminas con mapa general), encuesta del cliente, generador de documentos del cliente, traducción al inglés y al francés y dossier completo compactado a 15 páginas.
 
 ## Pendiente
 

@@ -114,7 +114,7 @@ function html(L) {
   figure{margin:3mm 0 0}figure img{width:100%;max-height:100mm;object-fit:contain;border:1px solid #d9ddd0}figcaption{font-size:7.5pt;color:#5b6b64}
   .profile{width:100%;height:auto;border:1px solid #d9ddd0;border-radius:2mm;margin:3mm 0}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:3mm 6mm}.card{border:1px solid #d9ddd0;border-radius:2mm;padding:3mm 4mm;break-inside:avoid}.card b{display:block;font-family:Arial,sans-serif;color:#163e33}
-  ul{padding-left:5mm;margin:2mm 0}ul.check{list-style:none;padding-left:0}li{margin:.8mm 0}.cond{break-inside:avoid;margin:0 0 3mm}.cond b{font-family:Arial,sans-serif;color:#163e33}
+  ul{padding-left:5mm;margin:2mm 0}ul.check{list-style:none;padding-left:0}li{margin:.8mm 0}.cond{break-inside:avoid;margin:0 0 2mm}.compact .card{font-size:9pt;line-height:1.4;padding:2.2mm 3.2mm}.compact .cond{font-size:8.6pt;line-height:1.35;margin:0 0 1.5mm}.compact .notice{margin:3mm 0;font-size:8.8pt}.compact .price{margin:0}.compact h2{font-size:15pt;margin:0 0 3mm}.compact .contact p{margin:1mm 0;font-size:9pt}.compact p{margin:1.5mm 0}.compact .grid2{gap:2.5mm 5mm}.compact h3{margin:3mm 0 1.5mm}.planc table{break-inside:avoid}.maps4 figure{margin:0;break-inside:avoid}.cond b{font-family:Arial,sans-serif;color:#163e33}
   .toc ol{columns:2;font-family:Arial,sans-serif;font-size:10pt}.price{font:700 26pt Arial,sans-serif;color:#163e33;margin:2mm 0}
   .src{font-size:8.5pt;color:#5b6b64}.contact{border:1.5px solid #163e33;border-radius:2mm;padding:5mm;margin-top:5mm}
   </style></head><body>
@@ -137,7 +137,7 @@ function html(L) {
 
   ${DAYS.map(stage).join('')}
 
-  <section class="page">${h2(5, d.plans)}
+  <section class="page compact">${h2(5, d.plans)}
     <h3>${PLANS.season[L].window}</h3><p>${PLANS.season[L].proposal}</p>
     <table class="months"><tr>${PLANS.season.months.map((m, i) => `<td class="m-${m}">${PLANS.season[L].monthNames[i]}</td>`).join('')}</tr></table>
     <p class="legend">${['best', 'ok', 'risk', 'no'].map(k => `<span><i class="m-${k}"></i>${PLANS.season[L].legend[k]}</span>`).join('')}</p>
@@ -145,8 +145,8 @@ function html(L) {
     <h3 style="margin-top:6mm">${c.planTitle}</h3><p>${c.planText}</p>
     <div class="grid2">${c.planItems.map(([a, b]) => `<div class="card"><b>${a}</b>${b}</div>`).join('')}</div>
   </section>
-  <section class="page"><h3>${PLANS.c[L].title}</h3><p>${PLANS.c[L].intro}</p>
-    <table><thead><tr><th>${d.cStage}</th><th>${d.dayW}</th><th>km</th><th>+/−</th><th>${c.max}</th><th>${c.duration}</th><th>${d.nightW}</th></tr></thead><tbody>${PLANS.c.stages.map(st => `<tr><th>${st.code} · ${st[L].name}</th><td>${st.day}</td><td>${dec(st.km)}</td><td>+${fmt(st.ascent)}/−${fmt(st.descent)} m</td><td>${fmt(st.max)} m</td><td>${st.hours}</td><td>${st.nightLabel}</td></tr>`).join('')}</tbody></table>
+  <section class="planc"><div style="break-inside:avoid"><h3 style="margin-top:6mm">${PLANS.c[L].title}</h3><p>${PLANS.c[L].intro}</p>
+    <table><thead><tr><th>${d.cStage}</th><th>${d.dayW}</th><th>km</th><th>+/−</th><th>${c.max}</th><th>${c.duration}</th><th>${d.nightW}</th></tr></thead><tbody>${PLANS.c.stages.map(st => `<tr><th>${st.code} · ${st[L].name}</th><td>${st.day}</td><td>${dec(st.km)}</td><td>+${fmt(st.ascent)}/−${fmt(st.descent)} m</td><td>${fmt(st.max)} m</td><td>${st.hours}</td><td>${st.nightLabel}</td></tr>`).join('')}</tbody></table></div>
     <div class="maps4">${PLANS.c.stages.map(st => `<figure><img src="file://${IMG}/maps/pla-c-${st.code.toLowerCase()}-${L}.jpg" alt=""><figcaption>${st.code} · ${st[L].name}</figcaption></figure>`).join('')}</div>
     <p class="small">${PLANS.c[L].source} ${d.mapCredit}</p>
   </section>
@@ -163,7 +163,7 @@ function html(L) {
     ${h2(9, d.gear)}<div class="grid2">${c.gearGroups.map(([t, items]) => `<div class="card"><b>${t}</b><ul class="check">${items.map(x => `<li>☐ ${x}</li>`).join('')}</ul></div>`).join('')}</div>
   </section>
 
-  <section class="page">${h2(10, d.price)}
+  <section class="page compact">${h2(10, d.price)}
     <p class="price">${c.priceAmount} € <small style="font-size:11pt;font-weight:400">${c.perPerson}</small></p><p>${c.priceNote}</p>
     <div class="grid2"><div class="card"><b>${d.included}</b><ul>${c.includeItems.map(x => `<li>${x}</li>`).join('')}</ul></div><div class="card"><b>${d.excluded}</b><ul>${c.excludeItems.map(x => `<li>${x}</li>`).join('')}</ul></div></div>
     <div style="margin-top:5mm">${c.conds.map(([a, b]) => `<p class="cond"><b>${a}.</b> ${b}</p>`).join('')}</div>
