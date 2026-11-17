@@ -179,3 +179,47 @@ dialog{border:0;border-radius:5px;padding:0;max-width:650px;width:calc(100% - 40
  .treball-page .module{padding:18px}.treball-page .module ul,.treball-page .module-number{display:none}.treball-page .module h3{font-size:19px;margin:0}.treball-page .module details{margin-top:8px}.treball-page .module-grid{gap:12px}
  .social-posts.six{grid-template-columns:1fr 1fr}
 }
+
+/* ===== Mapa topogràfic interactiu ===== */
+.tmap-wrap{margin-top:8px}
+.day-chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 12px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.day-chips::-webkit-scrollbar{display:none}
+.day-chips button{flex:none;font:inherit;font-size:14px;font-weight:600;color:var(--forest);background:#fff;border:1px solid #c9d0c6;border-radius:30px;padding:10px 16px;cursor:pointer;min-height:44px}
+.day-chips button.on{background:var(--forest);color:#fff;border-color:var(--forest)}
+.tmap{position:relative;height:540px;border-radius:10px;overflow:hidden;background:#e8e6d9 repeating-linear-gradient(45deg,transparent 0 22px,rgba(22,62,51,.035) 22px 23px);touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab;outline:none;border:1px solid #d3d8cc}
+.tmap:focus-visible{box-shadow:0 0 0 3px #c9a45c}
+.tmap.drag{cursor:grabbing}
+.tmap-pane img{position:absolute;max-width:none;opacity:0;transition:opacity .25s;pointer-events:none}
+.tmap-pane img.ok{opacity:1}.tmap-pane img.err{display:none}
+.tmap-svg{position:absolute;inset:0;pointer-events:none}
+.tmap-svg .mk{pointer-events:auto;cursor:pointer}
+.trk{fill:none;stroke:#b3261e;stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round}
+.trk.dim{stroke:#b3261e;stroke-opacity:.38}.trk.on{stroke:#d1361f;stroke-width:5}
+.trk-halo{fill:none;stroke:#fff;stroke-opacity:.85;stroke-width:7;stroke-linejoin:round;stroke-linecap:round}
+.mk circle:first-child{fill:#fff;stroke:#163e33;stroke-width:2}.mk.big circle:first-child{fill:#e5c98d}
+.mk text{font:600 12.5px/1 Inter,system-ui,sans-serif;fill:#163e33;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.hov{fill:#c9a45c;stroke:#fff;stroke-width:3}
+.you{fill:#1a73e8;stroke:#fff;stroke-width:3}.you-halo{fill:#1a73e8;fill-opacity:.18}
+.tmap-ctl{position:absolute;right:12px;top:12px;display:grid;gap:6px;z-index:3}
+.tmap-ctl button{width:44px;height:44px;display:grid;place-items:center;background:#fffefa;border:1px solid #c9d0c6;border-radius:8px;font:500 22px/1 inherit;color:var(--forest);cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.tmap-ctl button:hover{background:#f1f3ea}
+.tmap-attr{position:absolute;right:0;bottom:0;margin:0;padding:4px 8px;font-size:11px;background:rgba(255,254,250,.85);border-top-left-radius:6px;z-index:3;color:#3d4a44}
+.tmap-attr a{text-decoration:underline}
+.tmap-tip{position:absolute;left:12px;top:12px;max-width:min(320px,70%);background:#fffefa;border:1px solid #c9d0c6;border-radius:8px;padding:10px 12px;font-size:14px;box-shadow:0 2px 10px rgba(0,0,0,.12);opacity:0;transform:translateY(-4px);transition:.2s;pointer-events:none;z-index:3}
+.tmap-tip.on{opacity:1;transform:none}.tmap-tip b{display:block;font-family:var(--serif);font-weight:400;font-size:19px;margin-bottom:2px}
+.tmap-toast{position:absolute;left:50%;bottom:34px;transform:translate(-50%,8px);background:rgba(22,62,51,.92);color:#fff;font-size:14px;padding:10px 14px;border-radius:8px;opacity:0;transition:.2s;pointer-events:none;z-index:4;max-width:86%;text-align:center}
+.tmap-toast.on{opacity:1;transform:translate(-50%,0)}
+.profile{display:block;width:100%;height:auto;margin-top:14px;touch-action:pan-y;cursor:crosshair}
+.track-card{background:#fff;border:1px solid #d9ddd0;border-radius:10px;padding:26px}
+.track-card h3{font-size:20px;margin:0 0 6px}.track-card p{color:var(--muted);font-size:15px;line-height:1.55;margin:0 0 16px}
+.track-card dl{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 18px}.track-card dt{font-family:var(--serif);font-size:24px;color:var(--forest)}.track-card dd{margin:2px 0 0;font-size:13px;color:var(--muted)}
+.track-card a{font-weight:600;color:var(--forest);border-bottom:1px solid currentColor;padding:6px 0}
+.alt-grid{grid-template-columns:1fr 1fr}
+.map-live{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--forest);text-decoration:underline}
+.tmap-wrap.full{position:fixed;inset:0;z-index:200;background:#fffefa;margin:0;padding:10px 10px 0;display:flex;flex-direction:column}
+.tmap-wrap.full .tmap{flex:1;height:auto;touch-action:none;border-radius:8px}
+.tmap-wrap.full .profile{max-height:22vh;margin-top:6px}.tmap-wrap.full .pt-card{display:none}
+body.map-full{overflow:hidden}body.map-full .sticky-cta,body.map-full .header{visibility:hidden}
+@media(max-width:800px){.tmap{height:440px}.alt-grid{grid-template-columns:1fr}.track-card dl{grid-template-columns:1fr 1fr 1fr}.tmap-attr{font-size:10px;left:0;border-top-left-radius:0}.tmap-tip{font-size:13px}}
+.tmap-wrap .profile{min-width:0}
+@media(max-width:800px){.tmap-wrap .profile text{font-size:27px}.tmap-wrap .profile text[text-anchor="end"]{display:none}}
