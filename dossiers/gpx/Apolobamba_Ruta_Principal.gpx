@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Andes Wild Trek · tools/gpx.py" xmlns="http://www.topografix.com/GPX/1/1">
+<metadata><name>Apolobamba · Pelechuco – Charazani</name><desc>Track: Gallotrekk, Wikiloc (2012). Planificació no reconeguda sobre el terreny.</desc></metadata>
+<wpt lat="-14.820099" lon="-69.07091"><ele>3660</ele><name>Dia 5 · Pelechuco</name></wpt>
+<wpt lat="-14.856747" lon="-69.053726"><ele>4458</ele><name>Dia 5 · Agua buena 1</name></wpt>
+<wpt lat="-14.867584" lon="-69.045993"><ele>4706</ele><name>Dia 5 · Pas 1</name></wpt>
+<wpt lat="-14.873787" lon="-69.040822"><ele>4334</ele><name>Dia 5 · Vall del riu Kotani</name></wpt>
+<wpt lat="-14.893571" lon="-69.042847"><ele>4168</ele><name>Dia 5 · Campament 1</name></wpt>
+<wpt lat="-14.92551" lon="-69.029556"><ele>4010</ele><name>Dia 6 · Hilo Hilo</name></wpt>
+<wpt lat="-14.960194" lon="-69.02227"><ele>4265</ele><name>Dia 7 · Agua buena 2</name></wpt>
+<wpt lat="-14.98919" lon="-69.005371"><ele>4820</ele><name>Dia 7 · Agua buena 3</name></wpt>
+<wpt lat="-14.997061" lon="-68.997171"><ele>5032</ele><name>Dia 7 · Pas Sunchulli</name></wpt>
+<wpt lat="-15.007856" lon="-68.988429"><ele>4717</ele><name>Dia 7 · Campament 2</name></wpt>
+<wpt lat="-15.012278" lon="-68.967291"><ele>4814</ele><name>Dia 8 · Pas 3</name></wpt>
+<wpt lat="-15.038859" lon="-68.962776"><ele>4662</ele><name>Dia 8 · Pas 4</name></wpt>
+<wpt lat="-15.041128" lon="-68.964903"><ele>4602</ele><name>Dia 8 · Agua buena 4</name></wpt>
+<wpt lat="-15.044558" lon="-68.965558"><ele>4580</ele><name>Dia 8 · Pas 5</name></wpt>
+<wpt lat="-15.046389" lon="-68.967301"><ele>4438</ele><name>Dia 8 · Inici de les Mil Corbes</name></wpt>
+<wpt lat="-15.048861" lon="-68.97366"><ele>4039</ele><name>Dia 8 · Final de les Mil Corbes</name></wpt>
+<wpt lat="-15.049699" lon="-68.974377"><ele>4060</ele><name>Dia 8 · Incacancha</name></wpt>
+<wpt lat="-15.061215" lon="-68.990457"><ele>4661</ele><name>Dia 9 · Pas d’Akamani</name></wpt>
+<wpt lat="-15.065097" lon="-68.993473"><ele>4523</ele><name>Dia 9 · Apacheta de Tambillo</name></wpt>
+<wpt lat="-15.073298" lon="-68.998971"><ele>4171</ele><name>Dia 9 · Campament 3</name></wpt>
+<wpt lat="-15.125738" lon="-69.003733"><ele>3701</ele><name>Dia 10 · Cruïlla de Curva</name></wpt>
+<wpt lat="-15.140405" lon="-68.999704"><ele>3083</ele><name>Dia 10 · Pont del riu</name></wpt>
+<wpt lat="-15.163465" lon="-68.98889"><ele>3392</ele><name>Dia 10 · Capella</name></wpt>
+<wpt lat="-15.176465" lon="-68.995942"><ele>3195</ele><name>Dia 10 · Charazani</name></wpt>
+<trk><name>Dia 5 · Pelechuco → Campament 1</name><trkseg>
+<trkpt lat="-14.82012" lon="-69.0709"><ele>3660</ele></trkpt>
+<trkpt lat="-14.82383" lon="-69.06541"><ele>3665</ele></trkpt>
+<trkpt lat="-14.82692" lon="-69.06247"><ele>3752</ele></trkpt>
+<trkpt lat="-14.83055" lon="-69.05971"><ele>3868</ele></trkpt>
+<trkpt lat="-14.83459" lon="-69.05978"><ele>3962</ele></trkpt>
+<trkpt lat="-14.83859" lon="-69.05965"><ele>4056</ele></trkpt>
+<trkpt lat="-14.84206" lon="-69.06054"><ele>4163</ele></trkpt>
+<trkpt lat="-14.84366" lon="-69.05927"><ele>4205</ele></trkpt>
+<trkpt lat="-14.84366" lon="-69.05911"><ele>4206</ele></trkpt>
+<trkpt lat="-14.84659" lon="-69.05837"><ele>4307</ele></trkpt>
+<trkpt lat="-14.85017" lon="-69.05762"><ele>4375</ele></trkpt>
+<trkpt lat="-14.85545" lon="-69.05552"><ele>4445</ele></trkpt>
+<trkpt lat="-14.85751" lon="-69.05273"><ele>4469</ele></trkpt>
+<trkpt lat="-14.85753" lon="-69.05283"><ele>4469</ele></trkpt>
+<trkpt lat="-14.861" lon="-69.0484"><ele>4550</ele></trkpt>
+<trkpt lat="-14.86585" lon="-69.04679"><ele>4637</ele></trkpt>
+<trkpt lat="-14.86759" lon="-69.04599"><ele>4707</ele></trkpt>
+<trkpt lat="-14.86806" lon="-69.04555"><ele>4690</ele></trkpt>
+<trkpt lat="-14.86925" lon="-69.04444"><ele>4566</ele></trkpt>
+<trkpt lat="-14.87323" lon="-69.04108"><ele>4347</ele></trkpt>
+<trkpt lat="-14.87866" lon="-69.03822"><ele>4323</ele></trkpt>
+<trkpt lat="-14.88841" lon="-69.03869"><ele>4263</ele></trkpt>
+<trkpt lat="-14.89359" lon="-69.04287"><ele>4167</ele></trkpt>
+<trkpt lat="-14.89358" lon="-69.04285"><ele>4167</ele></trkpt>
+</trkseg></trk>
+<trk><name>Dia 6 · Campament 1 → Hilo Hilo</name><trkseg>
+<trkpt lat="-14.89358" lon="-69.04285"><ele>4167</ele></trkpt>
+<trkpt lat="-14.89358" lon="-69.04285"><ele>4169</ele></trkpt>
+<trkpt lat="-14.89351" lon="-69.04293"><ele>4170</ele></trkpt>
+<trkpt lat="-14.89376" lon="-69.04306"><ele>4166</ele></trkpt>
+<trkpt lat="-14.89785" lon="-69.04298"><ele>4136</ele></trkpt>
+<trkpt lat="-14.90267" lon="-69.04261"><ele>4087</ele></trkpt>
+<trkpt lat="-14.90752" lon="-69.04331"><ele>4024</ele></trkpt>
+<trkpt lat="-14.91189" lon="-69.04291"><ele>4005</ele></trkpt>
+<trkpt lat="-14.91278" lon="-69.04236"><ele>3994</ele></trkpt>
+<trkpt lat="-14.91546" lon="-69.03915"><ele>3995</ele></trkpt>
+<trkpt lat="-14.91814" lon="-69.03606"><ele>4012</ele></trkpt>
+<trkpt lat="-14.91946" lon="-69.0342"><ele>3999</ele></trkpt>
+<trkpt lat="-14.92176" lon="-69.03068"><ele>3999</ele></trkpt>
+<trkpt lat="-14.92551" lon="-69.02956"><ele>4009</ele></trkpt>
+</trkseg></trk>
+<trk><name>Dia 7 · Hilo Hilo → Campament 2</name><trkseg>
+<trkpt lat="-14.92551" lon="-69.02956"><ele>4009</ele></trkpt>
+<trkpt lat="-14.92826" lon="-69.02866"><ele>3989</ele></trkpt>
+<trkpt lat="-14.93089" lon="-69.02855"><ele>3984</ele></trkpt>
+<trkpt lat="-14.93277" lon="-69.02631"><ele>4027</ele></trkpt>
+<trkpt lat="-14.93489" lon="-69.02468"><ele>4073</ele></trkpt>
+<trkpt lat="-14.93693" lon="-69.02297"><ele>4128</ele></trkpt>
+<trkpt lat="-14.94021" lon="-69.02152"><ele>4173</ele></trkpt>
+<trkpt lat="-14.94423" lon="-69.01926"><ele>4170</ele></trkpt>
+<trkpt lat="-14.94854" lon="-69.01758"><ele>4174</ele></trkpt>
+<trkpt lat="-14.95226" lon="-69.01897"><ele>4210</ele></trkpt>
+<trkpt lat="-14.95614" lon="-69.0209"><ele>4229</ele></trkpt>
+<trkpt lat="-14.96001" lon="-69.0219"><ele>4262</ele></trkpt>
+<trkpt lat="-14.9636" lon="-69.02254"><ele>4257</ele></trkpt>
+<trkpt lat="-14.96577" lon="-69.02204"><ele>4292</ele></trkpt>
+<trkpt lat="-14.96873" lon="-69.0211"><ele>4347</ele></trkpt>
+<trkpt lat="-14.97065" lon="-69.01949"><ele>4392</ele></trkpt>
+<trkpt lat="-14.97208" lon="-69.01963"><ele>4444</ele></trkpt>
+<trkpt lat="-14.97239" lon="-69.01857"><ele>4482</ele></trkpt>
+<trkpt lat="-14.97255" lon="-69.01718"><ele>4523</ele></trkpt>
+<trkpt lat="-14.9735" lon="-69.01535"><ele>4570</ele></trkpt>
+<trkpt lat="-14.97493" lon="-69.01378"><ele>4605</ele></trkpt>
+<trkpt lat="-14.97488" lon="-69.01377"><ele>4609</ele></trkpt>
+<trkpt lat="-14.97487" lon="-69.01377"><ele>4612</ele></trkpt>
+<trkpt lat="-14.97507" lon="-69.01385"><ele>4612</ele></trkpt>
+<trkpt lat="-14.97679" lon="-69.01247"><ele>4647</ele></trkpt>
+<trkpt lat="-14.97856" lon="-69.01095"><ele>4692</ele></trkpt>
+<trkpt lat="-14.98025" lon="-69.00971"><ele>4735</ele></trkpt>
+<trkpt lat="-14.9822" lon="-69.0085"><ele>4761</ele></trkpt>
+<trkpt lat="-14.98276" lon="-69.00838"><ele>4771</ele></trkpt>
+<trkpt lat="-14.98532" lon="-69.00744"><ele>4792</ele></trkpt>
+<trkpt lat="-14.98799" lon="-69.0062"><ele>4817</ele></trkpt>
+<trkpt lat="-14.99033" lon="-69.004"><ele>4826</ele></trkpt>
+<trkpt lat="-14.99048" lon="-69.00329"><ele>4835</ele></trkpt>
+<trkpt lat="-14.9915" lon="-69.00175"><ele>4854</ele></trkpt>
+<trkpt lat="-14.99346" lon="-69.00027"><ele>4867</ele></trkpt>
+<trkpt lat="-14.99501" lon="-68.99962"><ele>4902</ele></trkpt>
+<trkpt lat="-14.99664" lon="-68.99909"><ele>4922</ele></trkpt>
+<trkpt lat="-14.99691" lon="-68.99863"><ele>4945</ele></trkpt>
+<trkpt lat="-14.997" lon="-68.9986"><ele>4953</ele></trkpt>
+<trkpt lat="-14.99757" lon="-68.99842"><ele>4988</ele></trkpt>
+<trkpt lat="-14.99702" lon="-68.99762"><ele>5022</ele></trkpt>
+<trkpt lat="-14.99708" lon="-68.99715"><ele>5035</ele></trkpt>
+<trkpt lat="-14.99692" lon="-68.99729"><ele>5038</ele></trkpt>
+<trkpt lat="-14.99715" lon="-68.99712"><ele>5037</ele></trkpt>
+<trkpt lat="-14.99875" lon="-68.99671"><ele>5009</ele></trkpt>
+<trkpt lat="-14.99948" lon="-68.99627"><ele>4987</ele></trkpt>
+<trkpt lat="-15.00161" lon="-68.99566"><ele>4921</ele></trkpt>
+<trkpt lat="-15.00347" lon="-68.99317"><ele>4852</ele></trkpt>
+<trkpt lat="-15.00491" lon="-68.99061"><ele>4782</ele></trkpt>
+<trkpt lat="-15.00745" lon="-68.98886"><ele>4719</ele></trkpt>
+<trkpt lat="-15.00786" lon="-68.98843"><ele>4717</ele></trkpt>
+</trkseg></trk>
+<trk><name>Dia 8 · Campament 2 → Incacancha</name><trkseg>
+<trkpt lat="-15.00786" lon="-68.98843"><ele>4717</ele></trkpt>
+<trkpt lat="-15.00791" lon="-68.9886"><ele>4716</ele></trkpt>
+<trkpt lat="-15.01005" lon="-68.98651"><ele>4695</ele></trkpt>
+<trkpt lat="-15.0113" lon="-68.98351"><ele>4694</ele></trkpt>
+<trkpt lat="-15.01124" lon="-68.98007"><ele>4702</ele></trkpt>
+<trkpt lat="-15.01039" lon="-68.97609"><ele>4712</ele></trkpt>
+<trkpt lat="-15.0101" lon="-68.97288"><ele>4756</ele></trkpt>
+<trkpt lat="-15.01011" lon="-68.97097"><ele>4781</ele></trkpt>
+<trkpt lat="-15.01224" lon="-68.96727"><ele>4812</ele></trkpt>
+<trkpt lat="-15.01232" lon="-68.96725"><ele>4813</ele></trkpt>
+<trkpt lat="-15.01288" lon="-68.96692"><ele>4794</ele></trkpt>
+<trkpt lat="-15.01455" lon="-68.96695"><ele>4718</ele></trkpt>
+<trkpt lat="-15.01798" lon="-68.96823"><ele>4686</ele></trkpt>
+<trkpt lat="-15.01951" lon="-68.9727"><ele>4648</ele></trkpt>
+<trkpt lat="-15.02296" lon="-68.97132"><ele>4652</ele></trkpt>
+<trkpt lat="-15.02512" lon="-68.96912"><ele>4658</ele></trkpt>
+<trkpt lat="-15.02821" lon="-68.96572"><ele>4681</ele></trkpt>
+<trkpt lat="-15.02832" lon="-68.96564"><ele>4683</ele></trkpt>
+<trkpt lat="-15.02875" lon="-68.96628"><ele>4675</ele></trkpt>
+<trkpt lat="-15.03184" lon="-68.96704"><ele>4652</ele></trkpt>
+<trkpt lat="-15.03413" lon="-68.96726"><ele>4624</ele></trkpt>
+<trkpt lat="-15.03704" lon="-68.96585"><ele>4629</ele></trkpt>
+<trkpt lat="-15.03877" lon="-68.96279"><ele>4661</ele></trkpt>
+<trkpt lat="-15.04066" lon="-68.96477"><ele>4604</ele></trkpt>
+<trkpt lat="-15.04112" lon="-68.96491"><ele>4602</ele></trkpt>
+<trkpt lat="-15.04211" lon="-68.96472"><ele>4602</ele></trkpt>
+<trkpt lat="-15.04459" lon="-68.96552"><ele>4579</ele></trkpt>
+<trkpt lat="-15.04598" lon="-68.96653"><ele>4429</ele></trkpt>
+<trkpt lat="-15.04653" lon="-68.96753"><ele>4408</ele></trkpt>
+<trkpt lat="-15.04688" lon="-68.96811"><ele>4368</ele></trkpt>
+<trkpt lat="-15.04709" lon="-68.96842"><ele>4347</ele></trkpt>
+<trkpt lat="-15.04746" lon="-68.96898"><ele>4290</ele></trkpt>
+<trkpt lat="-15.04809" lon="-68.96941"><ele>4256</ele></trkpt>
+<trkpt lat="-15.04881" lon="-68.97036"><ele>4150</ele></trkpt>
+<trkpt lat="-15.04898" lon="-68.97325"><ele>4041</ele></trkpt>
+<trkpt lat="-15.0497" lon="-68.97438"><ele>4060</ele></trkpt>
+</trkseg></trk>
+<trk><name>Dia 9 · Incacancha → Campament 3</name><trkseg>
+<trkpt lat="-15.0497" lon="-68.97438"><ele>4060</ele></trkpt>
+<trkpt lat="-15.05006" lon="-68.97476"><ele>4074</ele></trkpt>
+<trkpt lat="-15.05095" lon="-68.97582"><ele>4111</ele></trkpt>
+<trkpt lat="-15.05221" lon="-68.97567"><ele>4166</ele></trkpt>
+<trkpt lat="-15.05314" lon="-68.97597"><ele>4225</ele></trkpt>
+<trkpt lat="-15.05417" lon="-68.97603"><ele>4255</ele></trkpt>
+<trkpt lat="-15.05488" lon="-68.97683"><ele>4294</ele></trkpt>
+<trkpt lat="-15.05512" lon="-68.97852"><ele>4356</ele></trkpt>
+<trkpt lat="-15.05572" lon="-68.98051"><ele>4385</ele></trkpt>
+<trkpt lat="-15.05583" lon="-68.98148"><ele>4422</ele></trkpt>
+<trkpt lat="-15.05613" lon="-68.9828"><ele>4473</ele></trkpt>
+<trkpt lat="-15.05687" lon="-68.98481"><ele>4511</ele></trkpt>
+<trkpt lat="-15.05874" lon="-68.98645"><ele>4564</ele></trkpt>
+<trkpt lat="-15.05956" lon="-68.98809"><ele>4601</ele></trkpt>
+<trkpt lat="-15.06067" lon="-68.99005"><ele>4647</ele></trkpt>
+<trkpt lat="-15.06129" lon="-68.99052"><ele>4663</ele></trkpt>
+<trkpt lat="-15.06218" lon="-68.99075"><ele>4630</ele></trkpt>
+<trkpt lat="-15.06417" lon="-68.99291"><ele>4533</ele></trkpt>
+<trkpt lat="-15.06526" lon="-68.99388"><ele>4509</ele></trkpt>
+<trkpt lat="-15.06651" lon="-68.99508"><ele>4407</ele></trkpt>
+<trkpt lat="-15.06999" lon="-68.99606"><ele>4288</ele></trkpt>
+<trkpt lat="-15.0731" lon="-68.99789"><ele>4210</ele></trkpt>
+<trkpt lat="-15.0733" lon="-68.99897"><ele>4171</ele></trkpt>
+</trkseg></trk>
+<trk><name>Dia 10 · Campament 3 → Charazani</name><trkseg>
+<trkpt lat="-15.0733" lon="-68.99897"><ele>4171</ele></trkpt>
+<trkpt lat="-15.07329" lon="-68.99898"><ele>4171</ele></trkpt>
+<trkpt lat="-15.07338" lon="-68.99876"><ele>4171</ele></trkpt>
+<trkpt lat="-15.07755" lon="-68.99929"><ele>4066</ele></trkpt>
+<trkpt lat="-15.0809" lon="-68.99919"><ele>4024</ele></trkpt>
+<trkpt lat="-15.08555" lon="-68.99862"><ele>3977</ele></trkpt>
+<trkpt lat="-15.08911" lon="-69.00029"><ele>3916</ele></trkpt>
+<trkpt lat="-15.09114" lon="-69.00442"><ele>3841</ele></trkpt>
+<trkpt lat="-15.09164" lon="-69.00503"><ele>3822</ele></trkpt>
+<trkpt lat="-15.09367" lon="-69.00651"><ele>3775</ele></trkpt>
+<trkpt lat="-15.09562" lon="-69.00634"><ele>3776</ele></trkpt>
+<trkpt lat="-15.09866" lon="-69.00652"><ele>3690</ele></trkpt>
+<trkpt lat="-15.1002" lon="-69.00684"><ele>3710</ele></trkpt>
+<trkpt lat="-15.10368" lon="-69.00523"><ele>3715</ele></trkpt>
+<trkpt lat="-15.10726" lon="-69.00423"><ele>3725</ele></trkpt>
+<trkpt lat="-15.1102" lon="-69.00338"><ele>3711</ele></trkpt>
+<trkpt lat="-15.11329" lon="-69.00175"><ele>3764</ele></trkpt>
+<trkpt lat="-15.11713" lon="-69.00074"><ele>3796</ele></trkpt>
+<trkpt lat="-15.12179" lon="-69.00044"><ele>3819</ele></trkpt>
+<trkpt lat="-15.12351" lon="-69.00088"><ele>3807</ele></trkpt>
+<trkpt lat="-15.12558" lon="-69.00338"><ele>3706</ele></trkpt>
+<trkpt lat="-15.1258" lon="-69.00372"><ele>3696</ele></trkpt>
+<trkpt lat="-15.12587" lon="-69.00364"><ele>3695</ele></trkpt>
+<trkpt lat="-15.12828" lon="-69.00644"><ele>3639</ele></trkpt>
+<trkpt lat="-15.12886" lon="-69.01148"><ele>3529</ele></trkpt>
+<trkpt lat="-15.13282" lon="-69.01019"><ele>3442</ele></trkpt>
+<trkpt lat="-15.13417" lon="-69.00667"><ele>3349</ele></trkpt>
+<trkpt lat="-15.13573" lon="-69.0046"><ele>3290</ele></trkpt>
+<trkpt lat="-15.13817" lon="-69.0026"><ele>3197</ele></trkpt>
+<trkpt lat="-15.13928" lon="-69.0013"><ele>3143</ele></trkpt>
+<trkpt lat="-15.1404" lon="-68.9997"><ele>3081</ele></trkpt>
+<trkpt lat="-15.14048" lon="-68.99966"><ele>3079</ele></trkpt>
+<trkpt lat="-15.1419" lon="-68.99905"><ele>3119</ele></trkpt>
+<trkpt lat="-15.14245" lon="-68.99689"><ele>3155</ele></trkpt>
+<trkpt lat="-15.14483" lon="-68.99437"><ele>3195</ele></trkpt>
+<trkpt lat="-15.14712" lon="-68.99299"><ele>3227</ele></trkpt>
+<trkpt lat="-15.14919" lon="-68.99152"><ele>3242</ele></trkpt>
+<trkpt lat="-15.15123" lon="-68.9911"><ele>3241</ele></trkpt>
+<trkpt lat="-15.15124" lon="-68.9911"><ele>3242</ele></trkpt>
+<trkpt lat="-15.15134" lon="-68.99117"><ele>3240</ele></trkpt>
+<trkpt lat="-15.15437" lon="-68.98947"><ele>3277</ele></trkpt>
+<trkpt lat="-15.15793" lon="-68.98878"><ele>3323</ele></trkpt>
+<trkpt lat="-15.16211" lon="-68.98962"><ele>3360</ele></trkpt>
+<trkpt lat="-15.16347" lon="-68.98889"><ele>3392</ele></trkpt>
+<trkpt lat="-15.16412" lon="-68.99003"><ele>3372</ele></trkpt>
+<trkpt lat="-15.16642" lon="-68.99149"><ele>3338</ele></trkpt>
+<trkpt lat="-15.16793" lon="-68.995"><ele>3258</ele></trkpt>
+<trkpt lat="-15.17054" lon="-68.99597"><ele>3235</ele></trkpt>
+<trkpt lat="-15.17203" lon="-69.00029"><ele>3193</ele></trkpt>
+<trkpt lat="-15.1734" lon="-69.00397"><ele>3158</ele></trkpt>
+<trkpt lat="-15.17549" lon="-69.00432"><ele>3159</ele></trkpt>
+<trkpt lat="-15.17741" lon="-69.00018"><ele>3164</ele></trkpt>
+<trkpt lat="-15.17679" lon="-68.99634"><ele>3192</ele></trkpt>
+<trkpt lat="-15.17645" lon="-68.99591"><ele>3195</ele></trkpt>
+<trkpt lat="-15.17636" lon="-68.99589"><ele>3195</ele></trkpt>
+<trkpt lat="-15.17642" lon="-68.99561"><ele>3195</ele></trkpt>
+</trkseg></trk>
+</gpx>

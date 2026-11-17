@@ -39,15 +39,18 @@ assert len(DAYS) == 6 and len(CUT) == 7, 'S’esperen sis jornades'
 PLANS = load('content.js', 'PLANS')
 PLANC = load('guia/planc.js', 'PLANC')
 CPTS, CCUT, ALT = PLANC['pts'], PLANC['cut'], PLANC['alt']
+ROUTES = PLANC.get('routes', [])
 CSTAGES = PLANS['c']['stages']
-NPAGES = len(DAYS) + len(CSTAGES)
+NPAGES = 1 + len(DAYS) + len(CSTAGES)   # mapa general + jornades + pla C
+VEHC = HexColor('#d9822b')
 
 # Topònims normalitzats: els de content.js (taula de normalització del treball, cap. 9).
 # «Agua buena 1–4» es manté perquè és el nom dels punts d'aigua del GPS que fa servir el treball.
+LANGS = ('ca', 'es', 'en', 'fr')
 LANG = 'ca'      # idioma de les etiquetes del mapa (l'atles és en català; 'es' només per als mapes del dossier)
 EXPORT = False   # True quan es dibuixen els mapes per al dossier (sense l'escala numèrica d'A3)
 def name(p):
-    return p[LANG]
+    return p.get(LANG) or p['es']
 
 NOTES = {
     5: ['Pas 1 (4.706 m): no es creua amb neu o gel, mala visibilitat, vent fort o tempesta.',
@@ -191,7 +194,8 @@ PANEL_X = MAP[0] + MAP[2] + 34
 PANEL_W = W - M - PANEL_X
 PROF = (MAP[0], 70, MAP[2], 100)       # perfil
 
-def page(c, i, day):
+def page(c, i, day, pageno=None):
+    pageno = pageno or i + 2
     planc = i >= len(DAYS)
     if planc:
         j = i - len(DAYS)
@@ -200,10 +204,10 @@ def page(c, i, day):
         col = HexColor(CCOLOR)
         seg = CPTS[CCUT[j]:CCUT[j + 1] + 1]
         others = [(CPTS[:CCUT[j] + 1], 'rest'), (CPTS[CCUT[j + 1]:], 'rest'), (PTS, 'main')]
-        title = f'Pla C · {st["code"]} · ' + (st[LANG]['name'].replace(' → ', ' – '))
+        title = f'Pla C · {st["code"]} · ' + ((st.get(LANG) or st['es'])['name'].replace(' → ', ' – '))
         subtitle = f'Etapa {j + 1} de 4 del pla C (dia {st["day"]}) · Variant Cañisaya – Akamani – Charazani · Serralada d’Apolobamba (Bolívia)'
         notes = NOTES[st['code']]
-        night = f'{st[LANG]["night"].split(",")[0]} · {st["nightLabel"]}'
+        night = f'{(st.get(LANG) or st["es"])["night"].split(",")[0]} · {st["nightLabel"]}'
         escapes = []
     else:
         col = HexColor(COLORS[i])
@@ -231,7 +235,7 @@ def page(c, i, day):
     # finestra del mapa (amb marge i la proporció del marc)
     mx, my, mw, mh = MAP
     xy = [merc(p[0], p[1]) for p in seg] + [merc(*p['ll']) for p in day['points']]
-    if not planc and day['day'] == 8: xy += [merc(p[0], p[1]) for p in ALT]
+    if not planc and day['day'] == 8: xy += [merc(p[0], p[1]) for r in ROUTES if r['day'] == 8 and r['kind'] == 'walk' for p in r['pts']]
     x0, x1 = min(p[0] for p in xy), max(p[0] for p in xy)
     y0, y1 = min(p[1] for p in xy), max(p[1] for p in xy)
     cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
@@ -264,8 +268,13 @@ def page(c, i, day):
                 poly(part, white, 3.2); poly(part, Color(0.2, 0.2, 0.2, 0.6), 1.3, ([2, 3], 0))
             else:
                 poly(part, white, 3.6); poly(part, Color(0.2, 0.2, 0.2, 0.75), 1.5, ([4, 3], 0))
-    if not planc and day['day'] == 8:
-        poly(ALT, white, 5); poly(ALT, ESC, 2.6, ([1.5, 3.5], 0))
+    if not planc:
+        for r in ROUTES:
+            if r['day'] != day['day']: continue
+            if r['kind'] == 'walk':
+                poly(r['pts'], white, 5); poly(r['pts'], ESC, 2.6, ([1.5, 3.5], 0))
+            else:
+                poly(r['pts'], white, 4.4); poly(r['pts'], VEHC, 2.2, ([7, 3], 0))
     poly(seg, white, 6.5)
     poly(seg, col, 3.2)
 
@@ -429,7 +438,7 @@ def page(c, i, day):
 
     y -= 34
     c.setFillColor(ACCENT); c.setFont('Sans-Bold', 9.5); c.drawString(x, y, 'A TENIR EN COMPTE · PLANS B' if not planc else 'A TENIR EN COMPTE'); y -= 4
-    room = y - (PROF[1] + PROF[3] + 4 + 112)   # espai fins a la llegenda
+    room = y - (PROF[1] + PROF[3] + 4 + 126)   # espai fins a la llegenda
     need = sum(len(wrap(n_, 'Sans', 8.5, PANEL_W - 10)) * 11.5 + 4 for n_ in notes)
     fs, lh = (8.5, 11.5) if need <= room else (7.8, 10.2)
     for note in notes:
@@ -458,7 +467,10 @@ def page(c, i, day):
         c.setFillColor(INK); c.drawString(x + 34, y, 'Pla C (Cañisaya – Akamani – Charazani)')
         y -= 14
         c.setStrokeColor(ESC); c.setLineWidth(2.6); c.setDash([1.5, 3.5], 0); c.line(x, y + 3, x + 26, y + 3); c.setDash([], 0)
-        c.drawString(x + 34, y, 'Baixada alternativa a les Mil Corbes (pla B1, dia 8)')
+        c.drawString(x + 34, y, 'Ruta a peu dels plans B (GPX de la jornada)')
+        y -= 14
+        c.setStrokeColor(VEHC); c.setLineWidth(2.2); c.setDash([7, 3], 0); c.line(x, y + 3, x + 26, y + 3); c.setDash([], 0)
+        c.setFillColor(INK); c.drawString(x + 34, y, 'Pista o carretera d’evacuació en vehicle')
         y -= 14
         c.setFillColor(ESC); c.rect(x + 8, y - 2, 11, 11, stroke=0, fill=1)
         c.setFillColor(white); c.setFont('Sans-Bold', 7); c.drawCentredString(x + 13.5, y + 0.6, 'E')
@@ -478,21 +490,125 @@ def page(c, i, day):
         'Recorregut: camí de l’Akamani a OpenStreetMap (consulta del 17/11/2026) i altituds SRTM; encara no s’ha reconegut sobre el terreny.' if planc else
         'Recorregut: track GPS de Gallotrekk (Wikiloc, 2012), contrastat amb operadors bolivians; encara no s’ha reconegut sobre el terreny.'))
     c.drawString(M, 17, 'Coordenades WGS84 en graus decimals. Distàncies, desnivells i horaris de planificació. L’escala gràfica és vàlida si s’imprimeix en A3 sense ajustar.')
-    c.drawRightString(W - M, 17, f'Andes Wild Trek · Izan Pimentel Pérez · novembre de 2026 · pàgina {i + 1} de {NPAGES}')
+    c.drawRightString(W - M, 17, f'Andes Wild Trek · Izan Pimentel Pérez · novembre de 2026 · pàgina {pageno} de {NPAGES}')
+
+def overview(c):
+    """Làmina 1: mapa general amb la ruta principal, el pla C, les rutes dels plans B i els punts d'evacuació."""
+    c.setFillColor(ACCENT); c.setFont('Sans-Bold', 10.5)
+    c.drawString(M, H - M - 8, 'ANDES WILD TREK  /  ATLES CARTOGRÀFIC')
+    c.setFillColor(INK); c.setFont('Sans-Bold', 22)
+    c.drawString(M, H - M - 36, 'Mapa general · ruta principal, plans B i pla C')
+    c.setFillColor(MUTED); c.setFont('Sans', 10.5)
+    c.drawString(M, H - M - 54, 'Travessa Pelechuco – Charazani i variant Cañisaya – Akamani – Charazani · Serralada d’Apolobamba (Bolívia)')
+    c.setStrokeColor(LINE); c.setLineWidth(0.8); c.line(M, H - M - 66, W - M, H - M - 66)
+    mx, my, mw = MAP[0], PROF[1], MAP[2]; mh = MAP[1] + MAP[3] - PROF[1]
+    allp = [p[:2] for p in PTS] + [p[:2] for p in CPTS]
+    xy = [merc(a, b) for a, b in allp]
+    x0, x1 = min(p[0] for p in xy), max(p[0] for p in xy); y0, y1 = min(p[1] for p in xy), max(p[1] for p in xy)
+    cx, cy = (x0 + x1) / 2, (y0 + y1) / 2; sx, sy = (x1 - x0) * 1.12, (y1 - y0) * 1.08
+    if sx / sy < mw / mh: sx = sy * mw / mh
+    else: sy = sx * mh / mw
+    X0, Y0 = cx - sx / 2, cy - sy / 2
+    to_page = lambda lat, lon: (mx + (merc(lat, lon)[0] - X0) / sx * mw, my + mh - (merc(lat, lon)[1] - Y0) / sy * mh)
+    img = basemap(X0, Y0, X0 + sx, Y0 + sy, 2300)
+    buf = io.BytesIO(); img.save(buf, 'JPEG', quality=84, optimize=True); buf.seek(0)
+    c.drawImage(ImageReader(buf), mx, my, mw, mh)
+    c.saveState(); pth = c.beginPath(); pth.rect(mx, my, mw, mh); c.clipPath(pth, stroke=0)
+    def poly(points, color, width, dash=None):
+        path = c.beginPath()
+        for k, q in enumerate(points):
+            X, Y = to_page(q[0], q[1]); path.moveTo(X, Y) if k == 0 else path.lineTo(X, Y)
+        c.setStrokeColor(color); c.setLineWidth(width); c.setLineJoin(1); c.setLineCap(1)
+        c.setDash(*(dash or ([], 0))); c.drawPath(path, stroke=1, fill=0); c.setDash([], 0)
+    for r in ROUTES:
+        if r['kind'] == 'vehicle': poly(r['pts'], white, 3.6); poly(r['pts'], VEHC, 1.8, ([6, 3], 0))
+    for r in ROUTES:
+        if r['kind'] == 'walk' and not r['id'].startswith('b9-est'): poly(r['pts'], white, 4); poly(r['pts'], ESC, 2.2, ([1.5, 3], 0))
+    poly(CPTS, white, 5); poly(CPTS, HexColor(CCOLOR), 2.8, ([7, 4], 0))
+    for i in range(len(DAYS)):
+        seg = PTS[CUT[i]:CUT[i + 1] + 1]; poly(seg, white, 5.5); poly(seg, HexColor(COLORS[i]), 3)
+    placed = []
+    def label(lat, lon, txt, colr, dot=True, dx=8, dy=-3, size=8.5):
+        X, Y = to_page(lat, lon)
+        if dot:
+            c.setFillColor(colr); c.setStrokeColor(white); c.setLineWidth(1.4); c.circle(X, Y, 4.2, stroke=1, fill=1)
+        w = pdfmetrics.stringWidth(txt, 'Sans-Bold', size)
+        for ddx, ddy in ((dx, dy), (-dx - w, dy), (dx, dy + 11), (-dx - w, dy - 11)):
+            box = (X + ddx, Y + ddy - 2, X + ddx + w, Y + ddy + 9)
+            if not any(not (box[2] < o[0] or box[0] > o[2] or box[3] < o[1] or box[1] > o[3]) for o in placed): break
+        placed.append(box); halo_text(c, X + ddx, Y + ddy, txt, 'Sans-Bold', size, colr, halo=3)
+    for d in DAYS:
+        p = d['points'][-1]; label(*p['ll'], f'{name(p)} · {fmt(p["ele"])} m', INK)
+    label(*DAYS[0]['points'][0]['ll'], 'Pelechuco · 3.660 m', INK)
+    label(*DAYS[2]['points'][3]['ll'], 'Pas Sunchulli · 5.032 m', HexColor('#9b3d5a'))
+    for st in CSTAGES:
+        p = st['points'][-1]
+        if st['code'] in ('C1', 'C3', 'C4'): label(*p['ll'], f'{st["code"]} · {name(p)}', HexColor(CCOLOR))
+    label(*CSTAGES[0]['points'][0]['ll'], 'Curva (inici del pla C)', HexColor(CCOLOR))
+    for e in PLANS['escapes']:
+        X, Y = to_page(*e['ll'])
+        c.setFillColor(ESC); c.setStrokeColor(white); c.setLineWidth(1.4); c.rect(X - 5, Y - 5, 10, 10, stroke=1, fill=1)
+        c.setFillColor(white); c.setFont('Sans-Bold', 6.5); c.drawCentredString(X, Y - 2.3, 'E')
+    c.restoreState()
+    c.setStrokeColor(INK); c.setLineWidth(1); c.rect(mx, my, mw, mh, stroke=1, fill=0)
+    nx, ny = mx + mw - 30, my + mh - 48
+    c.setFillColor(white); c.setStrokeColor(INK); c.setLineWidth(0.8); c.roundRect(nx - 14, ny - 6, 28, 42, 3, stroke=1, fill=1)
+    path = c.beginPath(); path.moveTo(nx, ny + 22); path.lineTo(nx - 6, ny + 2); path.lineTo(nx, ny + 7); path.lineTo(nx + 6, ny + 2); path.close()
+    c.setFillColor(INK); c.drawPath(path, stroke=0, fill=1); c.setFont('Sans-Bold', 9); c.drawCentredString(nx, ny + 25, 'N')
+    m_per_pt = haversine(unmerc(X0, cy), unmerc(X0 + sx, cy)) / mw; length = nice(mw * m_per_pt / 5, 1); bar = length / m_per_pt
+    bx, by = mx + 14, my + 14
+    c.setFillColor(Color(1, 1, 1, 0.88)); c.roundRect(bx - 6, by - 6, bar + 70, 24, 3, stroke=0, fill=1)
+    for k in range(4):
+        c.setFillColor(INK if k % 2 == 0 else white); c.setStrokeColor(INK); c.setLineWidth(0.6); c.rect(bx + bar * k / 4, by, bar / 4, 4, stroke=1, fill=1)
+    c.setFillColor(INK); c.setFont('Sans', 7.5); c.drawString(bx, by + 7, '0'); c.drawString(bx + bar + 5, by + 0.5, f'{dec(length / 1000, 0)} km')
+    # panell
+    x, y = PANEL_X, H - M - 92
+    c.setFillColor(ACCENT); c.setFont('Sans-Bold', 9.5); c.drawString(x, y, 'RUTA PRINCIPAL'); y -= 4
+    for i, d in enumerate(DAYS):
+        y -= 14; c.setStrokeColor(HexColor(COLORS[i])); c.setLineWidth(3); c.line(x, y + 3, x + 18, y + 3)
+        c.setFillColor(INK); c.setFont('Sans', 8.3)
+        c.drawString(x + 24, y, f'Dia {d["day"]} · {name(d["points"][0])} → {name(d["points"][-1])} · {dec(d["km"])} km')
+    y -= 24
+    c.setFillColor(ACCENT); c.setFont('Sans-Bold', 9.5); c.drawString(x, y, 'PLANS B (UN GPX PER JORNADA)'); y -= 4
+    for b in PLANS['b']:
+        txt = f'Dia {b["day"]}: ' + ' · '.join(t for t, _ in b['ca'])
+        for n, line in enumerate(wrap(txt, 'Sans', 7.8, PANEL_W - 4)):
+            y -= 10; c.setFillColor(INK); c.setFont('Sans', 7.8); c.drawString(x, y, line)
+        y -= 3
+    y -= 18
+    T = PLANS['c']['totals']
+    c.setFillColor(ACCENT); c.setFont('Sans-Bold', 9.5); c.drawString(x, y, 'PLA C · CAÑISAYA – AKAMANI – CHARAZANI'); y -= 4
+    for st in CSTAGES:
+        y -= 12; c.setFillColor(INK); c.setFont('Sans', 8.3); c.drawString(x, y, f'{st["code"]} · {st["ca"]["name"]} · {dec(st["km"])} km')
+    y -= 12; c.setFillColor(MUTED); c.setFont('Sans', 8)
+    c.drawString(x, y, f'Total {dec(T["km"])} km · +{fmt(T["ascent"])}/−{fmt(T["descent"])} m · màxim {fmt(T["max"])} m (làmines 8 a 11)')
+    y = PROF[1] + 70
+    c.setFillColor(ACCENT); c.setFont('Sans-Bold', 9.5); c.drawString(x, y, 'LLEGENDA'); y -= 16
+    for colr, wdt, dash, txt in ((HexColor(CCOLOR), 2.8, [7, 4], 'Pla C'), (ESC, 2.2, [1.5, 3], 'Ruta a peu dels plans B'), (VEHC, 1.8, [6, 3], 'Pista o carretera d’evacuació en vehicle')):
+        c.setStrokeColor(colr); c.setLineWidth(wdt); c.setDash(dash, 0); c.line(x, y + 3, x + 26, y + 3); c.setDash([], 0)
+        c.setFillColor(INK); c.setFont('Sans', 8.5); c.drawString(x + 34, y, txt); y -= 14
+    c.setFillColor(ESC); c.rect(x + 8, y - 2, 11, 11, stroke=0, fill=1); c.setFillColor(white); c.setFont('Sans-Bold', 7); c.drawCentredString(x + 13.5, y + 0.6, 'E')
+    c.setFillColor(INK); c.setFont('Sans', 8.5); c.drawString(x + 34, y, 'Punt d’evacuació en vehicle')
+    c.setStrokeColor(LINE); c.setLineWidth(0.8); c.line(M, 40, W - M, 40)
+    c.setFillColor(MUTED); c.setFont('Sans', 7.5)
+    c.drawString(M, 28, 'Mapa base: © OpenTopoMap (CC-BY-SA) · dades © col·laboradors d’OpenStreetMap i SRTM. Ruta principal: track GPS de Gallotrekk (Wikiloc, 2012). Pla C i plans B: OpenStreetMap (consulta del 17/11/2026).')
+    c.drawString(M, 17, 'Tots els recorreguts són de planificació i s’han de reconèixer sobre el terreny. GPX a dossiers/gpx/ i a l’app del guia.')
+    c.drawRightString(W - M, 17, f'Andes Wild Trek · Izan Pimentel Pérez · novembre de 2026 · pàgina 1 de {NPAGES}')
 
 def main():
     c = canvas.Canvas(OUT, pagesize=(W, H), pageCompression=1)
     c.setTitle('Andes Wild Trek · Apolobamba · Atles cartogràfic')
     c.setAuthor('Izan Pimentel Pérez')
     c.setSubject('Travessa Pelechuco – Charazani: les sis jornades a peu i les quatre etapes del pla C')
-    for i in range(NPAGES):
+    print('Mapa general', file=sys.stderr); overview(c); c.showPage()
+    for i in range(NPAGES - 1):
         day = DAYS[i] if i < len(DAYS) else None
         print(f'Dia {day["day"]}' if day else f'Pla C {CSTAGES[i - len(DAYS)]["code"]}', file=sys.stderr)
         page(c, i, day)
         c.showPage()
     c.save()
     print(f'Fet: {os.path.relpath(OUT, ROOT)} ({os.path.getsize(OUT) / 1e6:.1f} MB)', file=sys.stderr)
-    export_maps()
+    if '--no-export' not in sys.argv: export_maps()
 
 def export_maps():
     """Mapes de cada jornada (ca i es) per al dossier del client: assets/maps/jornada-<dia>-<idioma>.webp."""
@@ -501,15 +617,15 @@ def export_maps():
     EXPORT = True
     dpi = 220
     mx, my, mw, mh = MAP
-    for lang in ('ca', 'es'):
+    for lang in LANGS:
         LANG = lang
         tmp = tempfile.mkdtemp()
         pdf = os.path.join(tmp, 'mapes.pdf')
         c = canvas.Canvas(pdf, pagesize=(W, H))
-        for i in range(NPAGES):
+        for i in range(NPAGES - 1):
             page(c, i, DAYS[i] if i < len(DAYS) else None); c.showPage()
         c.save()
-        for i in range(NPAGES):
+        for i in range(NPAGES - 1):
             k = dpi / 72
             subprocess.run(['pdftoppm', '-r', str(dpi), '-f', str(i + 1), '-l', str(i + 1), '-singlefile', '-png',
                             '-x', str(round(mx * k)), '-y', str(round((H - my - mh) * k)), '-W', str(round(mw * k)), '-H', str(round(mh * k)),
@@ -519,6 +635,14 @@ def export_maps():
             os.makedirs(os.path.dirname(out), exist_ok=True)
             Image.open(os.path.join(tmp, 'm.png')).convert('RGB').save(out, 'WEBP', quality=80, method=6)
             print(f'  {os.path.relpath(out, ROOT)}', file=sys.stderr)
+        # mapa general
+        c = canvas.Canvas(pdf, pagesize=(W, H)); overview(c); c.showPage(); c.save()
+        mx2, my2, mw2, mh2 = MAP[0], PROF[1], MAP[2], MAP[1] + MAP[3] - PROF[1]
+        subprocess.run(['pdftoppm', '-r', str(dpi), '-singlefile', '-png', '-x', str(round(mx2 * k)), '-y', str(round((H - my2 - mh2) * k)),
+                        '-W', str(round(mw2 * k)), '-H', str(round(mh2 * k)), pdf, os.path.join(tmp, 'm')], check=True)
+        out = os.path.join(ROOT, 'assets', 'maps', f'general-{lang}.webp')
+        Image.open(os.path.join(tmp, 'm.png')).convert('RGB').save(out, 'WEBP', quality=80, method=6)
+        print(f'  {os.path.relpath(out, ROOT)}', file=sys.stderr)
     LANG, EXPORT = 'ca', False
 
 if __name__ == '__main__':

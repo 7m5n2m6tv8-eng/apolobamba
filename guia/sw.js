@@ -1,6 +1,6 @@
 /* App del guia sense connexió: es desa tot en obrir-la i, si no hi ha cobertura, es fa servir la còpia. */
-const CACHE='guia-apolobamba-v2';
-const FILES=['./','index.html','app.css','app.js','data.js','track.js','planc.js','manifest.webmanifest','icon.svg','icon-192.png','icon-512.png','../content.js'];
+const CACHE='guia-apolobamba-v3';
+const FILES=['./','index.html','app.css','app.js','data.js','track.js','planc.js','manifest.webmanifest','icon.svg','icon-192.png','icon-512.png','../content.js','../dossiers/gpx/Apolobamba_Pla_C.gpx','../dossiers/gpx/Apolobamba_Pla_B_Dia5.gpx','../dossiers/gpx/Apolobamba_Pla_B_Dia6.gpx','../dossiers/gpx/Apolobamba_Pla_B_Dia7.gpx','../dossiers/gpx/Apolobamba_Pla_B_Dia8.gpx','../dossiers/gpx/Apolobamba_Pla_B_Dia9.gpx','../dossiers/gpx/Apolobamba_Pla_B_Dia10.gpx'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith('guia-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
 self.addEventListener('fetch',e=>{

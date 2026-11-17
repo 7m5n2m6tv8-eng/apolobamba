@@ -24,7 +24,7 @@ SEASON = {
         'reasons': [
             ['Juny i juliol', 'És el cor de l’estació seca: el temps és més estable, els rius baixen amb menys cabal i les carreteres del nord de La Paz estan obertes. Les nits són les més fredes de l’any.'],
             ['Maig i setembre', 'Possibles, però amb més incertesa: al maig encara poden quedar pluges i rius alts; al setembre augmenten les tempestes de tarda. Els operadors bolivians ofereixen la ruta de maig a setembre.'],
-            ['Agost', 'Hi ha hagut nevades fortes a la zona del pas Sunchulli: uns 60 cm el 10 i 11 d’agost de 1993, amb els passos tancats, i nevades breus a finals d’agost de 2019. Només amb previsió molt estable i dies de reserva.'],
+            ['Agost', 'Hi ha hagut nevades fortes a la zona del pas Sunchulli: uns 60 cm el 10 i 11 d’agost de 1993, amb els passos tancats, i nevades breus entre l’agost i el setembre de 2019. Només amb previsió molt estable i dies de reserva.'],
             ['De desembre a abril', 'Estació de pluges. La carretera Charazani–Apolo es va tallar del 9 al 19 de febrer de 2025 i hi va haver esllavissades al gener i al març de 2026.'],
         ],
     },
@@ -37,7 +37,7 @@ SEASON = {
         'reasons': [
             ['Junio y julio', 'Es el corazón de la estación seca: el tiempo es más estable, los ríos bajan con menos caudal y las carreteras del norte de La Paz están abiertas. Las noches son las más frías del año.'],
             ['Mayo y septiembre', 'Posibles, pero con más incertidumbre: en mayo aún pueden quedar lluvias y ríos altos; en septiembre aumentan las tormentas de tarde. Los operadores bolivianos ofrecen la ruta de mayo a septiembre.'],
-            ['Agosto', 'Ha habido nevadas fuertes en la zona del paso Sunchulli: unos 60 cm el 10 y 11 de agosto de 1993, con los pasos cerrados, y nevadas breves a finales de agosto de 2019. Solo con previsión muy estable y días de reserva.'],
+            ['Agosto', 'Ha habido nevadas fuertes en la zona del paso Sunchulli: unos 60 cm el 10 y 11 de agosto de 1993, con los pasos cerrados, y nevadas breves entre agosto y septiembre de 2019. Solo con previsión muy estable y días de reserva.'],
             ['De diciembre a abril', 'Estación de lluvias. La carretera Charazani–Apolo se cortó del 9 al 19 de febrero de 2025 y hubo derrumbes en enero y marzo de 2026.'],
         ],
     },
@@ -48,11 +48,11 @@ SEASON = {
 PLANB = [
     {'day': 5, 'ca': [
         ['Abans del Pas 1', 'Si el grup no està bé o el temps empitjora, tornar a Pelechuco pel mateix camí (6,4 km com a màxim).'],
-        ['Evacuació en vehicle', 'Uns 6 dels 9,7 km van per la pista Pelechuco–Hilo Hilo, que creua el Pas 1 (Paso Katantika): un 4×4 des de Pelechuco pot arribar al pas i al Campament 1.'],
+        ['Evacuació en vehicle', 'Uns 6 dels 9,7 km van per la pista Pelechuco–Hilo Hilo, que creua el Pas 1 (pas de Katantika): un 4×4 des de Pelechuco pot arribar al pas i al Campament 1.'],
         ['A la nit', 'Amb símptomes d’altitud al Campament 1 (4.168 m), baixar a Pelechuco (3.660 m) per la pista.'],
     ], 'es': [
         ['Antes del Paso 1', 'Si el grupo no está bien o el tiempo empeora, volver a Pelechuco por el mismo camino (6,4 km como máximo).'],
-        ['Evacuación en vehículo', 'Unos 6 de los 9,7 km van por la pista Pelechuco–Hilo Hilo, que cruza el Paso 1 (Paso Katantika): un 4×4 desde Pelechuco puede llegar al paso y al Campamento 1.'],
+        ['Evacuación en vehículo', 'Unos 6 de los 9,7 km van por la pista Pelechuco–Hilo Hilo, que cruza el Paso 1 (paso de Katantika): un 4×4 desde Pelechuco puede llegar al paso y al Campamento 1.'],
         ['Por la noche', 'Con síntomas de altitud en el Campamento 1 (4.168 m), bajar a Pelechuco (3.660 m) por la pista.'],
     ]},
     {'day': 6, 'ca': [
@@ -106,12 +106,12 @@ PLANB = [
 
 # ---------------------------------------------------------------- pla C
 PLANC_STAGES = [
-    {'code': 'C1', 'day': 5, 'km': 5.2, 'ascent': 200, 'descent': 60, 'max': 3910, 'hours': '2–3 h', 'start': '09.30', 'arrival': '11.30–12.30', 'night': 3880, 'nightLabel': '3.880 m',
-     'ca': {'name': 'Curva → Cañisaya', 'text': 'Trasllat en vehicle de Charazani a Curva (1 h). Caminada curta per pista i camí entre conreus fins a Cañisaya. Serveix d’aclimatació abans de pujar.', 'key': 'Jornada curta: caminar a poc a poc, beure i preparar el pas de l’endemà.', 'night': 'Tenda a Cañisaya, en el lloc acordat amb la comunitat'},
-     'es': {'name': 'Curva → Cañisaya', 'text': 'Traslado en vehículo de Charazani a Curva (1 h). Caminata corta por pista y camino entre cultivos hasta Cañisaya. Sirve de aclimatación antes de subir.', 'key': 'Jornada corta: caminar despacio, beber y preparar el paso del día siguiente.', 'night': 'Tienda en Cañisaya, en el lugar acordado con la comunidad'},
-     'points': [{'ca': 'Curva', 'es': 'Curva', 'ele': 3740, 'km': 0, 'time': '09.30', 'll': [-15.130012, -69.000020]},
-                {'ca': 'Cañisaya', 'es': 'Cañisaya', 'ele': 3880, 'km': 5.2, 'time': '11.30–12.30', 'll': [-15.090628, -69.017920]}]},
-    {'code': 'C2', 'day': 6, 'km': 10.0, 'ascent': 950, 'descent': 750, 'max': 4661, 'hours': '6–8 h', 'start': '07.10', 'arrival': '13.10–15.10', 'night': 4065, 'nightLabel': '4.065 m',
+    {'code': 'C1', 'day': 5, 'km': 5.2, 'ascent': 200, 'descent': 60, 'max': 3910, 'hours': '2–3 h', 'start': '09.00', 'arrival': '11.00–12.00', 'night': 3880, 'nightLabel': '3.880 m',
+     'ca': {'name': 'Curva → Cañisaya', 'text': 'Sortim de Curva, on hem dormit, i fem una caminada curta per pista i camí entre conreus fins a Cañisaya. Serveix d’aclimatació abans de pujar.', 'key': 'Jornada curta: caminar a poc a poc, beure i preparar el pas de l’endemà.', 'night': 'Tenda a Cañisaya, en el lloc acordat amb la comunitat'},
+     'es': {'name': 'Curva → Cañisaya', 'text': 'Salimos de Curva, donde hemos dormido, y hacemos una caminata corta por pista y camino entre cultivos hasta Cañisaya. Sirve de aclimatación antes de subir.', 'key': 'Jornada corta: caminar despacio, beber y preparar el paso del día siguiente.', 'night': 'Tienda en Cañisaya, en el lugar acordado con la comunidad'},
+     'points': [{'ca': 'Curva', 'es': 'Curva', 'ele': 3740, 'km': 0, 'time': '09.00', 'll': [-15.130012, -69.000020]},
+                {'ca': 'Cañisaya', 'es': 'Cañisaya', 'ele': 3880, 'km': 5.2, 'time': '11.00–12.00', 'll': [-15.090628, -69.017920]}]},
+    {'code': 'C2', 'day': 6, 'km': 10.0, 'ascent': 950, 'descent': 750, 'max': 4661, 'hours': '6–8 h', 'start': '07.10', 'arrival': '13.10–15.10', 'night': 4060, 'nightLabel': '4.060 m',
      'ca': {'name': 'Cañisaya → Pas d’Akamani → Incacancha', 'text': 'Pugem pel camí de l’Akamani, de traçat precolombí, passem pel Campament 3 i l’Apacheta de Tambillo i creuem el Pas d’Akamani (4.661 m), el punt més alt del pla C. Baixada a les ruïnes d’Incacancha.', 'key': 'Hora límit al Pas d’Akamani: 13.10. Si no s’hi és, tornar al Campament 3.', 'night': 'Tenda a Incacancha'},
      'es': {'name': 'Cañisaya → Paso de Akamani → Incacancha', 'text': 'Subimos por el camino del Akamani, de trazado precolombino, pasamos por el Campamento 3 y la Apacheta de Tambillo y cruzamos el Paso de Akamani (4.661 m), el punto más alto del plan C. Bajada a las ruinas de Incacancha.', 'key': 'Hora límite en el Paso de Akamani: 13:10. Si no se ha llegado, volver al Campamento 3.', 'night': 'Tienda en Incacancha'},
      'points': [{'ca': 'Cañisaya', 'es': 'Cañisaya', 'ele': 3880, 'km': 0, 'time': '07.10', 'll': [-15.090628, -69.017920]},
@@ -127,7 +127,7 @@ PLANC_STAGES = [
                 {'ca': 'Pas Lorisani', 'es': 'Paso Lorisani', 'ele': 3970, 'km': 4.0, 'time': '09.10–09.40', 'll': [-15.0718, -68.9541]},
                 {'ca': 'Refugi del camí de l’Akamani', 'es': 'Refugio del camino del Akamani', 'ele': 3590, 'km': 6.1, 'time': '10.10–10.40', 'll': [-15.0834, -68.9492]},
                 {'ca': 'Huayrapata', 'es': 'Huayrapata', 'ele': 3700, 'km': 12.1, 'time': '13.10–15.10', 'll': [-15.123098, -68.939598]}]},
-    {'code': 'C4', 'day': 8, 'km': 7.3, 'ascent': 340, 'descent': 680, 'max': 4030, 'hours': '4–5 h', 'start': '07.10', 'arrival': '11.10–12.10', 'night': 3190, 'nightLabel': '3.190 m',
+    {'code': 'C4', 'day': 8, 'km': 7.3, 'ascent': 340, 'descent': 680, 'max': 4030, 'hours': '4–5 h', 'start': '07.10', 'arrival': '11.10–12.10', 'night': 3195, 'nightLabel': '3.195 m',
      'ca': {'name': 'Huayrapata → Pas de Chatalayo → RN16 → Charazani', 'text': 'Pugem al Pas de Chatalayo (4.030 m), passem per una antiga mina d’antimoni i baixem fins a la carretera RN16. Trasllat en vehicle a Charazani i tarda a les aigües termals.', 'key': 'El vehicle espera a la RN16, al tram Charazani–Apolo: comprovar-ne l’estat a l’ABC el dia abans.', 'night': 'Allotjament local a Charazani'},
      'es': {'name': 'Huayrapata → Paso de Chatalayo → RN16 → Charazani', 'text': 'Subimos al Paso de Chatalayo (4.030 m), pasamos por una antigua mina de antimonio y bajamos hasta la carretera RN16. Traslado en vehículo a Charazani y tarde en las aguas termales.', 'key': 'El vehículo espera en la RN16, en el tramo Charazani–Apolo: comprobar su estado en la ABC el día antes.', 'night': 'Alojamiento local en Charazani'},
      'points': [{'ca': 'Huayrapata', 'es': 'Huayrapata', 'ele': 3700, 'km': 0, 'time': '07.10', 'll': [-15.123098, -68.939598]},
@@ -147,9 +147,10 @@ PLANC = {
         ],
         'program': [
             ['1–3', 'La Paz: arribada i aclimatació (igual que el programa principal)'],
-            ['4', 'La Paz → Charazani en vehicle (≈8 h). Allotjament local, 3.190 m'],
+            ['4', 'La Paz → Curva en vehicle (≈9 h). Allotjament local o tenda a Curva, ≈3.740 m: només 90 m més amunt que La Paz'],
             ['5–8', 'Etapes C1 a C4'],
             ['9', 'Charazani → La Paz. Els dos dies que s’estalvien se sumen als de reserva'],
+            ['', 'Aclimatació: La Paz 3.650 m → Curva 3.740 → Cañisaya 3.880 → Incacancha 4.060 → Huayrapata 3.700 → Charazani 3.195. Cap nit puja més de 500 m respecte de l’anterior.'],
         ],
         'source': 'Traçat: camí de l’Akamani a OpenStreetMap; altituds del model SRTM (±20 m). Distàncies i desnivells orientatius (±10 %), pendents de reconèixer.',
     },
@@ -162,9 +163,10 @@ PLANC = {
         ],
         'program': [
             ['1–3', 'La Paz: llegada y aclimatación (igual que el programa principal)'],
-            ['4', 'La Paz → Charazani en vehículo (≈8 h). Alojamiento local, 3.190 m'],
+            ['4', 'La Paz → Curva en vehículo (≈9 h). Alojamiento local o tienda en Curva, ≈3.740 m: solo 90 m más arriba que La Paz'],
             ['5–8', 'Etapas C1 a C4'],
             ['9', 'Charazani → La Paz. Los dos días que se ahorran se suman a los de reserva'],
+            ['', 'Aclimatación: La Paz 3.650 m → Curva 3.740 → Cañisaya 3.880 → Incacancha 4.060 → Huayrapata 3.700 → Charazani 3.195. Ninguna noche sube más de 500 m respecto de la anterior.'],
         ],
         'source': 'Trazado: camino del Akamani en OpenStreetMap; altitudes del modelo SRTM (±20 m). Distancias y desniveles orientativos (±10 %), pendientes de reconocer.',
     },
@@ -205,7 +207,7 @@ RULES = {
             ['Aigua', 'Tractar-la no n’elimina el mercuri ni altres metalls. A la zona hi ha mineria d’or amb mercuri (rius Sunchulli i Pelechuco). Només s’agafa aigua de fonts per sobre de les mines o confirmades per la comunitat, i se’n porta de reserva a la vall de Sunchulli.'],
             ['Campament 2', 'Lluny del campament miner de Sunchully i de la seva aigua, a l’emplaçament més baix de la vall que es confirmi (objectiu ≈4.500 m).'],
             ['Pistes mineres', 'Segons OpenStreetMap, uns 19 dels 53 km del recorregut (un 36 %) van per pistes per a vehicles. Es diu al client amb claredat. A canvi, gairebé tots els trams tenen sortida en vehicle si cal evacuar.'],
-            ['Material', 'No cal material tècnic per al client. El grup porta microcrampons de reserva per a una nevada fora de temporada; amb neu dura o gel als passos, no es creua.'],
+            ['Material', 'No cal material tècnic per al client. El guia porta microcrampons de reserva només per a plaques de gel aïllades en un sender fàcil. No canvien el límit del TD2: si un pas exigeix grampons, piolet o assegurament, no es creua.'],
             ['Permís de l’àrea protegida', 'Permís escrit del SERNAP, tramitat en persona a l’oficina central de La Paz, i registre als campaments de guardaparcs de Pelechuco i Lagunillas. El «passaport» d’àrees protegides de 2024 no és obligatori.'],
         ],
     },
@@ -215,7 +217,7 @@ RULES = {
             ['Agua', 'Tratarla no elimina el mercurio ni otros metales. En la zona hay minería de oro con mercurio (ríos Sunchulli y Pelechuco). Solo se coge agua de fuentes por encima de las minas o confirmadas por la comunidad, y se lleva de reserva en el valle de Sunchulli.'],
             ['Campamento 2', 'Lejos del campamento minero de Sunchully y de su agua, en el emplazamiento más bajo del valle que se confirme (objetivo ≈4.500 m).'],
             ['Pistas mineras', 'Según OpenStreetMap, unos 19 de los 53 km del recorrido (un 36 %) van por pistas para vehículos. Se le dice al cliente con claridad. A cambio, casi todos los tramos tienen salida en vehículo si hay que evacuar.'],
-            ['Material', 'No hace falta material técnico para el cliente. El grupo lleva microcrampones de reserva para una nevada fuera de temporada; con nieve dura o hielo en los pasos, no se cruza.'],
+            ['Material', 'No hace falta material técnico para el cliente. El guía lleva microcrampones de reserva solo para placas de hielo aisladas en un sendero fácil. No cambian el límite del TD2: si un paso exige crampones, piolet o aseguramiento, no se cruza.'],
             ['Permiso del área protegida', 'Permiso escrito del SERNAP, tramitado en persona en la oficina central de La Paz, y registro en los campamentos de guardaparques de Pelechuco y Lagunillas. El «pasaporte» de áreas protegidas de 2024 no es obligatorio.'],
         ],
     },
@@ -234,6 +236,15 @@ ESCAPES = [
 def main():
     # Traçat del pla C i de la baixada alternativa: si hi ha fitxers nous de càlcul (PLANC_WORK), es regenera guia/planc.js
     work = os.environ.get('PLANC_WORK')
+    import sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import i18n_plans as T   # anglès i francès
+    for L in ('en', 'fr'):
+        SEASON[L] = T.SEASON[L]; PLANC[L] = T.PLANC[L]; ROADS[L] = T.ROADS[L]; RULES[L] = T.RULES[L]
+        for b in PLANB: b[L] = T.PLANB[b['day']][L]
+        for st in PLANC_STAGES:
+            st[L] = T.PLANC_STAGES[st['code']][L]
+            for p in st['points']: p[L] = T.point(p['ca'])[0 if L == 'en' else 1]
+        for e in ESCAPES: e[L] = T.ESCAPES[e['ca']][0 if L == 'en' else 1]
     plans = {'season': SEASON, 'b': PLANB, 'c': PLANC, 'roads': ROADS, 'rules': RULES, 'escapes': ESCAPES}
     p = os.path.join(ROOT, 'content.js')
     src = open(p, encoding='utf8').read()
@@ -248,11 +259,14 @@ def main():
         return
     track = json.load(open(os.path.join(work, 'planC_track.json')))
     alt = json.load(open(os.path.join(work, 'milcorbes_alt.json')))
+    rpath = os.path.join(work, 'routes.json')
+    routes = json.load(open(rpath)) if os.path.exists(rpath) else []
     g = os.path.join(ROOT, 'guia', 'planc.js')
     open(g, 'w', encoding='utf8').write(
         '/* Pla C (Cañisaya – Akamani – Charazani): traçat del camí de l’Akamani a OpenStreetMap (consulta del ' + CHECKED + ') i altituds SRTM.\n'
-        '   pts: [lat, lon, altitud, km]; cut: inici de cada etapa C1–C4. alt: baixada alternativa a les Mil Corbes (pla B1 del dia 8). */\n'
-        'window.PLANC = ' + json.dumps({'pts': track['pts'], 'cut': track['cut'], 'alt': alt,
+        '   pts: [lat, lon, altitud, km]; cut: inici de cada etapa C1–C4. alt: baixada alternativa a les Mil Corbes (pla B1 del dia 8).\n'
+        '   routes: rutes dels plans B per jornada (a peu o pista per a vehicles), calculades sobre OpenStreetMap. */\n'
+        'window.PLANC = ' + json.dumps({'pts': track['pts'], 'cut': track['cut'], 'alt': alt, 'routes': routes,
                                         'src': 'OpenStreetMap contributors (ODbL) · SRTM'}, separators=(',', ':')) + ';\n')
     print('content.js i guia/planc.js actualitzats')
 
