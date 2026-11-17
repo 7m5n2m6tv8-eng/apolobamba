@@ -223,3 +223,13 @@ body.map-full{overflow:hidden}body.map-full .sticky-cta,body.map-full .header{vi
 @media(max-width:800px){.tmap{height:440px}.alt-grid{grid-template-columns:1fr}.track-card dl{grid-template-columns:1fr 1fr 1fr}.tmap-attr{font-size:10px;left:0;border-top-left-radius:0}.tmap-tip{font-size:13px}}
 .tmap-wrap .profile{min-width:0}
 @media(max-width:800px){.tmap-wrap .profile text{font-size:27px}.tmap-wrap .profile text[text-anchor="end"]{display:none}}
+/* Etapes sense mapa: dades a dues columnes i comparador d'altitud a sota */
+.stage-panel{align-items:start;min-height:0}
+.stage-side{background:#fff;border:1px solid #d9ddd0;border-radius:var(--radius);padding:26px 26px 22px}
+.stage-side .stage-facts{margin:0 0 22px}
+.stage-dossier{display:flex;gap:10px;align-items:flex-start;margin:22px 0 0;padding-top:16px;border-top:1px solid #d6dbce;font-size:14px;line-height:1.5;color:var(--muted)}
+.stage-dossier svg{flex:none;margin-top:2px;color:var(--forest)}
+.route-section .cmp-card{margin-top:28px}
+.document-request{background:var(--cream);border-style:dashed}
+@media(max-width:800px){.stage-side{padding:20px 18px 18px}}
+@media(min-width:801px){.route-section .cmp{grid-template-columns:1fr 1fr;column-gap:48px}}
