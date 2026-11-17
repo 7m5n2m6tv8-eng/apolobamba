@@ -8,6 +8,8 @@ numerats amb els topònims normalitzats en català, el perfil i les dades de la 
 Executa-ho des de l'arrel del repositori:  python3 tools/atles.py
 Necessita: reportlab i Pillow (pip install reportlab pillow) i connexió a tile.opentopomap.org.
 Les teselles es desen a .cache/teselles (no es pugen al repositori).
+També crea els mapes de cada jornada per al dossier del client (assets/maps/jornada-<dia>-<ca|es>.webp);
+després cal executar  node tools/dossier.js  per posar-los al dossier.
 """
 import io, json, math, os, re, sys, time, urllib.request
 from PIL import Image
@@ -35,10 +37,12 @@ TRACK = load('guia/track.js', 'TRACK')
 PTS, CUT = TRACK['pts'], TRACK['cut']
 assert len(DAYS) == 6 and len(CUT) == 7, 'S’esperen sis jornades'
 
-# Topònims del registre GPS normalitzats per a l'atles (la resta ja ve en català a content.js).
-NORM = {'Agua buena 1': 'Punt d’aigua 1', 'Agua buena 2': 'Punt d’aigua 2',
-        'Agua buena 3': 'Punt d’aigua 3', 'Agua buena 4': 'Punt d’aigua 4'}
-name = lambda p: NORM.get(p['ca'], p['ca'])
+# Topònims normalitzats: els de content.js (taula de normalització del treball, cap. 9).
+# «Agua buena 1–4» es manté perquè és el nom dels punts d'aigua del GPS que fa servir el treball.
+LANG = 'ca'      # idioma de les etiquetes del mapa (l'atles és en català; 'es' només per als mapes del dossier)
+EXPORT = False   # True quan es dibuixen els mapes per al dossier (sense l'escala numèrica d'A3)
+def name(p):
+    return p[LANG]
 
 NOTES = {
     5: ['Primera jornada a peu. Pas 1 (4.706 m): no es creua amb neu o gel, mala visibilitat, vent fort o tempesta.',
@@ -48,7 +52,7 @@ NOTES = {
     7: ['Hora límit al Pas Sunchulli: 14.40. Si el grup no hi és a l’hora, mitja volta cap a Hilo Hilo.',
         'Campament 2: el punt del GPS és a 4.717 m; l’objectiu és dormir cap als 4.500 m, al lloc més baix de la vall que es confirmi sobre el terreny.'],
     8: ['No s’entra a les Mil Corbes amb gel, roca lliscant o poca visibilitat. No es tallen revolts.',
-        'L’aigua del Punt d’aigua 4 es tracta.'],
+        'Agua buena 4: l’aigua es tracta sempre.'],
     9: ['Dos colls seguits: Pas d’Akamani i Apacheta de Tambillo.',
         'No es comença la pujada si es preveu tempesta, mala visibilitat, neu o gel.'],
     10: ['Punt de decisió a la Cruïlla de Curva (11.10): si el grup va just de temps, la travessa acaba a Curva i es continua en vehicle.',
@@ -287,7 +291,8 @@ def page(c, i, day):
     label = f'{dec(length / 1000, 1 if length % 1000 else 0)} km' if length >= 1000 else f'{fmt(length)} m'
     c.drawString(bx + bar + 5, by + 0.5, label)
     c.setFont('Sans', 7); c.setFillColor(MUTED)
-    c.drawString(bx + bar + 5 + pdfmetrics.stringWidth(label, 'Sans', 7.5) + 8, by + 0.5, f'(1:{fmt(round(m_per_pt / 0.000352778, -2))} en A3)')
+    if not EXPORT:
+        c.drawString(bx + bar + 5 + pdfmetrics.stringWidth(label, 'Sans', 7.5) + 8, by + 0.5, f'(1:{fmt(round(m_per_pt / 0.000352778, -2))} en A3)')
 
     # perfil
     px, py, pw, ph = PROF
@@ -402,6 +407,33 @@ def main():
         c.showPage()
     c.save()
     print(f'Fet: {os.path.relpath(OUT, ROOT)} ({os.path.getsize(OUT) / 1e6:.1f} MB)', file=sys.stderr)
+    export_maps()
+
+def export_maps():
+    """Mapes de cada jornada (ca i es) per al dossier del client: assets/maps/jornada-<dia>-<idioma>.webp."""
+    global LANG, EXPORT
+    import subprocess, tempfile
+    EXPORT = True
+    dpi = 220
+    mx, my, mw, mh = MAP
+    for lang in ('ca', 'es'):
+        LANG = lang
+        tmp = tempfile.mkdtemp()
+        pdf = os.path.join(tmp, 'mapes.pdf')
+        c = canvas.Canvas(pdf, pagesize=(W, H))
+        for i, day in enumerate(DAYS):
+            page(c, i, day); c.showPage()
+        c.save()
+        for i, day in enumerate(DAYS):
+            k = dpi / 72
+            subprocess.run(['pdftoppm', '-r', str(dpi), '-f', str(i + 1), '-l', str(i + 1), '-singlefile', '-png',
+                            '-x', str(round(mx * k)), '-y', str(round((H - my - mh) * k)), '-W', str(round(mw * k)), '-H', str(round(mh * k)),
+                            pdf, os.path.join(tmp, 'm')], check=True)
+            out = os.path.join(ROOT, 'assets', 'maps', f'jornada-{day["day"]}-{lang}.webp')
+            os.makedirs(os.path.dirname(out), exist_ok=True)
+            Image.open(os.path.join(tmp, 'm.png')).convert('RGB').save(out, 'WEBP', quality=80, method=6)
+            print(f'  {os.path.relpath(out, ROOT)}', file=sys.stderr)
+    LANG, EXPORT = 'ca', False
 
 if __name__ == '__main__':
     main()
