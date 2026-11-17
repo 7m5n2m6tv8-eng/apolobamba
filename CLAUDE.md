@@ -18,7 +18,7 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 
 1. Los cambios van **siempre en una rama** (`claude/<descripcion>`) con **pull request a `main`**. No se toca `main` directamente. Izan revisa la PR y pide integrarla.
 2. Según lo que cambie, antes del commit:
-   - Datos de las jornadas → `node tools/dossier.js` (regenera `Dossier_Viatge_CA.pdf` y `Dossier_Viaje_ES.pdf`).
+   - Datos de las jornadas → `node tools/dossier.js` (regenera `Dossier_Viatge_CA.pdf` y `Dossier_Viaje_ES.pdf`) y `python3 tools/atles.py` (regenera el Atles cartogràfic A3; necesita `reportlab`, `Pillow` y acceso a `tile.opentopomap.org`, que está permitido en el entorno «apolobamba»).
    - Textos o secciones de `index.html` → `node tools/prerender.js` (versión estática).
    - **Siempre, al final:** `python3 tools/stamp.py` (actualiza `version.txt` y los `?v=` para que el móvil cargue la versión nueva sin caché).
 3. No hay dependencias ni build: es una web estática. Para probarla: `python3 -m http.server`. Revisa en móvil (390 px) y escritorio, en **ca y es**, sin errores de consola ni enlaces rotos. La app `guia/` se prueba aparte.
@@ -43,7 +43,7 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 | `assets/` | Fotos WebP, mapas de etapa (`assets/maps/`, ya no se usan en la web del cliente), flyer, figuras de la presentación, créditos en `PHOTOGRAPHY.md` |
 | `dossiers/` | Trabajo completo (PDF + DOCX), bloques 01–06, Atles cartogràfic A3 y Formularis operatius |
 | `dossiers/client/` | Para el cliente, en ca y es: ficha del viaje, preparación y material, plan de entrenamiento de 12 semanas, libreta de ruta y **dossier completo** (14 págs.; **no se enlaza en la web**: se envía por WhatsApp cuando el cliente contacta) |
-| `tools/` | `stamp.py` (versión), `dossier.js` (dossier del cliente), `prerender.js` (HTML estático) |
+| `tools/` | `stamp.py` (versión), `dossier.js` (dossier del cliente), `atles.py` (Atles cartogràfic A3: una página por jornada a pie), `prerender.js` (HTML estático) |
 
 ## Decisiones tomadas (no reabrir sin que Izan lo pida)
 
@@ -91,7 +91,9 @@ Fuentes de contraste (cap. 9 y Annex E del trabajo): track de Gallotrekk en Wiki
 ## Pendiente
 
 **En el repositorio (lo puede hacer Claude):**
-- **Atles cartogràfic A3:** los mapas siguen con los nombres originales del GPS ("Paso1", "Inicio Pelechuco"…). Hay que redibujarlos con los topónimos normalizados, y para eso hace falta descargar las teselas del mapa base.
+- **Mapas del dossier del cliente:** el Atles A3 ya está redibujado (6 páginas, una por jornada, topónimos normalizados), pero `tools/dossier.js` sigue usando `assets/maps/etapa-*.webp`, con los nombres originales del GPS, y su texto lo avisa. Se podrían sustituir por recortes del atlas nuevo.
+- **"Agua buena 1–4"** sigue así en la versión catalana de `content.js` (web y app). En el atlas se ha normalizado como "Punt d’aigua 1–4"; si Izan está de acuerdo, unificarlo.
+- **Annex D del trabajo (DOCX y PDF):** todavía cita como pendiente redibujar el atlas. Quitarlo la próxima vez que se edite el Word (y actualizar `modules.json`).
 - **Fotos por jornada:** cuando Izan aporte sus fotos, colocarlas en las pestañas de etapa (WebP con versión `-small`) y, si encaja, también en el dossier.
 - Si Izan lo pide, acortar o plegar bloques de la web del cliente, que quedó larga en móvil.
 
