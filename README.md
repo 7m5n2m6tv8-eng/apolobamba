@@ -14,7 +14,7 @@ Web publicada (és l’adreça del QR del flyer): https://7m5n2m6tv8-eng.github.
 | `content.js` | Tots els textos (català i castellà) i les dades de les sis jornades |
 | `guia/` | App mòbil del guia (funciona sense cobertura): fitxes tècniques, hores de control, meteo, seguretat, llistes, GPX. Track GPS a `guia/track.js` (199 punts, Gallotrekk, Wikiloc, 2012). Adreça: `…/apolobamba/guia/` |
 | `site.js` | Construcció de la pàgina, pestanyes de les jornades, llista de material i diàlegs |
-| `presentacio.html` | Presentació del treball en 12 diapositives amb guió (tecla N) |
+| `presentacio.html` | Presentació del treball en 14 diapositives amb guió (tecla N) |
 | `extras.js` | Guia, comparador d’altitud, territori, test i contacte per WhatsApp (número a `CONTACT`) |
 | `sw.js` | Permet obrir la web sense connexió un cop visitada |
 | `modules.js` · `modules.json` | Blocs del treball amb cercador (només a `treball.html`) |
@@ -28,6 +28,8 @@ Web publicada (és l’adreça del QR del flyer): https://7m5n2m6tv8-eng.github.
 
 - **Textos de la web:** edita `content.js`. Cada clau existeix en `ca` i `es`.
 - **Treball escrit:** edita `dossiers/Apolobamba_TD2_Treball_Complet.docx`, exporta’l a PDF amb el mateix nom i substitueix els fitxers de `dossiers/` sense canviar-ne els noms.
+- **Temporada, plans B i pla C:** les dades són a `tools/plans_data.py`; executa `python3 tools/plans_data.py` per actualitzar `window.PLANS` a `content.js`.
+- **Atles i mapes:** `python3 tools/atles.py` regenera l’Atles A3 (10 làmines) i els mapes del dossier.
 - **Dossier complet:** després de canviar dades de les jornades, executa `node tools/dossier.js` per regenerar els dos PDF.
 - **Versió estàtica d’index.html:** després de canviar textos o seccions, executa `node tools/prerender.js`.
 - **Versió:** després de qualsevol canvi, executa `python3 tools/stamp.py` abans de fer commit. Actualitza `version.txt` i els enllaços, i així els navegadors carreguen la versió nova en obrir la web, sense esperar la memòria cau.

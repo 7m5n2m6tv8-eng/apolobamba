@@ -56,6 +56,7 @@ window.GUIDE = {
     gpx: 'Descarrega el GPX (per al GPS o el mòbil)', locate: 'On soc?', locating: 'Buscant posició…', locErr: 'No s’ha pogut obtenir la posició (activa el GPS).',
     you: 'Ets a {d} del traçat, a prop del km {k} ({day}).', far: 'Ets a {d} del recorregut.', mapNote: 'Esquema del traçat GPS (2012) sense mapa de fons: funciona sense cobertura. Per navegar, fes servir el GPX al GPS o en una app de mapes offline.',
     acc: 'precisió ±{a} m', north: 'N', allDays: 'Tot',
+    planB: 'Pla B i vies d’evacuació', planC: 'Pla C', planCShort: 'C', planCIntro: 'Etapa del pla C (Cañisaya – Akamani – Charazani). Dades sobre OpenStreetMap i SRTM, pendents de reconèixer.', escape: 'Evacuació', altRoute: 'Baixada alternativa (pla B1)', seasonCard: 'Temporada', roadsCard: 'Carreteres (ABC)', rulesCard: 'Criteris que canvien', checkedOn: 'consultat el',
     meteoTitle: 'On mirar la meteorologia a Bolívia', meteoWhen: 'Quan: 48 h i 24 h abans de la travessa, i cada matí. Apunta sempre font, hora i decisió al formulari de la jornada.',
     meteoSources: [
       ['SENAMHI Bolívia', 'Servei oficial. Pronòstic per departament (La Paz) i avisos d’alerta. Font de referència per al registre.', 'https://senamhi.gob.bo/'],
@@ -102,6 +103,7 @@ window.GUIDE = {
     gpx: 'Descargar el GPX (para el GPS o el móvil)', locate: '¿Dónde estoy?', locating: 'Buscando posición…', locErr: 'No se ha podido obtener la posición (activa el GPS).',
     you: 'Estás a {d} del trazado, cerca del km {k} ({day}).', far: 'Estás a {d} del recorrido.', mapNote: 'Esquema del trazado GPS (2012) sin mapa de fondo: funciona sin cobertura. Para navegar, usa el GPX en el GPS o en una app de mapas offline.',
     acc: 'precisión ±{a} m', north: 'N', allDays: 'Todo',
+    planB: 'Plan B y vías de evacuación', planC: 'Plan C', planCShort: 'C', planCIntro: 'Etapa del plan C (Cañisaya – Akamani – Charazani). Datos sobre OpenStreetMap y SRTM, pendientes de reconocer.', escape: 'Evacuación', altRoute: 'Bajada alternativa (plan B1)', seasonCard: 'Temporada', roadsCard: 'Carreteras (ABC)', rulesCard: 'Criterios que cambian', checkedOn: 'consultado el',
     meteoTitle: 'Dónde mirar la meteorología en Bolivia', meteoWhen: 'Cuándo: 48 h y 24 h antes de la travesía, y cada mañana. Anota siempre fuente, hora y decisión en el formulario de la jornada.',
     meteoSources: [
       ['SENAMHI Bolivia', 'Servicio oficial. Pronóstico por departamento (La Paz) y avisos de alerta. Fuente de referencia para el registro.', 'https://senamhi.gob.bo/'],

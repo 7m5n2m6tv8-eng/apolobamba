@@ -1,6 +1,6 @@
 /* App del guia sense connexió: es desa tot en obrir-la i, si no hi ha cobertura, es fa servir la còpia. */
-const CACHE='guia-apolobamba-v1';
-const FILES=['./','index.html','app.css','app.js','data.js','track.js','manifest.webmanifest','icon.svg','icon-192.png','icon-512.png','../content.js'];
+const CACHE='guia-apolobamba-v2';
+const FILES=['./','index.html','app.css','app.js','data.js','track.js','planc.js','manifest.webmanifest','icon.svg','icon-192.png','icon-512.png','../content.js'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith('guia-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
 self.addEventListener('fetch',e=>{
