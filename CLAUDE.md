@@ -12,13 +12,13 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
   - Trabajo académico: `treball.html`
   - Presentación (12 diapositivas con guion, tecla N): `presentacio.html`
   - App del guía: `guia/` (…/apolobamba/guia/)
-- Estado a 17/11/2026: último commit en `main` = merge de la PR #6 (`2e6444b`).
+- Estado a 17/11/2026: último commit en `main` = merge de la PR #8 (atlas redibujado).
 
 ## Forma de trabajar (obligatorio)
 
 1. Los cambios van **siempre en una rama** (`claude/<descripcion>`) con **pull request a `main`**. No se toca `main` directamente. Izan revisa la PR y pide integrarla.
 2. Según lo que cambie, antes del commit:
-   - Datos de las jornadas → `node tools/dossier.js` (regenera `Dossier_Viatge_CA.pdf` y `Dossier_Viaje_ES.pdf`).
+   - Datos de las jornadas → primero `python3 tools/atles.py` y después `node tools/dossier.js` (regenera `Dossier_Viatge_CA.pdf` y `Dossier_Viaje_ES.pdf` con los mapas nuevos). `tools/atles.py` regenera el Atles cartogràfic A3 y los mapas del dossier; necesita `reportlab`, `Pillow` y acceso a `tile.opentopomap.org`, que está permitido en el entorno «apolobamba».
    - Textos o secciones de `index.html` → `node tools/prerender.js` (versión estática).
    - **Siempre, al final:** `python3 tools/stamp.py` (actualiza `version.txt` y los `?v=` para que el móvil cargue la versión nueva sin caché).
 3. No hay dependencias ni build: es una web estática. Para probarla: `python3 -m http.server`. Revisa en móvil (390 px) y escritorio, en **ca y es**, sin errores de consola ni enlaces rotos. La app `guia/` se prueba aparte.
@@ -40,10 +40,10 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 | `modules.js` / `modules.json` | Bloques del trabajo con buscador (solo en `treball.html`) |
 | `site.css` | Estilos |
 | `guia/` | App móvil del guía, sin cobertura (PWA): fichas técnicas con horas de control y decisiones, mapa esquemático con "On soc?", GPX, meteo en Bolivia, seguridad, contactos y listas. Track en `guia/track.js` (199 puntos, Gallotrekk, Wikiloc, 2012). Solo se enlaza desde `treball.html` |
-| `assets/` | Fotos WebP, mapas de etapa (`assets/maps/`, ya no se usan en la web del cliente), flyer, figuras de la presentación, créditos en `PHOTOGRAPHY.md` |
+| `assets/` | Fotos WebP, mapas de cada jornada para el dossier (`assets/maps/`, los genera `tools/atles.py`; no se usan en la web), flyer, figuras de la presentación, créditos en `PHOTOGRAPHY.md` |
 | `dossiers/` | Trabajo completo (PDF + DOCX), bloques 01–06, Atles cartogràfic A3 y Formularis operatius |
 | `dossiers/client/` | Para el cliente, en ca y es: ficha del viaje, preparación y material, plan de entrenamiento de 12 semanas, libreta de ruta y **dossier completo** (14 págs.; **no se enlaza en la web**: se envía por WhatsApp cuando el cliente contacta) |
-| `tools/` | `stamp.py` (versión), `dossier.js` (dossier del cliente), `prerender.js` (HTML estático) |
+| `tools/` | `stamp.py` (versión), `dossier.js` (dossier del cliente), `atles.py` (Atles cartogràfic A3, una página por jornada a pie, y los mapas `assets/maps/jornada-<día>-<ca|es>.webp` que usa el dossier), `prerender.js` (HTML estático). La libreta de ruta y la ficha del viaje no tienen generador: si cambian los datos, hay que rehacerlas o corregirlas a mano |
 
 ## Decisiones tomadas (no reabrir sin que Izan lo pida)
 
@@ -59,7 +59,8 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 - **Honestidad de datos:** el recorrido está planificado sobre un GPX de 2012 y contrastado con operadores, pero **no se ha reconocido sobre el terreno**. Ese aviso se mantiene y los horarios no se presentan como validados.
 - **Sin rastros de IA ni lenguaje interno** en los textos: nada de "facilitat per l'usuari", "paquet aportat" ni "NO-GO" sin explicar. Con el cliente, lenguaje llano.
 - **"El teu guia" sin cita inventada** (se quitó). No inventar frases atribuidas a Izan.
-- Topónimos normalizados en catalán ("Pas Sunchulli", no "Paso Sunchulli") y decimales con coma.
+- Topónimos normalizados en catalán ("Pas Sunchulli", no "Paso Sunchulli") y decimales con coma. La referencia es la tabla de normalización del trabajo (cap. 9). Los puntos de agua se llaman **"Agua buena 1–4"** (nombre del GPS, con la nota de que el agua se trata siempre); no se traducen.
+- **Llegada a Charazani (día 10): 15.10–16.40**, igual que la duración de 8–9 h 30 min. La hora límite sigue siendo las 16.40.
 
 ## Programa (datos de referencia)
 
@@ -87,11 +88,12 @@ Fuentes de contraste (cap. 9 y Annex E del trabajo): track de Gallotrekk en Wiki
 4. **#4**: portada, índice, figuras y bibliografía del trabajo; flyer con foto real; "El teu guia", comparador de altitud, "El territori", test, plan de entrenamiento y libreta de ruta; mejoras en móvil; modo sin conexión; presentación; Instagram.
 5. **#5**: mapa interactivo con el GPX real, correcciones de datos y WhatsApp activado.
 6. **#6**: web del cliente sin tracks ni mapas (todo eso pasa al dossier por WhatsApp), dossier completo ca/es con `tools/dossier.js`, app del guía `guia/`, `tools/prerender.js`, meteorología en el cap. 10, Annex C, D y E actualizados y cita de "El teu guia" eliminada.
+7. **#7**: CLAUDE.md con el contexto del proyecto.
+8. **#8**: Atles cartogràfic A3 redibujado con `tools/atles.py` (6 páginas, una por jornada, topónimos normalizados, decimales con coma); el dossier del cliente usa los mismos mapas en ca/es; Annex D actualizado (Word, PDF, bloque 06 y buscador); llegada a Charazani unificada en 15.10–16.40 (web, app, trabajo, dossier y libretas de ruta).
 
 ## Pendiente
 
 **En el repositorio (lo puede hacer Claude):**
-- **Atles cartogràfic A3:** los mapas siguen con los nombres originales del GPS ("Paso1", "Inicio Pelechuco"…). Hay que redibujarlos con los topónimos normalizados, y para eso hace falta descargar las teselas del mapa base.
 - **Fotos por jornada:** cuando Izan aporte sus fotos, colocarlas en las pestañas de etapa (WebP con versión `-small`) y, si encaja, también en el dossier.
 - Si Izan lo pide, acortar o plegar bloques de la web del cliente, que quedó larga en móvil.
 

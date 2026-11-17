@@ -24,8 +24,8 @@ const D = {
     toc: 'Contingut', tocItems: ['El viatge en xifres', 'Programa dia a dia', 'Perfil de la travessa', 'Les sis jornades, punt a punt', 'Clima i meteorologia', 'Altitud i salut', 'Allotjament, àpats i equipatge', 'Material', 'Preu i condicions', 'Contacte'],
     figures: 'El viatge en xifres', programme: 'Programa dia a dia', profile: 'Perfil de la travessa',
     profileText: 'Altitud al llarg dels 53,4 km de camí. Les tendes marquen on dormim. El punt més alt és el pas Sunchulli (5.032 m), el dia 7.',
-    stages: 'Les sis jornades, punt a punt', stagesText: 'Per a cada jornada: dades, horari previst, punts de pas i mapa topogràfic. Als mapes hi surten els noms originals del registre GPS (per exemple «Paso1» és el pas 1).',
-    cols: ['Km', 'Punt', 'Altitud', 'Hora prevista'], plate: 'Mapa de l’etapa', mapCredit: 'Mapa: OpenTopoMap · dades © OpenStreetMap i SRTM · CC-BY-SA. Track: Gallotrekk, Wikiloc (2012).',
+    stages: 'Les sis jornades, punt a punt', stagesText: 'Per a cada jornada: dades, horari previst, punts de pas i mapa topogràfic.',
+    cols: ['Km', 'Punt', 'Altitud', 'Hora prevista'], plate: 'Mapa de la jornada', mapCredit: 'Mapa: OpenTopoMap · dades © OpenStreetMap i SRTM · CC-BY-SA. Track: Gallotrekk, Wikiloc (2012).',
     weather: 'Clima i meteorologia',
     climate: [['Juny, estació seca', 'Dies sovint assolellats i sol intens per l’altitud. Pluja poc freqüent.'], ['Nits fredes', 'Sota zero als campaments; als més alts poden baixar de −10 °C.'], ['Vent i neu puntual', 'Pot fer vent fort als passos i, de manera puntual, nevar. Amb neu dura o gel al pas Sunchulli, no es creua.'], ['Llum', 'Al juny surt el sol cap a les 06.55–07.00 i es pon cap a les 18.15. Caminem de les 07.10 a les 16.40 com a màxim.']],
     forecastTitle: 'Com seguim la previsió',
@@ -45,8 +45,8 @@ const D = {
     toc: 'Contenido', tocItems: ['El viaje en cifras', 'Programa día a día', 'Perfil de la travesía', 'Las seis jornadas, punto a punto', 'Clima y meteorología', 'Altitud y salud', 'Alojamiento, comidas y equipaje', 'Material', 'Precio y condiciones', 'Contacto'],
     figures: 'El viaje en cifras', programme: 'Programa día a día', profile: 'Perfil de la travesía',
     profileText: 'Altitud a lo largo de los 53,4 km de camino. Las tiendas marcan dónde dormimos. El punto más alto es el paso Sunchulli (5.032 m), el día 7.',
-    stages: 'Las seis jornadas, punto a punto', stagesText: 'Para cada jornada: datos, horario previsto, puntos de paso y mapa topográfico. En los mapas aparecen los nombres originales del registro GPS (por ejemplo «Paso1» es el paso 1).',
-    cols: ['Km', 'Punto', 'Altitud', 'Hora prevista'], plate: 'Mapa de la etapa', mapCredit: 'Mapa: OpenTopoMap · datos © OpenStreetMap y SRTM · CC-BY-SA. Track: Gallotrekk, Wikiloc (2012).',
+    stages: 'Las seis jornadas, punto a punto', stagesText: 'Para cada jornada: datos, horario previsto, puntos de paso y mapa topográfico.',
+    cols: ['Km', 'Punto', 'Altitud', 'Hora prevista'], plate: 'Mapa de la jornada', mapCredit: 'Mapa: OpenTopoMap · datos © OpenStreetMap y SRTM · CC-BY-SA. Track: Gallotrekk, Wikiloc (2012).',
     weather: 'Clima y meteorología',
     climate: [['Junio, estación seca', 'Días a menudo soleados y sol intenso por la altitud. Lluvia poco frecuente.'], ['Noches frías', 'Bajo cero en los campamentos; en los más altos pueden bajar de −10 °C.'], ['Viento y nieve puntual', 'Puede hacer viento fuerte en los pasos y, de forma puntual, nevar. Con nieve dura o hielo en el paso Sunchulli, no se cruza.'], ['Luz', 'En junio sale el sol hacia las 06:55–07:00 y se pone hacia las 18:15. Caminamos de las 07:10 a las 16:40 como máximo.']],
     forecastTitle: 'Cómo seguimos la previsión',
@@ -77,7 +77,6 @@ function html(L) {
   const h2 = (n, s) => `<h2><span>${String(n).padStart(2, '0')}</span>${s}</h2>`;
   const stage = (day, i) => {
     const pts = day.points.map(p => `<tr><td>${dec(p.km)}</td><th>${p[L]}</th><td>${fmt(p.ele)} m</td><td>${p.time}</td></tr>`).join('');
-    const shared = DAYS.filter(x => x.map === day.map).length > 1;
     return `<section class="stage page">
       <p class="kicker">${c.stageLabel} 0${i + 1} · ${c.dayWord} ${day.day} · ${day.hours}</p>
       <h3>${c.stageNames[i]}</h3>
@@ -86,7 +85,7 @@ function html(L) {
       <p class="sched"><b>${c.schedule}:</b> ${c.scheduleText.replace('{0}', day.start).replace('{1}', day.arrival)}</p>
       <p class="focus"><b>${c.stageFocus}.</b> ${c.stageFocusText[i]}</p>
       <table><thead><tr>${d.cols.map(x => `<th>${x}</th>`).join('')}</tr></thead><tbody>${pts}</tbody></table>
-      <figure><img src="file://${IMG}/maps/etapa-${day.map}.jpg" alt=""><figcaption>${d.plate} ${day.map}${shared ? (L === 'ca' ? ' (comuna als dies 6 i 7)' : ' (común a los días 6 y 7)') : ''} · ${d.mapCredit}</figcaption></figure>
+      <figure><img src="file://${IMG}/maps/jornada-${day.day}-${L}.jpg" alt=""><figcaption>${d.plate} · ${c.dayWord} ${day.day} · ${d.mapCredit}</figcaption></figure>
     </section>`;
   };
   return `<!doctype html><html lang="${L}"><head><meta charset="utf-8"><base href="file://${ROOT}/"><title>${d.title}</title><style>
@@ -158,7 +157,7 @@ function html(L) {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'dossier-'));
   // Les imatges es passen a JPEG de mida moderada perquè el PDF pesi poc i es pugui enviar per WhatsApp.
   const img = await browser.newPage();
-  for (const name of ['apolobamba-landscape', ...[1, 2, 3, 4, 5].map(n => 'maps/etapa-' + n)]) {
+  for (const name of ['apolobamba-landscape', ...DAYS.flatMap(x => ['ca', 'es'].map(l => `maps/jornada-${x.day}-${l}`))]) {
     await img.goto('file://' + path.join(ROOT, 'assets', name + '.webp'));
     const data = await img.evaluate(async () => { const i = document.images[0]; await i.decode(); const w = Math.min(1700, i.naturalWidth), c = document.createElement('canvas'); c.width = w; c.height = Math.round(i.naturalHeight * w / i.naturalWidth); c.getContext('2d').drawImage(i, 0, 0, c.width, c.height); return c.toDataURL('image/jpeg', .8); });
     fs.mkdirSync(path.dirname(path.join(tmp, name)), { recursive: true });
