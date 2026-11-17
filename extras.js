@@ -11,7 +11,6 @@
       guideRole: 'Guia de muntanya · Fundador d’Andes Wild Trek',
       guideText: 'Guia de muntanya format com a tècnic esportiu en mitja muntanya, amb especialització en esquí de muntanya i experiència guiant grups a l’estranger. La seva muntanya de cada dia és el Pirineu; l’Apolobamba és el projecte amb què vol portar aquesta manera de guiar als Andes.',
       guidePoints: [['Formació', 'Tècnic esportiu en mitja muntanya (TD2)'], ['Terreny habitual', 'Pirineus i mitja muntanya de tot l’Estat'], ['A l’Apolobamba', 'Sempre amb un guia local habilitat']],
-      guideQuote: '«Guiar és decidir bé i explicar per què. El cim és que tothom torni amb ganes de tornar-hi.»',
       guideCaption: 'Al cim del Mont Perdut, 3.355 m',
       cmpTitle: 'Per fer-te’n una idea', cmpText: 'El pas Sunchulli és més alt que el Mont Blanc, i dormirem cinc nits per sobre dels 4.000 m. Per això el programa comença amb tres dies d’aclimatació.',
       cmp: [['Pica d’Estats', 3143, 0], ['Aneto', 3404, 0], ['La Paz · on ens aclimatem', 3650, 1], ['Campament més alt', 4717, 1], ['Mont Blanc', 4806, 0], ['Pas Sunchulli', 5032, 2]],
@@ -50,7 +49,6 @@
       guideRole: 'Guía de montaña · Fundador de Andes Wild Trek',
       guideText: 'Guía de montaña formado como técnico deportivo en media montaña, con especialización en esquí de montaña y experiencia guiando grupos en el extranjero. Su montaña de cada día es el Pirineo; Apolobamba es el proyecto con el que quiere llevar esa manera de guiar a los Andes.',
       guidePoints: [['Formación', 'Técnico deportivo en media montaña (TD2)'], ['Terreno habitual', 'Pirineos y media montaña de toda España'], ['En Apolobamba', 'Siempre con un guía local habilitado']],
-      guideQuote: '«Guiar es decidir bien y explicar por qué. La cumbre es que todo el mundo vuelva con ganas de repetir.»',
       guideCaption: 'En la cima del Monte Perdido, 3.355 m',
       cmpTitle: 'Para hacerte una idea', cmpText: 'El paso Sunchulli es más alto que el Mont Blanc, y dormiremos cinco noches por encima de los 4.000 m. Por eso el programa empieza con tres días de aclimatación.',
       cmp: [['Pica d’Estats', 3143, 0], ['Aneto', 3404, 0], ['La Paz · donde nos aclimatamos', 3650, 1], ['Campamento más alto', 4717, 1], ['Mont Blanc', 4806, 0], ['Paso Sunchulli', 5032, 2]],
@@ -95,7 +93,7 @@
   const X = {
     compare,
     culture(L) { const t = T[L]; return `<section class="section wrap culture" id="territori"><div class="section-heading"><div><p class="eyebrow">${t.cultLabel}</p><h2>${t.cultTitle}</h2></div><p class="section-intro">${t.cultIntro}</p></div><div class="cult-grid">${t.cult.map(([h, b], i) => `<article><span>0${i + 1}</span><h3>${h}</h3><p>${b}</p></article>`).join('')}</div><details class="gloss"><summary>${t.glossTitle}<b aria-hidden="true">+</b></summary><dl>${t.gloss.map(([a, b]) => `<div><dt>${a}</dt><dd>${b}</dd></div>`).join('')}</dl></details><p class="cult-src">${t.cultSources}: <a href="https://ich.unesco.org/en/RL/andean-cosmovision-of-the-kallawaya-00048" target="_blank" rel="noopener">UNESCO</a> · <a href="https://bolivia.wcs.org/en-us/Landscapes/Madidi-Tambopata/Apolobamba.aspx" target="_blank" rel="noopener">WCS Bolivia</a></p></section>`; },
-    guide(L) { const t = T[L]; return `<section class="section guide-section" id="guia"><div class="wrap guide-grid"><figure><img src="assets/guia.webp" alt="${t.guideName}. ${t.guideCaption}" width="900" height="1303" loading="lazy"><figcaption>${t.guideCaption}</figcaption></figure><div><p class="eyebrow">${t.guideLabel}</p><h2>${t.guideTitle}</h2><p class="guide-name">${t.guideName}</p><p class="guide-role">${t.guideRole}</p><p>${t.guideText}</p><dl class="guide-points">${t.guidePoints.map(([a, b]) => `<div><dt>${a}</dt><dd>${b}</dd></div>`).join('')}</dl><blockquote>${t.guideQuote}</blockquote></div></div></section>`; },
+    guide(L) { const t = T[L]; return `<section class="section guide-section" id="guia"><div class="wrap guide-grid"><figure><img src="assets/guia.webp" alt="${t.guideName}. ${t.guideCaption}" width="900" height="1303" loading="lazy"><figcaption>${t.guideCaption}</figcaption></figure><div><p class="eyebrow">${t.guideLabel}</p><h2>${t.guideTitle}</h2><p class="guide-name">${t.guideName}</p><p class="guide-role">${t.guideRole}</p><p>${t.guideText}</p><dl class="guide-points">${t.guidePoints.map(([a, b]) => `<div><dt>${a}</dt><dd>${b}</dd></div>`).join('')}</dl></div></div></section>`; },
     quiz(L) { const t = T[L]; return `<aside class="quiz" id="test"><div class="quiz-head"><p class="eyebrow">${t.quizLabel}</p><h3>${t.quizTitle}</h3></div><div class="quiz-body" id="quiz-body"><button type="button" class="button button-forest" id="quiz-start">${t.quizStart}</button></div></aside>`; },
     contact(L) {
       const t = T[L], on = !!CONTACT.whatsapp;
