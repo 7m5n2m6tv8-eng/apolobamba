@@ -7,9 +7,9 @@
   let L = store.get('guia-lang', 'ca'), tab = store.get('guia-tab', 0), day = store.get('guia-day', 0), mapDay = -1, you = null;
   if (!G[L]) L = 'ca';
   const t = () => G[L], C = () => window.COPY[L];
-  const fmt = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-  const dec = n => n.toFixed(1).replace('.', ',');
-  const hm = s => L === 'es' ? s.replace(/(\d\d)\.(\d\d)/g, '$1:$2') : s;
+  const fmt = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ({ en: ',', fr: '\u202f' })[L] || '.');
+  const dec = n => n.toFixed(1).replace('.', L === 'en' ? '.' : ',');
+  const hm = s => L === 'ca' ? s : L === 'fr' ? s.replace(/(\d\d)\.(\d\d)/g, '$1 h $2') : s.replace(/(\d\d)\.(\d\d)/g, '$1:$2');
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const app = document.getElementById('app');
 
@@ -23,15 +23,18 @@
     <dl class="times"><div><dt>${g.start}</dt><dd>${hm(s.start)}</dd></div><div><dt>${g.arrival}</dt><dd>${hm(s.arrival)}</dd></div><div><dt>${g.limit}</dt><dd>${hm('16.40')}</dd></div></dl>
     <p>${x.text}</p><p class="keyp"><b>${g.key}.</b> ${hm(x.key)}</p></article>
     <div class="table"><div class="th"><span>${g.cols[0]}</span><span>${g.cols[1]}</span><span>${g.cols[2]}</span><span>${g.cols[3]}</span><span></span></div>${rows}</div>
-    <article class="card"><h2>${PL.c[L].title}</h2><p>${PL.c[L].intro}</p><ul>${PL.c[L].when.map(w => `<li>${w}</li>`).join('')}</ul><p class="note">${PL.c[L].source}</p></article>`;
+    <article class="card"><h2>${PL.c[L].title}</h2><p>${PL.c[L].intro}</p><ul>${PL.c[L].when.map(w => `<li>${w}</li>`).join('')}</ul><p class="note">${PL.c[L].source}</p><a class="btn ghost" href="../dossiers/gpx/Apolobamba_Pla_C.gpx" download>${g.gpxC}</a></article>`;
   }
   function days() {
     if (day >= 6) return planCStage(day - 6);
     const d = DAYS[day], c = C(), g = t(), ctl = G.control[day];
     const rows = d.points.map((p, i) => {
-      const [mca, mes, dca, des] = ctl[i] || ['', '', '', ''];
-      const hard = /MITJA VOLTA|MEDIA VUELTA|PUNT DE DECISIÓ|PUNTO DE DECISIÓN/.test(L === 'ca' ? dca : des);
-      return `<details class="pt${hard ? ' hard' : ''}"><summary><span class="km">${dec(p.km)}</span><span class="nm">${p[L]}</span><span class="el">${fmt(p.ele)}</span><span class="tm">${hm(p.time)}</span><span class="mx">${L === 'ca' ? mca : mes}</span></summary><p>${L === 'ca' ? dca : des}</p><p class="ll">${g.coords}: <code>${p.ll[0].toFixed(5)}, ${p.ll[1].toFixed(5)}</code> <button type="button" data-copy="${p.ll[0].toFixed(5)}, ${p.ll[1].toFixed(5)}">${g.copy}</button></p></details>`;
+      const [mca, mes, dca0, des0] = ctl[i] || ['', '', '', ''];
+      const tx = L === 'ca' ? dca0 : L === 'es' ? des0 : ((G.controlT[L] || [])[day] || [])[i] || des0;
+      const mx = L === 'ca' ? mca : L === 'es' ? mes : /\d\d\.\d\d/.test(mca) ? hm(mca) : (L === 'fr' ? 'avant le départ' : 'before leaving');
+      const dca = tx, des = tx;
+      const hard = /MITJA VOLTA|MEDIA VUELTA|PUNT DE DECISIÓ|PUNTO DE DECISIÓN|TURN BACK|DECISION POINT|DEMI-TOUR|POINT DE DÉCISION/.test(tx);
+      return `<details class="pt${hard ? ' hard' : ''}"><summary><span class="km">${dec(p.km)}</span><span class="nm">${p[L]}</span><span class="el">${fmt(p.ele)}</span><span class="tm">${hm(p.time)}</span><span class="mx">${mx}</span></summary><p>${L === 'ca' ? dca : des}</p><p class="ll">${g.coords}: <code>${p.ll[0].toFixed(5)}, ${p.ll[1].toFixed(5)}</code> <button type="button" data-copy="${p.ll[0].toFixed(5)}, ${p.ll[1].toFixed(5)}">${g.copy}</button></p></details>`;
     }).join('');
     const pb = (PL.b.find(b => b.day === d.day) || { ca: [], es: [] })[L];
     return `${chipsDays(g)}
@@ -40,7 +43,7 @@
     <dl class="times"><div><dt>${g.start}</dt><dd>${hm(d.start)}</dd></div><div><dt>${g.arrival}</dt><dd>${hm(d.arrival)}</dd></div><div><dt>${g.limit}</dt><dd>${hm('16.40')}</dd></div></dl>
     <p class="keyp"><b>${g.key}.</b> ${c.stageFocusText[day]}</p></article>
     <div class="table"><div class="th"><span>${g.cols[0]}</span><span>${g.cols[1]}</span><span>${g.cols[2]}</span><span>${g.cols[3]}</span><span>${g.cols[4]}</span></div>${rows}</div>
-    <article class="card"><h2>${g.planB}</h2>${pb.map(([a, b]) => `<details class="sf" open><summary>${hm(a)}</summary><p>${hm(b)}</p></details>`).join('')}</article>
+    <article class="card"><h2>${g.planB}</h2>${pb.map(([a, b]) => `<details class="sf" open><summary>${hm(a)}</summary><p>${hm(b)}</p></details>`).join('')}${PC.routes.filter(r => r.day === d.day).map(r => `<p class="note">${r.kind === 'walk' ? '🥾' : '🚙'} ${esc(r[L] || r.es)} · ${dec(r.km)} km</p>`).join('')}<a class="btn ghost" href="../dossiers/gpx/Apolobamba_Pla_B_Dia${d.day}.gpx" download>${g.gpxB} ${d.day}</a></article>
     <p class="note">${g.rule}</p>`;
   }
 
@@ -70,7 +73,7 @@
     const line = (pts, extra) => `<polyline points="${pts.map(p => P(p[0], p[1]).map(v => v.toFixed(1)).join(',')).join(' ')}" fill="none" stroke-linejoin="round" stroke-linecap="round" ${extra}/>`;
     let o = CUT.slice(0, -1).map((c, i) => `<polyline points="${seg(c, CUT[i + 1])}" fill="none" stroke="${cols[i]}" stroke-width="${mapDay < 0 || mapDay === i ? 4 : 2}" stroke-opacity="${mapDay < 0 || mapDay === i ? 1 : mapDay === 6 ? .2 : .25}" stroke-linejoin="round" stroke-linecap="round"/>`).join('');
     if (showC) o += line(PC.pts, `stroke="#7a4fa0" stroke-width="${mapDay === 6 ? 4 : 2.5}" stroke-dasharray="7 5"`);
-    if (mapDay < 0 || mapDay === 3) o += line(PC.alt, 'stroke="#b4573a" stroke-width="3" stroke-dasharray="3 4"');
+    PC.routes.forEach(r => { if (mapDay === 6 || (mapDay >= 0 && DAYS[mapDay].day !== r.day)) return; o += line(r.pts, r.kind === 'walk' ? 'stroke="#b4573a" stroke-width="2.5" stroke-dasharray="3 4"' : 'stroke="#d9822b" stroke-width="2" stroke-dasharray="8 4"'); });
     if (mapDay === 6) CS.forEach(s => s.points.forEach((p, pi) => { const [x, y] = P(p.ll[0], p.ll[1]); o += `<circle cx="${x}" cy="${y}" r="${pi === s.points.length - 1 ? 6 : 4}" fill="${pi === s.points.length - 1 ? '#e5c98d' : '#fff'}" stroke="#7a4fa0" stroke-width="2"/><text x="${x + 9}" y="${y + 4}">${esc(p[L])}</text>`; }));
     PL.escapes.forEach(e => { if (mapDay >= 0 && mapDay < 6 && !e.days.includes(DAYS[mapDay].day)) return; if (mapDay === 6) return; const [x, y] = P(e.ll[0], e.ll[1]); o += `<rect x="${x - 6}" y="${y - 6}" width="12" height="12" rx="2" fill="#b4573a" stroke="#fff" stroke-width="1.5"/><text x="${x - 9}" y="${y + 4}" text-anchor="end" class="esc">${esc(e[L].split(' · ')[0])}</text>`; });
     DAYS.forEach((d, di) => d.points.forEach((p, pi) => {
@@ -96,7 +99,7 @@
   function map() {
     const g = t();
     return `<div class="chips"><button type="button" data-mapday="-1" class="${mapDay < 0 ? 'on' : ''}">${g.allDays}</button>${DAYS.map((x, i) => `<button type="button" data-mapday="${i}" class="${i === mapDay ? 'on' : ''}">${g.day} ${x.day}</button>`).join('')}<button type="button" data-mapday="6" class="pc ${mapDay === 6 ? 'on' : ''}">${g.planC}</button></div>
-    <div class="card mapcard">${mapSvg()}${mapDay === 6 ? '' : profileSvg()}<p class="legend"><i class="lc"></i>${g.planC} <i class="la"></i>${g.altRoute} <i class="le"></i>${g.escape}</p></div>
+    <div class="card mapcard">${mapSvg()}${mapDay === 6 ? '' : profileSvg()}<p class="legend"><i class="lc"></i>${g.planC} <i class="la"></i>${g.altRoute} <i class="lv"></i>${g.vehRoute} <i class="le"></i>${g.escape}</p></div>
     <p class="loc" id="loc" aria-live="polite">${you ? you.msg : ''}</p>
     <div class="actions"><button type="button" class="btn" id="locate">${g.locate}</button><button type="button" class="btn ghost" id="gpx">${g.gpx}</button></div>
     <p class="note">${g.mapNote}</p>`;
@@ -154,7 +157,7 @@
   function render() {
     const g = t(); document.documentElement.lang = L; document.title = g.title;
     const views = [days, map, meteo, safety, checks];
-    app.innerHTML = `<header class="top"><div><h1>${g.title}</h1><p>${g.sub}</p></div><div class="lang"><button type="button" data-lang="ca" aria-pressed="${L === 'ca'}">CA</button><button type="button" data-lang="es" aria-pressed="${L === 'es'}">ES</button></div></header>
+    app.innerHTML = `<header class="top"><div><h1>${g.title}</h1><p>${g.sub}</p></div><div class="lang">${['ca', 'es', 'en', 'fr'].map(l => `<button type="button" data-lang="${l}" aria-pressed="${L === l}" lang="${l}">${l.toUpperCase()}</button>`).join('')}</div></header>
     <p class="status ${navigator.serviceWorker && navigator.serviceWorker.controller ? 'ok' : ''}">${navigator.serviceWorker && navigator.serviceWorker.controller ? g.offlineOk : g.offlineNo}</p>
     <main>${views[tab]()}<p class="foot">${g.footer}</p></main>
     <nav class="tabs">${g.tabs.map((x, i) => `<button type="button" data-tab="${i}" class="${i === tab ? 'on' : ''}">${x}</button>`).join('')}</nav>`;
