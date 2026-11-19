@@ -97,7 +97,7 @@ function html(L) {
   };
   return `<!doctype html><html lang="${L}"><head><meta charset="utf-8"><base href="file://${ROOT}/"><title>${d.title}</title><style>
   @page{size:A4;margin:16mm 15mm 16mm}
-  .months{width:100%;border-collapse:separate;border-spacing:1.2mm 0;margin:3mm 0 2mm}.months td{text-align:center;font:600 8pt Arial,sans-serif;padding:5mm 0 1.5mm;border-radius:1mm;background:#eceee7;color:#7b8378}.months .m-best{background:#163e33;color:#fff}.months .m-ok{background:#9daa86;color:#102c25}.months .m-risk{background:#e2cfa6;color:#102c25}.legend{font-size:8.5pt;color:#5b6b64}.legend span{margin-right:5mm}.legend i{display:inline-block;width:3mm;height:3mm;margin-right:1.5mm;border-radius:.6mm;vertical-align:-.4mm;background:#eceee7}.legend i.m-best{background:#163e33}.legend i.m-ok{background:#9daa86}.legend i.m-risk{background:#e2cfa6}.maps4{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-top:5mm}.maps4 img{width:100%;border:1px solid #d9ddd0}.maps4 figcaption{font-size:8pt;color:#5b6b64}.small{font-size:8pt;color:#5b6b64}
+  .months{width:100%;border-collapse:separate;border-spacing:1.2mm 0;margin:3mm 0 2mm}.months td{text-align:center;font:600 8pt Arial,sans-serif;padding:5mm 0 1.5mm;border-radius:1mm;background:#eceee7;color:#7b8378}.months .m-best{background:#163e33;color:#fff}.months .m-ok{background:#9daa86;color:#102c25}.months .m-risk{background:#e2cfa6;color:#102c25}.legend{font-size:8.5pt;color:#5b6b64}.legend span{margin-right:5mm}.legend i{display:inline-block;width:3mm;height:3mm;margin-right:1.5mm;border-radius:.6mm;vertical-align:-.4mm;background:#eceee7}.legend i.m-best{background:#163e33}.legend i.m-ok{background:#9daa86}.legend i.m-risk{background:#e2cfa6}.maps4{display:grid;grid-template-columns:1fr 1fr;gap:2.5mm 4mm;margin:3mm auto 0;width:86%}.maps4 img{width:100%;border:1px solid #d9ddd0}.maps4 figcaption{font-size:8pt;color:#5b6b64}.small{font-size:8pt;color:#5b6b64}
   *{box-sizing:border-box}body{font:10.5pt/1.5 Georgia,'DejaVu Serif',serif;color:#1d2a25;margin:0}
   h1,h2,h3,.kicker,th,dt,.label{font-family:'Helvetica Neue',Arial,'DejaVu Sans',sans-serif}
   .cover{height:262mm;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;padding:18mm 14mm;background:linear-gradient(180deg,#0000 30%,#0d2b22ee 80%),url(file://${IMG}/apolobamba-landscape.jpg) center/cover;page-break-after:always}
@@ -130,6 +130,7 @@ function html(L) {
   <section class="page">${h2(2, d.programme)}
     <table><thead><tr>${c.itinCols.map(x => `<th>${x}</th>`).join('')}</tr></thead><tbody>${c.itinerary.map(([dd, a, b, n]) => `<tr class="${+dd >= 5 && +dd <= 10 ? 'walk' : ''}"><td>${dd}</td><th>${a}</th><td>${b}</td><td>${n}</td></tr>`).join('')}</tbody></table>
     <p class="notice"><b>${c.reserveTitle}.</b> ${c.reserveText}</p>
+    <p class="notice" style="border-color:#163e33"><b>${c.meetTitle}.</b> ${hm(c.meetText)}</p>
   </section>
   <section class="page">${h2(3, d.profile)}<p>${d.profileText}</p>${profileSvg(L)}
     <div style="margin-top:10mm">${h2(4, d.stages)}<p>${d.stagesText}</p><ol>${DAYS.map((x, i) => `<li>${c.dayWord} ${x.day} · ${c.stageNames[i]} · ${dec(x.km)} km · ${x.hours}</li>`).join('')}</ol></div>
@@ -164,9 +165,10 @@ function html(L) {
   </section>
 
   <section class="page compact">${h2(10, d.price)}
-    <p class="price">${c.priceAmount} € <small style="font-size:11pt;font-weight:400">${c.perPerson}</small></p><p>${c.priceNote}</p>
+    <p class="price">${c.priceAmount} € <small style="font-size:11pt;font-weight:400">${c.perPerson} · ${c.earlyLabel}</small></p><p><b>${c.priceStd} €</b> ${c.perPerson} · ${c.stdLabel}. ${c.priceNote}</p><p class="notice" style="border-color:#163e33"><b>${c.guarantee[0]}.</b> ${c.guarantee[1]}</p>
     <div class="grid2"><div class="card"><b>${d.included}</b><ul>${c.includeItems.map(x => `<li>${x}</li>`).join('')}</ul></div><div class="card"><b>${d.excluded}</b><ul>${c.excludeItems.map(x => `<li>${x}</li>`).join('')}</ul></div></div>
-    <div style="margin-top:5mm">${c.conds.map(([a, b]) => `<p class="cond"><b>${a}.</b> ${b}</p>`).join('')}</div>
+    <div class="grid2" style="margin-top:4mm"><div class="card"><b>${c.bookTitle}</b><ol style="padding-left:5mm;margin:1mm 0">${c.bookSteps.map(([a, b]) => `<li><b style="display:inline">${a}.</b> ${b}</li>`).join('')}</ol></div><div class="card"><b>${c.cancelTitle}</b><table style="font-size:8.5pt"><tbody>${c.cancelRows.map(([a, b]) => `<tr><td>${a}</td><td style="text-align:right">${b}</td></tr>`).join('')}</tbody></table><ul style="font-size:8pt">${c.cancelNotes.map(x => `<li>${x}</li>`).join('')}</ul></div></div>
+    <div style="margin-top:4mm">${c.conds.filter((_, i) => i !== 4 && i !== 7).map(([a, b]) => `<p class="cond"><b>${a}.</b> ${b}</p>`).join('')}</div>
     <p class="notice">${c.priceDisclaimer}</p>
     <div style="break-inside:avoid">${h2(11, d.contact)}<div class="contact"><p>${d.contactText}</p><p><b>${d.guide}</b><br>WhatsApp: +${CONTACT.slice(0, 2)} ${CONTACT.slice(2).replace(/(\d{3})(?=\d)/g, '$1 ')}<br>${d.web}: 7m5n2m6tv8-eng.github.io/apolobamba</p></div></div>
   </section>

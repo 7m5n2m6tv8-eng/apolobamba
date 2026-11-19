@@ -12,20 +12,20 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
   - Trabajo académico: `treball.html`
   - Presentación (14 diapositivas con guion, tecla N): `presentacio.html`
   - App del guía: `guia/` (…/apolobamba/guia/)
-- Estado a 17/11/2026: PR #10 integrada en `main`: revisión completa, precio 2.700 € con margen del 20 % y grupo de 8–13, GPX de los planes B y C, y traducción al inglés y al francés.
+- Estado a 19/11/2026: PR #11 integrada en `main`: ficha del cliente reorganizada (nivel, requisitos, punto de encuentro, precio anticipado, reserva, cancelación y grupo privado) en la web, la ficha, la preparación, el dossier, la presentación y el trabajo.
 
 ## Forma de trabajar (obligatorio)
 
 1. Los cambios van **siempre en una rama** (`claude/<descripcion>`) con **pull request a `main`**. No se toca `main` directamente. Izan revisa la PR y pide integrarla.
 2. Según lo que cambie, antes del commit:
-   - Datos de las jornadas → primero `python3 tools/atles.py` y después `node tools/dossier.js` (regenera los cuatro dossiers completos, de 15 páginas, con los mapas nuevos). `tools/atles.py` regenera el Atles cartogràfic A3 y los mapas del dossier; necesita `reportlab`, `Pillow` y acceso a `tile.opentopomap.org`, que está permitido en el entorno «apolobamba».
+   - Datos de las jornadas → primero `python3 tools/atles.py` y después `node tools/dossier.js` (regenera los cuatro dossiers completos, de 16 páginas, con los mapas nuevos). `tools/atles.py` regenera el Atles cartogràfic A3 y los mapas del dossier; necesita `reportlab`, `Pillow` y acceso a `tile.opentopomap.org`, que está permitido en el entorno «apolobamba».
    - Textos o secciones de `index.html` → `node tools/prerender.js` (versión estática).
    - Documentos del cliente (ficha, preparación, plan de entrenamiento, libreta de ruta y encuesta, en 4 idiomas) → `node tools/client_docs.js`.
    - Rutas de los planes B y C → `python3 tools/gpx.py` (GPX en `dossiers/gpx/`).
    - **Siempre, al final:** `python3 tools/stamp.py` (actualiza `version.txt` y los `?v=` para que el móvil cargue la versión nueva sin caché).
 3. No hay dependencias ni build: es una web estática. Para probarla: `python3 -m http.server`. Revisa en móvil (390 px) y escritorio, en **ca, es, en y fr**, sin errores de consola ni enlaces rotos. La app `guia/` se prueba aparte.
 4. **Trabajo escrito:** se edita `dossiers/Apolobamba_TD2_Treball_Complet.docx` y se exporta a PDF con el **mismo nombre**. Si cambia algún bloque, se regeneran los PDF de los bloques 01–06 y se actualiza el buscador (`modules.json`). **Nunca renombres archivos de `dossiers/`**, porque la web los enlaza.
-5. **Textos de la web:** están en `content.js`. Cada clave existe en `ca`, `es`, `en` y `fr`, y los cuatro idiomas deben ir sincronizados. El inglés y el francés se escriben en `tools/i18n_web.py` (web) y `tools/i18n_plans.py` (planes) y se aplican con `python3 tools/i18n_apply.py` (después de `tools/plans_data.py`).
+5. **Textos de la web:** están en `content.js`. Nivel, requisitos, punto de encuentro, precios, reserva, cancelación, grupo privado y material (obligatorio / recomendado / organización) se escriben en `tools/fitxa_data.py` para los cuatro idiomas y también los aplica `tools/i18n_apply.py`. Cada clave existe en `ca`, `es`, `en` y `fr`, y los cuatro idiomas deben ir sincronizados. El inglés y el francés se escriben en `tools/i18n_web.py` (web) y `tools/i18n_plans.py` (planes) y se aplican con `python3 tools/i18n_apply.py` (después de `tools/plans_data.py`).
 6. Los mensajes de las PR y los resúmenes para Izan van en castellano, claros y sin jerga técnica.
 
 ## Estructura del repo
@@ -45,8 +45,8 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 | `assets/` | Fotos WebP, mapas de cada jornada para el dossier (`assets/maps/`, los genera `tools/atles.py`; no se usan en la web), flyer, figuras de la presentación, créditos en `PHOTOGRAPHY.md` |
 | `dossiers/` | Trabajo completo (PDF + DOCX), bloques 01–06, Atles cartogràfic A3 y Formularis operatius |
 | `dossiers/gpx/` | GPX de la ruta principal, de las rutas de cada plan B (días 5–10) y del plan C (generados con `tools/gpx.py` sobre OpenStreetMap) |
-| `dossiers/client/` | Para el cliente, en ca, es, en y fr: ficha del viaje, preparación y material, plan de entrenamiento de 12 semanas, libreta de ruta y **dossier completo** (`Dossier_Viatge_CA`, `Dossier_Viaje_ES`, `Travel_Dossier_EN`, `Dossier_Voyage_FR`; 15 págs., con temporada, planes B y plan C; **no se enlaza en la web**: se envía por WhatsApp cuando el cliente contacta) |
-| `tools/` | `stamp.py` (versión), `dossier.js` (dossier del cliente), `plans_data.py` (fuente de temporada, planes B, plan C, ABC y criterios → `window.PLANS`; con `PLANC_WORK` también regenera `guia/planc.js`), `atles.py` (Atles cartogràfic A3, 11 láminas: mapa general, 6 jornadas y 4 etapas del plan C, con las rutas de los planes B; exporta `assets/maps/jornada-*`, `pla-c-*` y `general-*` para el dossier; `--no-export` para no exportar), `prerender.js` (HTML estático), `client_docs.js` (ficha, preparación, entrenamiento, libreta de ruta y encuesta en 4 idiomas), `gpx.py` (GPX), `grafic_pressupost.py` (gráfico del presupuesto), `i18n_*.py` (inglés y francés) |
+| `dossiers/client/` | Para el cliente, en ca, es, en y fr: ficha del viaje, preparación y material, plan de entrenamiento de 12 semanas, libreta de ruta y **dossier completo** (`Dossier_Viatge_CA`, `Dossier_Viaje_ES`, `Travel_Dossier_EN`, `Dossier_Voyage_FR`; 16 págs., con temporada, planes B y plan C; **no se enlaza en la web**: se envía por WhatsApp cuando el cliente contacta) |
+| `tools/` | `stamp.py` (versión), `dossier.js` (dossier del cliente), `plans_data.py` (fuente de temporada, planes B, plan C, ABC y criterios → `window.PLANS`; con `PLANC_WORK` también regenera `guia/planc.js`), `atles.py` (Atles cartogràfic A3, 11 láminas: mapa general, 6 jornadas y 4 etapas del plan C, con las rutas de los planes B; exporta `assets/maps/jornada-*`, `pla-c-*` y `general-*` para el dossier; `--no-export` para no exportar), `prerender.js` (HTML estático), `client_docs.js` (ficha, preparación, entrenamiento, libreta de ruta y encuesta en 4 idiomas), `gpx.py` (GPX), `grafic_pressupost.py` (gráfico del presupuesto), `i18n_*.py` (inglés y francés), `fitxa_data.py` (nivel, requisitos, reserva, cancelación y material en 4 idiomas), `blocs.py` (bloques 01–06, formularios y buscador a partir del trabajo completo) |
 
 ## Decisiones tomadas (no reabrir sin que Izan lo pida)
 
@@ -54,6 +54,8 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 - **La etapa 2 se reparte en dos días, con noche en Hilo Hilo**, para que el día del paso Sunchulli (7–9 h) quepa en la ventana de luz. Lo respaldan los programas de operadores bolivianos.
 - **La etapa final tiene un punto de decisión en el cruce de Curva:** si el grupo va justo de tiempo, termina allí y sigue en vehículo.
 - **Precio de referencia: 2.700 € por persona**, margen del 20 % con 8 clientes (20,2 %). Grupo de **8–13** con guía de montaña y guía local; a partir de 10 clientes se añade un guía de apoyo (1.953,75 €). Coste = (10.447,50 + 653,75·n + apoyo) × 1,10. Con 6–7 clientes no se llega al 20 %.
+- **Precio anticipado y condiciones (propuesta, pendiente de asesoría):** 2.700 € hasta 90 días antes de la salida y 2.850 € después (el presupuesto se calcula con 2.700 €). Señal del 30 % al confirmar y resto 45 días antes. Garantía de salida: si no se llega a 8, aviso como mínimo 30 días antes y devolución del 100 % en 14 días (u otra fecha). Cancelación por el cliente sobre el precio total: 10 % a más de 90 días, 25 % de 90 a 61, 50 % de 60 a 31, 75 % de 30 a 15 y 100 % a menos de 15 o sin presentarse; cesión de plaza posible; sin gastos por circunstancias inevitables y extraordinarias en destino. Suplementos (habitación y tienda individual, alquiler de saco) con precio a confirmar. Grupo privado de 8–13 con fechas dentro de la temporada y presupuesto a medida.
+- **Ficha del cliente:** nivel en cuatro indicadores (exigencia física alta, dificultad técnica baja, altitud muy alta, aislamiento alto) y requisitos concretos (una travesía previa de 3 días o más; 8–9 h con unos 1.000 m dos días seguidos). Punto de encuentro: día 1 en el aeropuerto de El Alto (LPB) y reunión de bienvenida a las 19.00 en el hotel; el servicio termina el día 11 por la tarde en La Paz. Orden de la web: inicio, cifras, nivel y requisitos, experiencia, etapas, programa (con punto de encuentro), precio y condiciones, territorio, método, guía, preparación, preguntas, documentos y contacto. Ficha del viaje en 2 páginas; dossier completo de 16 páginas.
 - **Fechas propuestas: junio de 2027** (temporada seca). **Las reservas no están abiertas.** La web lo dice claramente: es un proyecto académico.
 - **Web del cliente sin tracks, mapas ni meteo:** nada de mapa interactivo, perfil, track GPS, mapas de etapa, libreta de ruta ni atlas. Las etapas muestran los datos principales y remiten al **dossier completo, que se pide por WhatsApp**. La información técnica vive en la app del guía y en el trabajo.
 - **El trabajo no tiene versiones:** nada de "edició 1.x", "què canvia" ni "versió descartada", solo la fecha. Lo pendiente está en el **Annex D**. La bibliografía está en el **Annex E** e incluye las fuentes de meteorología.
@@ -100,7 +102,9 @@ Fuentes de contraste (cap. 9 y Annex E del trabajo): track de Gallotrekk en Wiki
 8. **#8**: Atles cartogràfic A3 redibujado con `tools/atles.py` (6 páginas, una por jornada, topónimos normalizados, decimales con coma); el dossier del cliente usa los mismos mapas en ca/es; Annex D actualizado (Word, PDF, bloque 06 y buscador); llegada a Charazani unificada en 15.10–16.40 (web, app, trabajo, dossier y libretas de ruta).
 9. **#9**: revisión de la ruta (17/11/2026): temporada recomendada, planes B por jornada y vías de evacuación, plan C con fichas técnicas, carreteras (ABC) y criterios de agua y permisos, en la web del cliente, la página del trabajo, la presentación, la app del guía, el atlas (10 láminas), el dossier y el trabajo escrito (cap. 10.2–10.6, Annex D y E).
 
-10. **#10**: revisión completa (coherencia de datos, agua, microcrampones, plan C con noche en Curva, nomenclatura por días), precio 2.700 € con margen del 20 % y grupo de 8–13, GPX y mapas de los planes B y C (atlas de 11 láminas con mapa general), encuesta del cliente, generador de documentos del cliente, traducción al inglés y al francés y dossier completo compactado a 15 páginas.
+10. **#10**: revisión completa (coherencia de datos, agua, microcrampones, plan C con noche en Curva, nomenclatura por días), precio 2.700 € con margen del 20 % y grupo de 8–13, GPX y mapas de los planes B y C (atlas de 11 láminas con mapa general), encuesta del cliente, generador de documentos del cliente, traducción al inglés y al francés y dossier completo compactado.
+
+11. **#11**: ficha del cliente reorganizada siguiendo el modelo de las fichas de travesías organizadas del Pirineo: nivel en cuatro indicadores, requisitos, punto de encuentro, precio anticipado (2.700/2.850 €), garantía de salida, suplementos, reserva en cuatro pasos, tabla de cancelación, grupo privado y material obligatorio / recomendado / de la organización; nuevo orden de la web; ficha de 2 páginas; dossier, presentación y trabajo (cap. 5.2, 5.3, 6.1, 6.2 y Annex D) actualizados.
 
 ## Pendiente
 
@@ -112,6 +116,7 @@ Fuentes de contraste (cap. 9 y Annex E del trabajo): track de Gallotrekk en Wiki
 
 **Fuera del repositorio (Annex D, depende de Izan o del trabajo de campo):**
 - Reconocer la bajada alternativa a las Mil Corbes y las cuatro etapas del plan C; acuerdos de acampada en Cañisaya, Huayrapata y Quellwa Cota; uso de pistas mineras para evacuar.
+- Validar con asesoría el precio anticipado, la señal, el calendario de pagos y la escala de cancelación, y fijar el precio de los suplementos.
 - Ratificar el modelo de agencia organizadora (si solo se vende guiado, hay que rehacer contrato, fiscalidad y presupuesto) y el mínimo de 8 clientes (qué hacer con 6–7).
 - Reconocimiento de campo: trazado, tiempos reales, cotas de pernocta, campamentos, nieve o hielo, el puente, agua, comunicaciones y retiradas. Si fallan Hilo Hilo, el Campament 2 o los tiempos de E2b y E5, añadir jornadas o cambiar la ruta.
 - Situar el Campament 2 hacia los 4.500 m: en el punto del GPX (4.717 m) la noche sube 707 m respecto a Hilo Hilo.
