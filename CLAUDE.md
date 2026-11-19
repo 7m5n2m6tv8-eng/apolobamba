@@ -12,7 +12,7 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
   - Trabajo académico: `treball.html`
   - Presentación (14 diapositivas con guion, tecla N): `presentacio.html`
   - App del guía: `guia/` (…/apolobamba/guia/)
-- Estado a 19/11/2026: PR #10 integrada en `main`. PR #11 abierta (`claude/fitxa-client`): ficha del cliente reorganizada (nivel, requisitos, punto de encuentro, precio anticipado, reserva, cancelación y grupo privado) en la web, la ficha, la preparación, el dossier, la presentación y el trabajo.
+- Estado a 19/11/2026: PR #11 integrada en `main`: ficha del cliente reorganizada (nivel, requisitos, punto de encuentro, precio anticipado, reserva, cancelación y grupo privado) en la web, la ficha, la preparación, el dossier, la presentación y el trabajo.
 
 ## Forma de trabajar (obligatorio)
 
@@ -104,7 +104,7 @@ Fuentes de contraste (cap. 9 y Annex E del trabajo): track de Gallotrekk en Wiki
 
 10. **#10**: revisión completa (coherencia de datos, agua, microcrampones, plan C con noche en Curva, nomenclatura por días), precio 2.700 € con margen del 20 % y grupo de 8–13, GPX y mapas de los planes B y C (atlas de 11 láminas con mapa general), encuesta del cliente, generador de documentos del cliente, traducción al inglés y al francés y dossier completo compactado.
 
-11. **#11** (abierta): ficha del cliente reorganizada siguiendo el modelo de las fichas de travesías organizadas del Pirineo: nivel en cuatro indicadores, requisitos, punto de encuentro, precio anticipado (2.700/2.850 €), garantía de salida, suplementos, reserva en cuatro pasos, tabla de cancelación, grupo privado y material obligatorio / recomendado / de la organización; nuevo orden de la web; ficha de 2 páginas; dossier, presentación y trabajo (cap. 5.2, 5.3, 6.1, 6.2 y Annex D) actualizados.
+11. **#11**: ficha del cliente reorganizada siguiendo el modelo de las fichas de travesías organizadas del Pirineo: nivel en cuatro indicadores, requisitos, punto de encuentro, precio anticipado (2.700/2.850 €), garantía de salida, suplementos, reserva en cuatro pasos, tabla de cancelación, grupo privado y material obligatorio / recomendado / de la organización; nuevo orden de la web; ficha de 2 páginas; dossier, presentación y trabajo (cap. 5.2, 5.3, 6.1, 6.2 y Annex D) actualizados.
 
 ## Pendiente
 
