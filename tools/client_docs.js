@@ -255,7 +255,7 @@ tr.walk td:first-child{color:#163e33;font-weight:700}.grid2{display:grid;grid-te
 .check li{list-style:none;margin-left:-4mm}.note{background:#eff2e9;border-left:2px solid #163e33;padding:2mm 3mm;margin-top:2mm;font-size:8.8pt}
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:0}.card{border:1px dashed #9aa79e;padding:4mm;min-height:92mm;break-inside:avoid}.card h3{font:600 12pt Inter,Arial,sans-serif;color:#163e33;margin:0 0 1mm}.card .m{font-weight:600;color:#163e33;margin:0 0 2mm}.card .k{background:#eff2e9;padding:1.6mm 2mm;margin-top:2mm;font-size:8.4pt}.card .b{font-size:8.2pt;color:#5b6b64;margin-top:1.2mm}
 .cover{background:#163e33;color:#fff}.cover h1{color:#fff;font-size:22pt}.cover .sub{color:#e5c98d}
-.likert td,.likert th{text-align:center}.likert td:first-child,.likert th:first-child{text-align:left;width:62%}.line{border-bottom:1px solid #9aa79e;height:7mm}`;
+.dur{margin:0 0 1mm;font-size:9pt}.levels{display:grid;grid-template-columns:repeat(4,1fr);gap:2mm}.levels>div{border:1px solid #d9ddd0;border-radius:1.5mm;padding:2mm 2.5mm}.levels b{font-size:7.5pt;text-transform:uppercase;letter-spacing:.05em;color:#5b6b64}.levels p{margin:1mm 0 0;font-size:8pt;line-height:1.35}.dots{display:flex;align-items:center;gap:1mm;margin-top:1.2mm}.dots i{width:5mm;height:1.6mm;border-radius:1mm;background:#e2e6da}.dots i.on{background:#163e33}.dots em{font-style:normal;font-weight:600;color:#163e33;margin-left:2mm}ul.two{columns:2;column-gap:6mm}.meet{background:#eff2e9;border-left:2px solid #a5603c;padding:2mm 3mm;font-size:9pt}.price div{display:flex;flex-direction:column;flex:0 0 66mm}.price div strong{font-size:15pt}.price small{font-size:7.8pt;opacity:.9}.gear{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;font-size:8.3pt}.gear b{color:#163e33;font-size:8.3pt}.gear ul{padding-left:3.5mm}.steps{margin:0;padding-left:4.5mm}.steps li{margin:.8mm 0}.small{font-size:8.3pt}.likert td,.likert th{text-align:center}.likert td:first-child,.likert th:first-child{text-align:left;width:62%}.line{border-bottom:1px solid #9aa79e;height:7mm}`;
 
 const head = (title) => `<!doctype html><html lang="${L}"><head><meta charset="utf-8"><title>${title}</title><style>${CSS}</style></head><body>`;
 
@@ -264,17 +264,25 @@ function fitxa() {
   const walk = d => `${dec(d.km)} km · +${fmt(d.ascent)} / −${fmt(d.descent)} m · ${d.hours.replace('9 h 30', '9 h 30 min')}`;
   const rows = c.itinerary.map(r => {
     const d = DAYS.find(x => String(x.day) === r[0]);
-    return `<tr class="${d ? 'walk' : ''}"><td>${r[0]}</td><td>${r[1]}</td><td>${d ? walk(d) : r[2]}</td><td>${r[3]}</td></tr>`;
+    return `<tr class="${d ? 'walk' : ''}"><td>${r[0]}</td><td>${r[1]}</td><td>${d ? walk(d) : hm(r[2])}</td><td>${r[3]}</td></tr>`;
   }).join('') + `<tr><td>${s.reserve[0]}</td><td>${s.reserve[1]}</td><td colspan="2">${s.reserve[2]}</td></tr>`;
-  const pb = c.planItems.slice(0, 3).map(([a, b]) => `<li><b>${a}.</b> ${b}</li>`).join('');
+  const dots = n => [1, 2, 3, 4].map(k => `<i class="${k <= n ? 'on' : ''}"></i>`).join('');
+  const pb = c.planItems.slice(0, 3).map(([a, b]) => `<li><b>${a}.</b> ${hm(b)}</li>`).join('');
   return head(s.fitxaT) + `<p class="kick">Andes Wild Trek</p><h1>Apolobamba · ${s.fitxaT}</h1><p class="sub">${s.sub}</p><span class="when">${s.when}</span>
-  <div class="figs">${s.figs.map(([a, b]) => `<div><b>${a}</b><span>${b}</span></div>`).join('')}</div>
+  <p class="dur"><b>${c.duration}</b> · ${s.booking}</p>
+  <h2>${c.levelWord}</h2><div class="levels">${c.levels.map(([n, v, w, t]) => `<div><b>${n}</b><span class="dots">${dots(v)}<em>${w}</em></span><p>${t}</p></div>`).join('')}</div>
+  <h2>${c.reqTitle}</h2><ul class="two">${c.reqs.map(x => `<li>${x}</li>`).join('')}</ul>
   <h2>${s.dayByDay}</h2><table><thead><tr>${s.cols.map(x => `<th>${x}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table>
-  <div class="grid2"><div><h2>${s.forWho}</h2><ul>${s.forWhoL.map(x => `<li>${x}</li>`).join('')}</ul><h2>${s.hoursH}</h2><ul>${s.hoursL.map(x => `<li>${hm(x)}</li>`).join('')}</ul></div>
-  <div><h2>${s.gearH}</h2><ul>${s.gearL.map(x => `<li>${x}</li>`).join('')}</ul><h2>${s.safeH}</h2><ul>${s.safeL.map(x => `<li>${x}</li>`).join('')}</ul></div></div>
-  <h2>${s.planH}</h2><ul>${pb}<li>${s.planC}</li></ul>
-  <div class="price"><strong>${c.priceAmount} € ${s.perPerson}</strong><p>${s.priceBox}</p></div>
-  <p class="foot">${s.foot} ${WEB} · ${s.photo}<br>ANDES WILD TREK · ${s.fitxaT} · 17.11.2026</p></body></html>`;
+  <h2>${s.planH}</h2><ul class="small">${pb}<li>${s.planC}</li></ul>
+  <p class="foot">${s.foot} ${WEB}</p>
+  <div style="page-break-before:always"></div>
+  <div class="meet"><b>${c.meetTitle}.</b> ${hm(c.meetText)}</div>
+  <div class="price"><div><strong>${c.priceAmount} € ${s.perPerson}</strong><small>${c.earlyLabel}</small><small><b>${c.priceStd} €</b> · ${c.stdLabel}</small></div><p><b>${c.guarantee[0]}.</b> ${c.guarantee[1]}</p></div>
+  <div class="grid2"><div><h2>${c.included}</h2><ul>${c.includeItems.map(x => `<li>${x}</li>`).join('')}</ul></div><div><h2>${c.excluded}</h2><ul>${c.excludeItems.map(x => `<li>${x}</li>`).join('')}</ul><h2>${c.extrasTitle}</h2><ul>${c.extras.map(([a, b]) => `<li>${a}: <i>${b}</i></li>`).join('')}</ul></div></div>
+  <h2>${s.gearH}</h2><div class="gear">${c.gearGroups.map(([h, items]) => `<div><b>${h}</b><ul>${items.map(x => `<li>${x}</li>`).join('')}</ul></div>`).join('')}<div><b>${c.gearOrgTitle}</b><ul>${c.gearOrg.map(x => `<li>${x}</li>`).join('')}</ul></div></div>
+  <div class="grid2"><div><h2>${c.bookTitle}</h2><ol class="steps">${c.bookSteps.map(([a, b]) => `<li><b>${a}.</b> ${b}</li>`).join('')}</ol><h2>${c.privateTitle}</h2><p class="small">${c.privateText}</p></div>
+  <div><h2>${c.cancelTitle}</h2><table><thead><tr>${c.cancelCols.map(x => `<th>${x}</th>`).join('')}</tr></thead><tbody>${c.cancelRows.map(([a, b]) => `<tr><td>${a}</td><td>${b}</td></tr>`).join('')}</tbody></table><ul class="small">${c.cancelNotes.map(x => `<li>${x}</li>`).join('')}</ul></div></div>
+  <p class="foot">${s.priceBox} ${s.photo}<br>ANDES WILD TREK · ${s.fitxaT} · 19.11.2026</p></body></html>`;
 }
 
 function prep() {
@@ -283,7 +291,7 @@ function prep() {
   <div class="cols3">${s.prep.map(([h, items]) => `<div class="box"><h3>${h}</h3><ul>${items.map(x => `<li>${hm(x)}</li>`).join('')}</ul></div>`).join('')}</div>
   <p class="foot">${s.prepFoot} ${WEB}</p>
   <div style="page-break-before:always"></div><h1>${s.listT}</h1>
-  <div class="cols3">${s.list.map(([h, items]) => `<div class="box"><h3>${h}</h3><ul class="check">${items.map(x => `<li>☐ ${x}</li>`).join('')}</ul></div>`).join('')}</div>
+  <div class="cols3">${[...COPY[L].gearGroups, [COPY[L].gearOrgTitle, COPY[L].gearOrg]].map(([h, items], g) => `<div class="box"><h3>${h}</h3><ul class="check">${items.map(x => `<li>${g < 3 ? '☐' : '✓'} ${x}</li>`).join('')}</ul></div>`).join('')}</div>
   <p class="note">${s.noTech}</p><p class="foot">${s.prepFoot} ${WEB}</p></body></html>`;
 }
 
@@ -325,7 +333,7 @@ function enq() {
       const f = path.join(tmp, `${key}-${lang}.html`); fs.writeFileSync(f, fn());
       await page.goto('file://' + f); await page.waitForLoadState('networkidle');
       const out = path.join(ROOT, dir, FILES[key][lang]);
-      await page.pdf({ path: out, format: 'A4', printBackground: true, margin: key === 'llib' ? { top: '8mm', bottom: '8mm', left: '8mm', right: '8mm' } : undefined, scale: key === 'fitxa' ? 0.76 : 1 });
+      await page.pdf({ path: out, format: 'A4', printBackground: true, margin: key === 'llib' ? { top: '8mm', bottom: '8mm', left: '8mm', right: '8mm' } : undefined, scale: key === 'fitxa' ? 0.84 : 1 });
       console.log(path.relative(ROOT, out));
     }
   }

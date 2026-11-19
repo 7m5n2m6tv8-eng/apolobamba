@@ -13,7 +13,7 @@ from reportlab.lib.pagesizes import A4
 
 ROOT = Path(__file__).resolve().parent.parent
 FULL = ROOT / 'dossiers/Apolobamba_TD2_Treball_Complet.pdf'
-DATE = '17.11.2026'
+DATE = '19.11.2026'
 # id → (fitxer, capítols). Capítols: '1'..'11' i annexos 'A'..'E'
 BLOCS = {
     'marketing': ('dossiers/01_Marqueting.pdf', ['7']),
@@ -26,14 +26,18 @@ BLOCS = {
 
 
 def heading_pages(texts):
-    """Pàgina on comença cada capítol (cerca el títol a l'inici d'una línia, després de l'índex)."""
+    """Pàgina on comença cada capítol. Els títols surten de l'índex (pàgina 2) i es busquen a l'inici d'una línia."""
+    idx = next(i for i, t in enumerate(texts) if 'Índex' in t)
+    titles = {}
+    for line in texts[idx].splitlines():
+        m = re.match(r'^(\d{1,2}\.|Annex [A-E]\.)\s*(.+?)\s*\.{3,}\s*\d+$', line)
+        if m: titles[m.group(1).rstrip('.').replace('Annex ', '')] = (m.group(1) + ' ' + m.group(2))[:40]
     starts = {}
-    first_body = next(i for i, t in enumerate(texts) if i > 1 and re.search(r'^1\. ', t, re.M) and 'Índex' not in t)
-    for i in range(first_body, len(texts)):
-        for line in texts[i].splitlines()[:6]:
-            m = re.match(r'^(\d{1,2})\. \S', line) or re.match(r'^Annex ([A-E])\b', line)
-            if m and m.group(1) not in starts:
-                starts[m.group(1)] = i
+    for i in range(idx + 1, len(texts)):
+        lines = [l.strip() for l in texts[i].splitlines()]
+        for ch, title in titles.items():
+            if ch not in starts and any(l.startswith(title) for l in lines):
+                starts[ch] = i
     return starts
 
 
