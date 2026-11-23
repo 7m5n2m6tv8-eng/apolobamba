@@ -2,6 +2,7 @@
 # Les aplica tools/i18n_apply.py. Mantenir la mateixa estructura (claus i nombre d'elements) que COPY.ca.
 
 EN = {
+ "stagePhotoAlt": ["Cobbled street in Pelechuco, where the trek begins", "Llama and snowy peaks in the Apolobamba Integrated Management Natural Area", "Rocky ridge and snow in the high mountains of Apolobamba", "Ridge and valleys with lakes in the Apolobamba Integrated Management Natural Area", "The Apolobamba range seen from the road to Charazani", "The valley between Charazani and Curva, on the last day"], "stagePhotoNote": "Reference photo of the area’s landscape: not necessarily the exact spot of the day.",
  "skip": "Skip to content", "foldMore": "Show more", "foldLess": "Show less",
  "nav": ["The experience", "The stages", "The programme", "The guide", "Preparation", "Price", "Questions", "Documents"],
  "menu": "Open menu", "close": "Close", "pdf": "Trip sheet", "langLabel": "Language",
@@ -148,6 +149,7 @@ EN = {
 }
 
 FR = {
+ "stagePhotoAlt": ["Rue pavée de Pelechuco, où commence la traversée", "Lama et sommets enneigés dans l’Aire naturelle de gestion intégrée Apolobamba", "Crête rocheuse et neige en haute montagne dans l’Apolobamba", "Crête et vallées avec lagunes dans l’Aire naturelle de gestion intégrée Apolobamba", "La cordillère d’Apolobamba vue depuis la route de Charazani", "La vallée entre Charazani et Curva, le dernier jour"], "stagePhotoNote": "Photo de référence du paysage de la zone : ce n’est pas forcément le point exact de la journée.",
  "skip": "Aller au contenu", "foldMore": "Afficher plus", "foldLess": "Afficher moins",
  "nav": ["L’expérience", "Les étapes", "Le programme", "Le guide", "Préparation", "Prix", "Questions", "Documents"],
  "menu": "Ouvrir le menu", "close": "Fermer", "pdf": "Fiche du voyage", "langLabel": "Langue",
