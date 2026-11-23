@@ -145,14 +145,9 @@ function html(L) {
     <h3>${PLANS.season[L].window}</h3><p>${PLANS.season[L].proposal}</p>
     <table class="months"><tr>${PLANS.season.months.map((m, i) => `<td class="m-${m}">${PLANS.season[L].monthNames[i]}</td>`).join('')}</tr></table>
     <p class="legend">${['best', 'ok', 'risk', 'no'].map(k => `<span><i class="m-${k}"></i>${PLANS.season[L].legend[k]}</span>`).join('')}</p>
-    <div class="grid2">${PLANS.season[L].reasons.map(([a, b]) => `<div class="card"><b>${a}</b>${b}</div>`).join('')}</div>
+    <div class="grid2">${c.seasonShort.map(([a, b]) => `<div class="card"><b>${a}</b>${b}</div>`).join('')}</div>
     <h3 style="margin-top:6mm">${c.planTitle}</h3><p>${c.planText}</p>
-    <div class="grid2">${c.planItems.map(([a, b]) => `<div class="card"><b>${a}</b>${b}</div>`).join('')}</div>
-  </section>
-  <section class="planc"><div style="break-inside:avoid"><h3 style="margin-top:6mm">${PLANS.c[L].title}</h3><p>${PLANS.c[L].intro}</p>
-    <table><thead><tr><th>${d.cStage}</th><th>${d.dayW}</th><th>km</th><th>+/−</th><th>${c.max}</th><th>${c.duration}</th><th>${d.nightW}</th></tr></thead><tbody>${PLANS.c.stages.map(st => `<tr><th>${st.code} · ${st[L].name}</th><td>${st.day}</td><td>${dec(st.km)}</td><td>+${fmt(st.ascent)}/−${fmt(st.descent)} m</td><td>${fmt(st.max)} m</td><td>${st.hours}</td><td>${st.nightLabel}</td></tr>`).join('')}</tbody></table></div>
-    <div class="maps4">${PLANS.c.stages.map(st => `<figure><img src="file://${IMG}/maps/pla-c-${st.code.toLowerCase()}-${L}.jpg" alt=""><figcaption>${st.code} · ${st[L].name}</figcaption></figure>`).join('')}</div>
-    <p class="small">${PLANS.c[L].source} ${d.mapCredit}</p>
+    <div class="grid2">${c.planShort.map(([n, a, b]) => `<div class="card"><b>${a}</b>${b}</div>`).join('')}</div>
   </section>
 
   <section class="page">${h2(6, d.weather)}
