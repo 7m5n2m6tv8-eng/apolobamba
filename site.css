@@ -264,3 +264,7 @@ body.map-full{overflow:hidden}body.map-full .sticky-cta,body.map-full .header{vi
 @media(max-width:600px){.level-grid{grid-template-columns:1fr;gap:12px}.level-grid article{padding:18px}.reqs{padding:22px 20px}.book-steps{grid-template-columns:1fr}.meet{padding:18px}.extras li{flex-direction:column;gap:2px}.extras em{text-align:left;white-space:normal}}
 .booking .eyebrow{text-transform:uppercase}
 .price-figure>strong{white-space:nowrap}@media(max-width:600px){.price-figure{flex-wrap:wrap;gap:4px 14px}.price-figure>span{flex-basis:100%}}
+
+/* Mòbil: blocs plegables (site.js, foldMobile) */
+.fold-btn{display:none}@media(max-width:720px){.fold:not(.open){max-height:230px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 55%,transparent);mask-image:linear-gradient(#000 55%,transparent)}.fold-btn{display:inline-flex;align-items:center;gap:8px;margin:12px 0 4px;padding:10px 16px;border:1px solid currentColor;border-radius:var(--radius);font-size:13px;font-weight:650;opacity:.85}.fold-btn:after{content:'+';font-size:16px;line-height:1}.fold-btn[aria-expanded=true]:after{content:'−'}}
+@media(max-width:720px){.story-visual{min-height:0}.story-visual>img{aspect-ratio:4/3;height:auto}.document{padding:20px 20px 18px}.doc-top{margin-bottom:16px}.document h3{font-size:23px}.document>p{margin-bottom:14px}}

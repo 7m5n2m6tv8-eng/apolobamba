@@ -12,17 +12,17 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
   - Trabajo académico: `treball.html`
   - Presentación (14 diapositivas con guion, tecla N): `presentacio.html`
   - App del guía: `guia/` (…/apolobamba/guia/)
-- Estado a 19/11/2026: PR #11 integrada en `main`: ficha del cliente reorganizada (nivel, requisitos, punto de encuentro, precio anticipado, reserva, cancelación y grupo privado) en la web, la ficha, la preparación, el dossier, la presentación y el trabajo.
+- Estado a 23/11/2026: PR #12 (pendiente de integrar): app del guía rehecha con el modelo de la app del Catllaràs y web del cliente más corta en móvil (bloques plegables).
 
 ## Forma de trabajar (obligatorio)
 
 1. Los cambios van **siempre en una rama** (`claude/<descripcion>`) con **pull request a `main`**. No se toca `main` directamente. Izan revisa la PR y pide integrarla.
 2. Según lo que cambie, antes del commit:
-   - Datos de las jornadas → primero `python3 tools/atles.py` y después `node tools/dossier.js` (regenera los cuatro dossiers completos, de 16 páginas, con los mapas nuevos). `tools/atles.py` regenera el Atles cartogràfic A3 y los mapas del dossier; necesita `reportlab`, `Pillow` y acceso a `tile.opentopomap.org`, que está permitido en el entorno «apolobamba».
+   - Datos de las jornadas → primero `python3 tools/atles.py`, después `python3 tools/guia_mapes.py` (mapas de fondo de la app del guía) y `node tools/dossier.js` (regenera los cuatro dossiers completos, de 16 páginas, con los mapas nuevos). `tools/atles.py` regenera el Atles cartogràfic A3 y los mapas del dossier; necesita `reportlab`, `Pillow` y acceso a `tile.opentopomap.org`, que está permitido en el entorno «apolobamba».
    - Textos o secciones de `index.html` → `node tools/prerender.js` (versión estática).
    - Documentos del cliente (ficha, preparación, plan de entrenamiento, libreta de ruta y encuesta, en 4 idiomas) → `node tools/client_docs.js`.
    - Rutas de los planes B y C → `python3 tools/gpx.py` (GPX en `dossiers/gpx/`).
-   - **Siempre, al final:** `python3 tools/stamp.py` (actualiza `version.txt` y los `?v=` para que el móvil cargue la versión nueva sin caché).
+   - **Siempre, al final:** `python3 tools/stamp.py` (actualiza `version.txt`, los `?v=` y la versión de la caché de la app del guía en `guia/sw.js`, para que el móvil cargue la versión nueva).
 3. No hay dependencias ni build: es una web estática. Para probarla: `python3 -m http.server`. Revisa en móvil (390 px) y escritorio, en **ca, es, en y fr**, sin errores de consola ni enlaces rotos. La app `guia/` se prueba aparte.
 4. **Trabajo escrito:** se edita `dossiers/Apolobamba_TD2_Treball_Complet.docx` y se exporta a PDF con el **mismo nombre**. Si cambia algún bloque, se regeneran los PDF de los bloques 01–06 y se actualiza el buscador (`modules.json`). **Nunca renombres archivos de `dossiers/`**, porque la web los enlaza.
 5. **Textos de la web:** están en `content.js`. Nivel, requisitos, punto de encuentro, precios, reserva, cancelación, grupo privado y material (obligatorio / recomendado / organización) se escriben en `tools/fitxa_data.py` para los cuatro idiomas y también los aplica `tools/i18n_apply.py`. Cada clave existe en `ca`, `es`, `en` y `fr`, y los cuatro idiomas deben ir sincronizados. El inglés y el francés se escriben en `tools/i18n_web.py` (web) y `tools/i18n_plans.py` (planes) y se aplican con `python3 tools/i18n_apply.py` (después de `tools/plans_data.py`).
@@ -41,12 +41,12 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 | `sw.js` | Funcionamiento sin conexión de la web |
 | `modules.js` / `modules.json` | Bloques del trabajo con buscador (solo en `treball.html`) |
 | `site.css` | Estilos |
-| `guia/` | App móvil del guía, sin cobertura (PWA): fichas técnicas con horas de control y decisiones, plan B de cada jornada, fichas C1–C4 del plan C (`guia/planc.js`), mapa esquemático con "On soc?", GPX, meteo en Bolivia, seguridad, contactos y listas. Track en `guia/track.js` (199 puntos, Gallotrekk, Wikiloc, 2012). Solo se enlaza desde `treball.html` |
+| `guia/` | App móvil del guía, sin cobertura (PWA), **mismo modelo que la app del repositorio `catllaras`**: pantallas Ara, Punts, Mapa, Plans, SOS e Info. Hora de Bolivia, luz hasta lugar seguro (puesta − 90 min), GPS sobre el trazado, retraso, qué falta, hora límite y decisión, mapa en canvas (teselas de OpenTopoMap descargadas + mapas del atlas de fondo, `guia/mapes.js` e `img/`), seguir rutas de los planes B (`pla.js`), etapas C1–C4, meteo Open-Meteo por punto (`meteo.js`), SOS con WGS84/UTM 19S y salida en vehículo más cercana, listas, contactos y GPX. Los datos se construyen en `guia/dades.js` desde `content.js`, `track.js`, `planc.js` y `data.js` (no se copian); textos de la interfaz en `guia/i18n.js` (4 idiomas). Detalle en `guia/README.md`. Solo se enlaza desde `treball.html` |
 | `assets/` | Fotos WebP, mapas de cada jornada para el dossier (`assets/maps/`, los genera `tools/atles.py`; no se usan en la web), flyer, figuras de la presentación, créditos en `PHOTOGRAPHY.md` |
 | `dossiers/` | Trabajo completo (PDF + DOCX), bloques 01–06, Atles cartogràfic A3 y Formularis operatius |
 | `dossiers/gpx/` | GPX de la ruta principal, de las rutas de cada plan B (días 5–10) y del plan C (generados con `tools/gpx.py` sobre OpenStreetMap) |
 | `dossiers/client/` | Para el cliente, en ca, es, en y fr: ficha del viaje, preparación y material, plan de entrenamiento de 12 semanas, libreta de ruta y **dossier completo** (`Dossier_Viatge_CA`, `Dossier_Viaje_ES`, `Travel_Dossier_EN`, `Dossier_Voyage_FR`; 16 págs., con temporada, planes B y plan C; **no se enlaza en la web**: se envía por WhatsApp cuando el cliente contacta) |
-| `tools/` | `stamp.py` (versión), `dossier.js` (dossier del cliente), `plans_data.py` (fuente de temporada, planes B, plan C, ABC y criterios → `window.PLANS`; con `PLANC_WORK` también regenera `guia/planc.js`), `atles.py` (Atles cartogràfic A3, 11 láminas: mapa general, 6 jornadas y 4 etapas del plan C, con las rutas de los planes B; exporta `assets/maps/jornada-*`, `pla-c-*` y `general-*` para el dossier; `--no-export` para no exportar), `prerender.js` (HTML estático), `client_docs.js` (ficha, preparación, entrenamiento, libreta de ruta y encuesta en 4 idiomas), `gpx.py` (GPX), `grafic_pressupost.py` (gráfico del presupuesto), `i18n_*.py` (inglés y francés), `fitxa_data.py` (nivel, requisitos, reserva, cancelación y material en 4 idiomas), `blocs.py` (bloques 01–06, formularios y buscador a partir del trabajo completo) |
+| `tools/` | `stamp.py` (versión), `dossier.js` (dossier del cliente), `plans_data.py` (fuente de temporada, planes B, plan C, ABC y criterios → `window.PLANS`; con `PLANC_WORK` también regenera `guia/planc.js`), `atles.py` (Atles cartogràfic A3, 11 láminas: mapa general, 6 jornadas y 4 etapas del plan C, con las rutas de los planes B; exporta `assets/maps/jornada-*`, `pla-c-*` y `general-*` para el dossier; `--no-export` para no exportar), `prerender.js` (HTML estático), `client_docs.js` (ficha, preparación, entrenamiento, libreta de ruta y encuesta en 4 idiomas), `gpx.py` (GPX), `grafic_pressupost.py` (gráfico del presupuesto), `i18n_*.py` (inglés y francés), `fitxa_data.py` (nivel, requisitos, reserva, cancelación y material en 4 idiomas), `blocs.py` (bloques 01–06, formularios y buscador a partir del trabajo completo), `guia_mapes.py` (georreferencia los mapas del atlas para la app del guía) |
 
 ## Decisiones tomadas (no reabrir sin que Izan lo pida)
 
@@ -80,7 +80,7 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 | 4 | La Paz → Pelechuco | ~12 h en 4×4 | Alojamiento local, 3.660 m |
 | 5 | Pelechuco → Campament 1 | 9,7 km · +1.047/−540 m · 6–8 h | Tienda, 4.168 m |
 | 6 | Campament 1 → Hilo Hilo | 4,2 km · 2–3 h | Tienda, 4.010 m |
-| 7 | Hilo Hilo → Pas Sunchulli (5.032 m) → Campament 2 | 11,4 km · ≈+1.020/−315 m · 7–9 h · hora límite en el collado: 14:40 | Tienda, 4.500–4.700 m (objetivo ≈4.500 m) |
+| 7 | Hilo Hilo → Pas Sunchulli (5.032 m) → Campament 2 | 11,4 km · +1.062/−354 m · 7–9 h · hora límite en el collado: 14:40 | Tienda, 4.500–4.700 m (objetivo ≈4.500 m) |
 | 8 | Campament 2 → Incacancha (Mil Curvas) | 8,3 km · +211/−867 m · 5–7 h | Tienda, 4.060 m |
 | 9 | Incacancha → Campament 3 (paso Akamani) | 4,1 km · +602/−491 m · 4–6 h | Tienda, 4.171 m |
 | 10 | Campament 3 → Charazani (posible final en Curva) | 15,8 km · +497/−1.473 m · 8–9 h 30 min | Alojamiento local, 3.195 m |
@@ -90,7 +90,7 @@ Total a pie: 6 jornadas, 53,4 km, +3.450/−3.915 m. Horario de marcha: salida d
 
 Fuentes de contraste (cap. 9 y Annex E del trabajo): track de Gallotrekk en Wikiloc (2012), programas de operadores bolivianos (Bolivian Mountain Guides, ZigZag Bolivia, entre otros) y relatos de 2022–2025. Mapas: OpenTopoMap, OpenStreetMap y SRTM (CC-BY-SA). Fotos: Wikimedia Commons (CC BY-SA 4.0).
 
-## Historial de pull requests (todas integradas en `main`)
+## Historial de pull requests
 
 1. **#1**: B como propuesta única, noche en Hilo Hilo, final en Curva y 3.800 €. Textos ca/es reescritos para el cliente, pestañas de jornada, contraste con operadores y flyer nuevo.
 2. **#2**: web del cliente separada del trabajo (`treball.html`), condiciones del viaje dentro de la web, trabajo sin versiones y Annex D.
@@ -106,13 +106,16 @@ Fuentes de contraste (cap. 9 y Annex E del trabajo): track de Gallotrekk en Wiki
 
 11. **#11**: ficha del cliente reorganizada siguiendo el modelo de las fichas de travesías organizadas del Pirineo: nivel en cuatro indicadores, requisitos, punto de encuentro, precio anticipado (2.700/2.850 €), garantía de salida, suplementos, reserva en cuatro pasos, tabla de cancelación, grupo privado y material obligatorio / recomendado / de la organización; nuevo orden de la web; ficha de 2 páginas; dossier, presentación y trabajo (cap. 5.2, 5.3, 6.1, 6.2 y Annex D) actualizados.
 
+12. **#12**: app del guía rehecha con el modelo de la app del Catllaràs (Ara, Punts, Mapa, Plans, SOS, Info; GPS, horario, luz, decisiones, mapa sin cobertura, planes B y C para seguir, meteo por puntos y SOS) en 4 idiomas; web del cliente más corta en móvil (bloques plegables); descripción de la app actualizada en la web, el trabajo (cap. 10 y tabla de recursos) y los bloques; tabla del programa del día 7 corregida en este archivo (+1.062/−354 m).
+
 ## Pendiente
 
 **En el repositorio (lo puede hacer Claude):**
 - Si cambian los planes o el plan C: editar `tools/plans_data.py`, ejecutar `python3 tools/plans_data.py`, `python3 tools/atles.py`, `node tools/dossier.js`, `node tools/prerender.js` y `python3 tools/stamp.py`. El capítulo 10.2–10.6 del Word se generó con estos datos: si cambian, hay que actualizarlo a mano.
 - Tracks de los planes B y C: salen de OpenStreetMap (ODbL). Wikiloc y TwoNav no se descargaron (bloquean el acceso automático y no se forzó).
 - **Fotos por jornada:** cuando Izan aporte sus fotos, colocarlas en las pestañas de etapa (WebP con versión `-small`) y, si encaja, también en el dossier.
-- Si Izan lo pide, acortar o plegar bloques de la web del cliente, que quedó larga en móvil.
+- Web del cliente en móvil: los bloques secundarios se pliegan con «Mostra’n més» (lista `FOLD` en `site.js`; textos `foldMore`/`foldLess`). Para plegar otro bloque, añadir su selector a la lista.
+- App del guía: la fecha del día 1 es provisional (16/06/2027) y se cambia en Info → Ajustos. Los umbrales de meteo de la app (viento ≥ 40 km/h, rachas ≥ 60 km/h) son orientativos, no del trabajo. Los números de emergencia de Bolivia (110, 165, 119) se comprobaron el 23/11/2026.
 
 **Fuera del repositorio (Annex D, depende de Izan o del trabajo de campo):**
 - Reconocer la bajada alternativa a las Mil Corbes y las cuatro etapas del plan C; acuerdos de acampada en Cañisaya, Huayrapata y Quellwa Cota; uso de pistas mineras para evacuar.
