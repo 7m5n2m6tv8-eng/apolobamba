@@ -9,6 +9,8 @@ const ROOT = path.resolve(__dirname, '..');
 const ctx = { window: {} }; ctx.window = ctx; vm.createContext(ctx);
 for (const f of ['content.js', 'guia/track.js']) vm.runInContext(fs.readFileSync(path.join(ROOT, f), 'utf8'), ctx);
 const { COPY, DAYS, TRACK, PLANS } = ctx;
+vm.runInContext(fs.readFileSync(path.join(ROOT, 'photo-credits.js'), 'utf8'), ctx);
+const PH = ctx.STAGE_PHOTOS || []; // una foto per jornada (Wikimedia Commons, assets/jornada-N.webp)
 const CONTACT = (fs.readFileSync(path.join(ROOT, 'extras.js'), 'utf8').match(/whatsapp:\s*'(\d+)'/) || [])[1] || '';
 
 let IMG = '';
@@ -85,9 +87,9 @@ function html(L) {
   const stage = (day, i) => {
     const pts = day.points.map(p => `<tr><td>${dec(p.km)}</td><th>${p[L]}</th><td>${fmt(p.ele)} m</td><td>${hm(p.time)}</td></tr>`).join('');
     return `<section class="stage page">
-      <p class="kicker">${c.stageLabel} 0${i + 1} · ${c.dayWord} ${day.day} · ${day.hours}</p>
+      <div class="shead"><div><p class="kicker">${c.stageLabel} 0${i + 1} · ${c.dayWord} ${day.day} · ${day.hours}</p>
       <h3>${c.stageNames[i]}</h3>
-      <p>${c.stageDescriptions[i]}</p>
+      <p>${c.stageDescriptions[i]}</p></div>${PH[i] ? `<figure class="sphoto"><img src="file://${IMG}/jornada-${i + 1}-small.jpg" alt=""><figcaption>${c.stagePhotoAlt[i]}${i === 0 || i === 5 ? '' : '. ' + c.stagePhotoNote} · ${PH[i].author} · ${PH[i].license} · Wikimedia Commons</figcaption></figure>` : ''}</div>
       <dl class="metrics"><div><dt>${c.distance}</dt><dd>${dec(day.km)} km</dd></div><div><dt>${c.ascent}</dt><dd>+${fmt(day.ascent)} m</dd></div><div><dt>${c.descent}</dt><dd>−${fmt(day.descent)} m</dd></div><div><dt>${c.max}</dt><dd>${fmt(day.max)} m</dd></div><div><dt>${c.night}</dt><dd>${day.nightLabel}</dd></div></dl>
       <p class="sched"><b>${c.schedule}:</b> ${c.scheduleText.replace('{0}', hm(day.start)).replace('{1}', hm(day.arrival))}</p>
       <p class="focus"><b>${c.stageFocus}.</b> ${c.stageFocusText[i]}</p>
@@ -97,6 +99,7 @@ function html(L) {
   };
   return `<!doctype html><html lang="${L}"><head><meta charset="utf-8"><base href="file://${ROOT}/"><title>${d.title}</title><style>
   @page{size:A4;margin:16mm 15mm 16mm}
+  .shead{display:grid;grid-template-columns:1fr 58mm;gap:6mm;align-items:start}.sphoto{margin:0}.stage figure img{max-height:80mm}.sphoto img{width:100%!important;max-height:none!important;height:39mm;object-fit:cover;border-radius:1mm;border:0}.sphoto figcaption{font-size:6.5pt;line-height:1.3;color:#5b6b64;margin-top:1mm}
   .months{width:100%;border-collapse:separate;border-spacing:1.2mm 0;margin:3mm 0 2mm}.months td{text-align:center;font:600 8pt Arial,sans-serif;padding:5mm 0 1.5mm;border-radius:1mm;background:#eceee7;color:#7b8378}.months .m-best{background:#163e33;color:#fff}.months .m-ok{background:#9daa86;color:#102c25}.months .m-risk{background:#e2cfa6;color:#102c25}.legend{font-size:8.5pt;color:#5b6b64}.legend span{margin-right:5mm}.legend i{display:inline-block;width:3mm;height:3mm;margin-right:1.5mm;border-radius:.6mm;vertical-align:-.4mm;background:#eceee7}.legend i.m-best{background:#163e33}.legend i.m-ok{background:#9daa86}.legend i.m-risk{background:#e2cfa6}.maps4{display:grid;grid-template-columns:1fr 1fr;gap:2.5mm 4mm;margin:3mm auto 0;width:86%}.maps4 img{width:100%;border:1px solid #d9ddd0}.maps4 figcaption{font-size:8pt;color:#5b6b64}.small{font-size:8pt;color:#5b6b64}
   *{box-sizing:border-box}body{font:10.5pt/1.5 Georgia,'DejaVu Serif',serif;color:#1d2a25;margin:0}
   h1,h2,h3,.kicker,th,dt,.label{font-family:'Helvetica Neue',Arial,'DejaVu Sans',sans-serif}
@@ -181,7 +184,7 @@ function html(L) {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'dossier-'));
   // Les imatges es passen a JPEG de mida moderada perquè el PDF pesi poc i es pugui enviar per WhatsApp.
   const img = await browser.newPage();
-  for (const name of ['apolobamba-landscape', ...DAYS.flatMap(x => LANGS.map(l => `maps/jornada-${x.day}-${l}`)), ...PLANS.c.stages.flatMap(x => LANGS.map(l => `maps/pla-c-${x.code.toLowerCase()}-${l}`))]) {
+  for (const name of ['apolobamba-landscape', ...PH.map((_, i) => `jornada-${i + 1}-small`), ...DAYS.flatMap(x => LANGS.map(l => `maps/jornada-${x.day}-${l}`)), ...PLANS.c.stages.flatMap(x => LANGS.map(l => `maps/pla-c-${x.code.toLowerCase()}-${l}`))]) {
     await img.goto('file://' + path.join(ROOT, 'assets', name + '.webp'));
     const data = await img.evaluate(async () => { const i = document.images[0]; await i.decode(); const w = Math.min(1700, i.naturalWidth), c = document.createElement('canvas'); c.width = w; c.height = Math.round(i.naturalHeight * w / i.naturalWidth); c.getContext('2d').drawImage(i, 0, 0, c.width, c.height); return c.toDataURL('image/jpeg', .8); });
     fs.mkdirSync(path.dirname(path.join(tmp, name)), { recursive: true });

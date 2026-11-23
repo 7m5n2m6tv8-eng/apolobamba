@@ -12,7 +12,7 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
   - Trabajo académico: `treball.html`
   - Presentación (14 diapositivas con guion, tecla N): `presentacio.html`
   - App del guía: `guia/` (…/apolobamba/guia/)
-- Estado a 23/11/2026: PR #12 (pendiente de integrar): app del guía rehecha con el modelo de la app del Catllaràs y web del cliente más corta en móvil. PR #13 (sobre la #12): una foto por jornada en las pestañas de etapa.
+- Estado a 23/11/2026: PR #12 (pendiente de integrar): app del guía rehecha con el modelo de la app del Catllaràs y web del cliente más corta en móvil. PR #13 (sobre la #12): una foto por jornada en las pestañas de etapa y en el dossier.
 
 ## Forma de trabajar (obligatorio)
 
@@ -108,14 +108,14 @@ Fuentes de contraste (cap. 9 y Annex E del trabajo): track de Gallotrekk en Wiki
 
 12. **#12**: app del guía rehecha con el modelo de la app del Catllaràs (Ara, Punts, Mapa, Plans, SOS, Info; GPS, horario, luz, decisiones, mapa sin cobertura, planes B y C para seguir, meteo por puntos y SOS) en 4 idiomas; web del cliente más corta en móvil (bloques plegables); descripción de la app actualizada en la web, el trabajo (cap. 10 y tabla de recursos) y los bloques; tabla del programa del día 7 corregida en este archivo (+1.062/−354 m).
 
-13. **#13**: una foto de Wikimedia Commons por jornada en las pestañas de etapa, con autor, licencia y aviso cuando es paisaje de referencia, en 4 idiomas.
+13. **#13**: una foto de Wikimedia Commons por jornada (guardada en `assets/`) en las pestañas de etapa y en el dossier completo, con autor, licencia y aviso cuando es paisaje de referencia, en 4 idiomas.
 
 ## Pendiente
 
 **En el repositorio (lo puede hacer Claude):**
 - Si cambian los planes o el plan C: editar `tools/plans_data.py`, ejecutar `python3 tools/plans_data.py`, `python3 tools/atles.py`, `node tools/dossier.js`, `node tools/prerender.js` y `python3 tools/stamp.py`. El capítulo 10.2–10.6 del Word se generó con estos datos: si cambian, hay que actualizarlo a mano.
 - Tracks de los planes B y C: salen de OpenStreetMap (ODbL). Wikiloc y TwoNav no se descargaron (bloquean el acceso automático y no se forzó).
-- **Fotos por jornada:** cada pestaña de etapa tiene una foto de Wikimedia Commons (CC BY-SA 4.0), enlazada desde Commons y no guardada en el repositorio (`window.STAGE_PHOTOS` en `photo-credits.js`; textos `stagePhotoAlt` y `stagePhotoNote`; créditos en `assets/PHOTOGRAPHY.md`). Solo las jornadas 1 (Pelechuco) y 6 (Charazani–Curva) son del sitio exacto; las demás son paisaje de la zona y lo dicen. No hay fotos libres en Commons del Pas Sunchulli, Hilo Hilo, Incacancha ni Akamani. Si Izan aporta fotos propias, sustituirlas (WebP con versión `-small` en `assets/`) y, si encaja, ponerlas también en el dossier.
+- **Fotos por jornada:** cada pestaña de etapa y cada página de jornada del dossier tienen una foto de Wikimedia Commons (CC BY-SA 4.0), guardada en `assets/jornada-1…6.webp` (1.600 px) y `-small` (800 px). Datos y créditos en `window.STAGE_PHOTOS` (`photo-credits.js`) y `assets/PHOTOGRAPHY.md`; textos `stagePhotoAlt` y `stagePhotoNote`. Solo las jornadas 1 (Pelechuco) y 6 (Charazani–Curva) son del sitio exacto; las demás son paisaje de la zona y lo dicen. No hay fotos libres en Commons del Pas Sunchulli, Hilo Hilo, Incacancha ni Akamani. Si Izan aporta fotos propias, sustituir los archivos con el mismo nombre, actualizar los créditos y ejecutar `node tools/dossier.js`. En el dossier, los mapas de jornada se limitan a 80 mm de alto para que quepa la foto y siga en 16 páginas.
 - Web del cliente en móvil: los bloques secundarios se pliegan con «Mostra’n més» (lista `FOLD` en `site.js`; textos `foldMore`/`foldLess`). Para plegar otro bloque, añadir su selector a la lista.
 - App del guía: la fecha del día 1 es provisional (16/06/2027) y se cambia en Info → Ajustos. Los umbrales de meteo de la app (viento ≥ 40 km/h, rachas ≥ 60 km/h) son orientativos, no del trabajo. Los números de emergencia de Bolivia (110, 165, 119) se comprobaron el 23/11/2026.
 
