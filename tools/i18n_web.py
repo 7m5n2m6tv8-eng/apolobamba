@@ -2,6 +2,7 @@
 # Les aplica tools/i18n_apply.py. Mantenir la mateixa estructura (claus i nombre d'elements) que COPY.ca.
 
 EN = {
+ "planShort": [["B", "A plan B for every day", "If the weather, the terrain or the group are not up to it, we turn back, shorten the day or continue by vehicle."], ["+2", "Two reserve days", "Included in the price, to wait for better weather or acclimatise more."], ["C", "A complete alternative route", "If the main pass is not passable, we do the trek by another path to Charazani."]], "seasonShort": [["June and July", "The heart of the dry season: more stable weather and cold nights."], ["May and September", "Possible, but with more rain or afternoon storms."], ["August", "Heavy snow is possible on the passes: only with a stable forecast."], ["December to April", "Rainy season: we don’t go."]],
  "stagePhotoAlt": ["Cobbled street in Pelechuco, where the trek begins", "Llama and snowy peaks in the Apolobamba Integrated Management Natural Area", "Rocky ridge and snow in the high mountains of Apolobamba", "Ridge and valleys with lakes in the Apolobamba Integrated Management Natural Area", "The Apolobamba range seen from the road to Charazani", "The valley between Charazani and Curva, on the last day"], "stagePhotoNote": "Reference photo of the area’s landscape: not necessarily the exact spot of the day.",
  "skip": "Skip to content", "foldMore": "Show more", "foldLess": "Show less",
  "nav": ["The experience", "The stages", "The programme", "The guide", "Preparation", "Price", "Questions", "Documents"],
@@ -149,6 +150,7 @@ EN = {
 }
 
 FR = {
+ "planShort": [["B", "Un plan B pour chaque journée", "Si la météo, le terrain ou le groupe ne suivent pas, nous faisons demi-tour, raccourcissons la journée ou continuons en véhicule."], ["+2", "Deux jours de réserve", "Inclus dans le prix, pour attendre une meilleure météo ou mieux s’acclimater."], ["C", "Un itinéraire alternatif complet", "Si le col principal n’est pas praticable, nous faisons la traversée par un autre chemin jusqu’à Charazani."]], "seasonShort": [["Juin et juillet", "Le cœur de la saison sèche : temps plus stable et nuits froides."], ["Mai et septembre", "Possibles, mais avec plus de pluie ou d’orages l’après-midi."], ["Août", "Il peut neiger fort sur les cols : seulement avec une prévision stable."], ["De décembre à avril", "Saison des pluies : nous n’y allons pas."]],
  "stagePhotoAlt": ["Rue pavée de Pelechuco, où commence la traversée", "Lama et sommets enneigés dans l’Aire naturelle de gestion intégrée Apolobamba", "Crête rocheuse et neige en haute montagne dans l’Apolobamba", "Crête et vallées avec lagunes dans l’Aire naturelle de gestion intégrée Apolobamba", "La cordillère d’Apolobamba vue depuis la route de Charazani", "La vallée entre Charazani et Curva, le dernier jour"], "stagePhotoNote": "Photo de référence du paysage de la zone : ce n’est pas forcément le point exact de la journée.",
  "skip": "Aller au contenu", "foldMore": "Afficher plus", "foldLess": "Afficher moins",
  "nav": ["L’expérience", "Les étapes", "Le programme", "Le guide", "Préparation", "Prix", "Questions", "Documents"],
