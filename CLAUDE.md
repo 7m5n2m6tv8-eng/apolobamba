@@ -12,7 +12,7 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
   - Trabajo académico: `treball.html`
   - Presentaciones (una por asignatura, con guion, tecla N): `presentacio.html` (elige), `presentacio-organitzacio.html` y `presentacio-orientacio.html`
   - App del guía: `guia/` (…/apolobamba/guia/)
-- Estado a 24/11/2026: PR #17 (pendiente de integrar): la presentación se divide en dos, una por asignatura (Organización de actividades / escuela de senderismo, con normativa; y Orientación, cartografía y planificación).
+- Estado a 24/11/2026: PR #18 (pendiente de integrar): las fuentes ya no se presentan solo como el GPX de 2012, sino como una base de 2012 puesta al día con fuentes de 2022–2026; incoherencias de las presentaciones corregidas.
 
 ## Forma de trabajar (obligatorio)
 
@@ -62,7 +62,7 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 - **El trabajo no tiene versiones:** nada de "edició 1.x", "què canvia" ni "versió descartada", solo la fecha. Lo pendiente está en el **Annex D**. La bibliografía está en el **Annex E** e incluye las fuentes de meteorología.
 - **Meteorología (cap. 10):** se consulta en SENAMHI, Windy (ECMWF), Meteoblue, Mountain-Forecast, el satélite GOES y el comunicador satélite, con criterios de decisión.
 - **Separación cliente / académico:** la web del cliente solo enlaza contenido para el cliente. Al trabajo académico se llega solo por el acceso "Treball TD2" (menú, menú móvil y pie). Las condiciones del viaje son una sección dentro de la web, no un PDF.
-- **Honestidad de datos:** el recorrido está planificado sobre un GPX de 2012 y contrastado con operadores, pero **no se ha reconocido sobre el terreno**. Ese aviso se mantiene y los horarios no se presentan como validados.
+- **Honestidad de datos:** el recorrido parte de un GPX de 2012 (geometría y tiempos) **puesto al día con fuentes recientes**: relatos y registros de 2022–2025, OpenStreetMap 2026 (≈36 % del camino ya es pista minera), seis operadores consultados en noviembre de 2026 y la ABC (2025–2026). No presentarlo como «solo el GPX de 2012». Aun así **no se ha reconocido sobre el terreno**. Ese aviso se mantiene y los horarios no se presentan como validados.
 - **Sin rastros de IA ni lenguaje interno** en los textos: nada de "facilitat per l'usuari", "paquet aportat" ni "NO-GO" sin explicar. Con el cliente, lenguaje llano.
 - **"El teu guia" sin cita inventada** (se quitó). No inventar frases atribuidas a Izan.
 - Topónimos normalizados en catalán ("Pas Sunchulli", no "Paso Sunchulli") y decimales con coma. La referencia es la tabla de normalización del trabajo (cap. 9). Los puntos de agua se llaman **"Agua buena 1–4"** (nombre del GPS, con la nota de que el agua se trata siempre); no se traducen.
@@ -118,6 +118,8 @@ Fuentes de contraste (cap. 9 y Annex E del trabajo): track de Gallotrekk en Wiki
 16. **#16**: instrumentos de evaluación reales: encuesta anónima del cliente en Google Forms (ca/es/en/fr, el cliente elige idioma; respuestas en una hoja de Google) con QR; checklist diario y autoevaluación del guía dentro de la app (sin cobertura, exportables en CSV o PDF); apartado «Instruments d’avaluació» en la página del trabajo, en 4 idiomas.
 
 17. **#17**: presentación dividida en dos, una por asignatura: Organización de actividades (escuela de senderismo), con tres diapositivas de normativa y legislación, y Orientación, cartografía y planificación (fuentes, atlas, horarios, luz, decisiones, meteo, planes B y C y navegación). Página para elegir en `presentacio.html`; generador `tools/presentacions.py`.
+
+18. **#18**: fuentes presentadas como base de 2012 puesta al día con fuentes de 2022–2026 (web en 4 idiomas, dossier, app del guía y presentación de Orientación, con una tabla de fuentes nueva); altitudes del plan C en la presentación alineadas con los datos (Incacancha 4.060 m, Charazani 3.195 m).
 
 ## Pendiente
 
