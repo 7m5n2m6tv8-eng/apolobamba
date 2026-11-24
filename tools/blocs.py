@@ -13,7 +13,7 @@ from reportlab.lib.pagesizes import A4
 
 ROOT = Path(__file__).resolve().parent.parent
 FULL = ROOT / 'dossiers/Apolobamba_TD2_Treball_Complet.pdf'
-DATE = '23.11.2026'
+DATE = '24.11.2026'
 # id → (fitxer, capítols). Capítols: '1'..'11' i annexos 'A'..'E'
 BLOCS = {
     'marketing': ('dossiers/01_Marqueting.pdf', ['7']),

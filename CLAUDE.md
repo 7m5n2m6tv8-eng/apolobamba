@@ -12,7 +12,7 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
   - Trabajo académico: `treball.html`
   - Presentaciones (una por asignatura, con guion, tecla N): `presentacio.html` (elige), `presentacio-organitzacio.html` y `presentacio-orientacio.html`
   - App del guía: `guia/` (…/apolobamba/guia/)
-- Estado a 24/11/2026: PR #18 (pendiente de integrar): las fuentes ya no se presentan solo como el GPX de 2012, sino como una base de 2012 puesta al día con fuentes de 2022–2026; incoherencias de las presentaciones corregidas.
+- Estado a 24/11/2026: PR #19 (pendiente de integrar): revisión completa del trabajo escrito (incoherencias corregidas y normativa ampliada y comprobada), fecha del trabajo 24/11/2026.
 
 ## Forma de trabajar (obligatorio)
 
@@ -89,7 +89,7 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 
 Total a pie: 6 jornadas, 53,4 km, +3.450/−3.915 m. Horario de marcha: salida desde las 07:10 y llegada antes de las 16:40.
 
-Fuentes de contraste (cap. 9 y Annex E del trabajo): track de Gallotrekk en Wikiloc (2012), programas de operadores bolivianos (Bolivian Mountain Guides, ZigZag Bolivia, entre otros) y relatos de 2022–2025. Mapas: OpenTopoMap, OpenStreetMap y SRTM (CC-BY-SA). Fotos: Wikimedia Commons (CC BY-SA 4.0).
+Fuentes de contraste (cap. 9 y Annex E del trabajo): track de Gallotrekk en Wikiloc (2012), programas de operadores bolivianos (Bolivian Mountain Guides, ZigZag Bolivia, entre otros) y relatos de 2022–2025. Mapas: OpenTopoMap, OpenStreetMap y SRTM (CC-BY-SA). Fotos: Wikimedia Commons (CC BY-SA 4.0). Kit de dinámicas: 145 g (16 tarjetas A6).
 
 ## Historial de pull requests
 
@@ -120,6 +120,8 @@ Fuentes de contraste (cap. 9 y Annex E del trabajo): track de Gallotrekk en Wiki
 17. **#17**: presentación dividida en dos, una por asignatura: Organización de actividades (escuela de senderismo), con tres diapositivas de normativa y legislación, y Orientación, cartografía y planificación (fuentes, atlas, horarios, luz, decisiones, meteo, planes B y C y navegación). Página para elegir en `presentacio.html`; generador `tools/presentacions.py`.
 
 18. **#18**: fuentes presentadas como base de 2012 puesta al día con fuentes de 2022–2026 (web en 4 idiomas, dossier, app del guía y presentación de Orientación, con una tabla de fuentes nueva); altitudes del plan C en la presentación alineadas con los datos (Incacancha 4.060 m, Charazani 3.195 m).
+
+19. **#19**: revisión del trabajo escrito (Word, PDF, bloques y buscador; ahora 68 págs.): normativa ampliada y comprobada (RDL 1/2007 libro IV y RDL 23/2018, Ley 13/2002 y Decreto 75/2020 de turismo, Ley 3/2008 solo en Cataluña, Decreto 56/2003 como referencia, RGPD y LOPDGDD) también en la presentación de Organización; códigos de bibliografía duplicados corregidos ([V1–V3], [R12], [R13]) y citas que faltaban; días en lugar de «etapas» del GPX; partidas Q del presupuesto sin doble cómputo e incluido el plan C; teléfonos de emergencia en el Annex B; plan B del día 7 y plan C con la carretera cortada aclarados; final en Curva como resultado probable; pistas mineras por jornada (también en la web); idiomas del grupo; kit de dinámicas con 16 tarjetas (145 g); Annex C actualizado; PK y cotas con el mismo formato; fecha 24/11/2026.
 
 ## Pendiente
 
