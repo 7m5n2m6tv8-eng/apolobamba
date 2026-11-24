@@ -93,6 +93,9 @@ input[type=date],input[type=time]{font-size:16px;padding:6px;border-radius:8px;b
 .bars{list-style:none;padding:0;margin:6px 0}.bars li{display:grid;grid-template-columns:110px 1fr 46px 46px;gap:6px;align-items:center;font-size:12px;margin:4px 0}
 .bars i{display:block;height:9px;border-radius:5px;background:var(--ac)}.bars b{text-align:right;font-variant-numeric:tabular-nums}.bars em{font-style:normal;color:var(--mut);text-align:right}.bars em.bad{color:var(--bad);font-weight:700}
 a{color:var(--blue)}
+.tri{display:inline-flex;gap:4px;margin:6px 0}.tri label{border:1px solid var(--line);border-radius:8px;padding:6px 11px;font-weight:700;font-size:14px;cursor:pointer;background:var(--card)}.tri input{display:none}.tri label.on.si{background:var(--ok);color:#06140e;border-color:var(--ok)}.tri label.on.no{background:var(--bad);color:#fff;border-color:var(--bad)}.tri label.on.na{background:var(--mut);color:#06140e}
+.avi{border-bottom:1px solid var(--line);padding:8px 0}.avi input{width:100%;font-size:15px;padding:7px;border-radius:8px;border:1px solid var(--line);background:var(--card2);color:var(--tx)}
+.grid2{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.fld input{max-width:100%;box-sizing:border-box}.fld>input{width:100%;margin-top:4px}.fld textarea{width:100%;font-family:inherit;font-size:15px;line-height:1.4;box-sizing:border-box;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--card2);color:var(--tx);margin-top:4px}.fld input[type=date],.fld input[type=time],.fld input[type=number]{width:100%;margin-top:4px}
 </style>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
@@ -209,8 +212,15 @@ a{color:var(--blue)}
   <div class="card"><h2 data-t="hCoords"></h2><div id="coordTbl"></div></div>
 </section>
 
+<!-- ============ AVALUACIÓ ============ -->
+<section id="s-aval">
+  <button class="btn sm" id="avBack" style="margin-bottom:10px"></button>
+  <div class="card" id="avBody"></div>
+</section>
+
 <!-- ============ INFO ============ -->
 <section id="s-info">
+  <div class="card" id="avalCard"></div>
   <div class="card"><h2 data-t="hGroup"></h2><div id="grup" class="small"></div></div>
   <div class="card"><h2 data-t="hHorari"></h2><div id="horari"></div></div>
   <div class="card" id="metCard"><h2 data-t="hMetPts"></h2>
@@ -267,11 +277,13 @@ a{color:var(--blue)}
 <script src="pla.js"></script>
 <script src="mapa.js"></script>
 <script src="meteo.js"></script>
+<script src="avaluacio.js"></script>
 <script>
 // ---------------- INIT ----------------
 if (store.get('light', false)) document.body.classList.add('light');
 aplicaIdioma(); renderStatic(); pintaSelectors(); pintaWake(); renderSos();
-mapa.init(); meteo.init(); pla.init(); renderPunts(); tick(); setInterval(tick, 15000);
+mapa.init(); meteo.init(); pla.init(); aval.init(); renderPunts(); tick(); setInterval(tick, 15000);
+{ const q = new URLSearchParams(location.search).get('aval'); if (['check', 'auto', 'enq'].includes(q)) aval.obre(q); } // enllaç directe des de la pàgina del treball
 if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
   navigator.serviceWorker.register('sw.js').then(reg => {
     reg.addEventListener('updatefound', () => { const w = reg.installing; if (!w) return;

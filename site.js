@@ -81,7 +81,7 @@ ${X.sticky(language)}${footerHtml(t,language)}`;
   }
   function buildTreball(language=lang){
     const t=window.COPY[language],w=t.tw;
-    const ids=['./','#treball','#plans','#blocs','#eines','#fonts'];
+    const ids=['./','#treball','#plans','#blocs','#eines','#avaluacio','#fonts'];
     document.title=w.title;
     return `<a class="skip" href="#main">${t.skip}</a>
 <header class="header"><div class="nav-wrap"><a class="brand" href="./" aria-label="Andes Wild Trek">${svg('mountain',34)}<span>ANDES<small>WILD TREK</small></span></a><nav class="desktop-nav" aria-label="${w.title}">${w.nav.map((x,i)=>`<a href="${ids[i]}">${x}</a>`).join('')}</nav><div class="header-actions"><div class="languages" role="group" aria-label="${t.langLabel}">${LANGS.map((l,i)=>`${i?'<span>/</span>':''}<button data-lang="${l}" aria-pressed="${language===l}" lang="${l}">${l.toUpperCase()}</button>`).join('')}</div><a class="nav-treball" href="presentacio.html">${w.present}${svg('arrow',15)}</a><button type="button" class="menu-toggle" aria-label="${t.menu}" aria-expanded="false" aria-controls="mobile-nav">${svg('menu',24)}</button></div></div><nav id="mobile-nav" hidden aria-label="${t.menu}">${w.nav.map((x,i)=>`<a href="${ids[i]}">${x}${svg('arrow')}</a>`).join('')}<a class="mobile-treball" href="presentacio.html">${w.present}${svg('arrow')}</a></nav></header>
@@ -91,6 +91,7 @@ ${X.sticky(language)}${footerHtml(t,language)}`;
 ${twPlansHtml(language,t)}
 <div id="blocs"></div>
 <section class="section wrap" id="eines"><div class="section-heading"><div><p class="eyebrow">${w.toolsLabel}</p><h2>${w.toolsTitle}</h2></div></div><div class="document-grid">${w.tools.map(([title,meta,body,href],i)=>`<article class="document"><div class="doc-top"><span>0${i+1}</span>${svg(href.includes('Atles')?'mountain':'download',25)}</div><h3>${title}</h3><span class="doc-meta">${meta}</span><p>${body}</p><a href="${href}" target="_blank" rel="noopener">${w.open}${svg('diagonal',19)}</a></article>`).join('')}</div></section>
+<section class="section wrap" id="avaluacio"><div class="section-heading"><div><p class="eyebrow">${w.avalLabel}</p><h2>${w.avalTitle}</h2></div><p class="section-intro">${w.avalIntro}</p></div><div class="aval-wrap"><figure class="aval-qr"><a href="${w.aval[0][3]}" target="_blank" rel="noopener"><img src="assets/enquesta-qr.svg" alt="${w.avalQr}" width="200" height="200" loading="lazy"></a><figcaption>${w.avalQr}</figcaption></figure><div class="document-grid">${w.aval.map(([title,meta,body,href],i)=>`<article class="document"><div class="doc-top"><span>0${i+1}</span>${svg(i?'download':'diagonal',25)}</div><h3>${title}</h3><span class="doc-meta">${meta}</span><p>${body}</p><a href="${href}" target="_blank" rel="noopener">${w.open}${svg('diagonal',19)}</a></article>`).join('')}</div></div></section>
 <section class="section wrap" id="fonts"><div class="section-heading"><div><p class="eyebrow">${w.sourcesLabel}</p><h2>${w.sourcesTitle}</h2></div><p class="section-intro">${t.sourcesText}</p></div><div class="source-list">${t.sources.map(([title,body],i)=>`<article>${external(SOURCE_URLS[i],title)}<p>${body}</p></article>`).join('')}</div></section></main>
 ${footerHtml(t,language)}`;
   }

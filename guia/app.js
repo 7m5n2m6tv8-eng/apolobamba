@@ -114,7 +114,7 @@ function setJorn(id) {
   J = nou; store.set('jorn', id);
   if (gps) { gps.snap = snap(gps.lat, gps.lon); if (gps.snap && gps.snap.dist < 300) lastM[J.id] = gps.snap.m; pintaGpsKv(); }
   if (window.pla) pla.canviJorn();
-  pintaSelectors(); renderPunts(); tick(); if (window.mapa) mapa.dibuixa(); if (window.meteo) meteo.pinta();
+  pintaSelectors(); renderPunts(); tick(); if (window.mapa) mapa.dibuixa(); if (window.meteo) meteo.pinta(); if (window.aval) aval.pinta();
 }
 function chipsJorn(id) {
   return `<div class="chips" id="${id}">${JORN.map(x => `<button data-j="${x.id}" class="${x.tipus === 'C' ? 'pc ' : ''}${x.id === J.id ? 'on' : ''}">${x.tipus === 'A' ? T('dayShort') + ' ' + x.dia : x.codi}</button>`).join('')}</div>`;
@@ -359,7 +359,7 @@ function aplicaIdioma() {
 }
 function setLang(l) {
   L = l; store.set('lang', l); $('#metAraAct').textContent = ''; aplicaIdioma(); renderStatic(); pintaSelectors(); renderPunts(); renderSos();
-  if (window.pla) pla.selector(); if (window.mapa) mapa.botons(); if (window.meteo) meteo.pinta(); tick(); pintaWake();
+  if (window.pla) pla.selector(); if (window.mapa) mapa.botons(); if (window.meteo) meteo.pinta(); if (window.aval) aval.pinta(); tick(); pintaWake();
 }
 
 // ---------------- EVENTS ----------------

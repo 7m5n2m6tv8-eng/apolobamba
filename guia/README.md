@@ -21,7 +21,7 @@ App web per al mòbil del guia de la travessa Pelechuco – Charazani. Funciona 
 | Mapa | Mapa propi en canvas: teselles d’OpenTopoMap desades i, a sota, els mapes de l’Atles cartogràfic (sempre dins de l’app); jornades, pla C, rutes dels plans B, sortides en vehicle i GPS |
 | Plans | Què fer si…, esquema de decisions, plans B per jornada amb rutes per seguir, pla C, criteris i taula de rutes |
 | SOS | Comunicador satèl·lit, telèfons de Bolívia (110, 165, 119), coordenades WGS84 i UTM 19S, punt i sortida en vehicle més propers, protocol, contactes i coordenades de tots els punts |
-| Info | Grup i conducció, horari, previsió per punts, fonts meteo, temporada, carreteres (ABC), cotes de nit, llistes, GPX i ajustos (idioma, data, mode prova) |
+| Info | **Avaluació** (al principi): checklist diari, autoavaluació del guia i enquesta del client (enllaç i QR). Grup i conducció, horari, previsió per punts, fonts meteo, temporada, carreteres (ABC), cotes de nit, llistes, GPX i ajustos (idioma, data, mode prova) |
 
 ## Fitxers
 
@@ -32,6 +32,7 @@ App web per al mòbil del guia de la travessa Pelechuco – Charazani. Funciona 
 | `dades.js` | Construeix les jornades a partir de `../content.js`, `track.js`, `planc.js` i `data.js`. **No s’hi escriuen dades a mà**: els punts de decisió i el ritme dels plans B són les úniques constants |
 | `pla.js` | Seguir una ruta dels plans B a la pantalla «Ara» |
 | `mapa.js` | Mapa en canvas i descàrrega de teselles |
+| `avaluacio.js` | Checklist diari (Annex A, M2), autoavaluació del guia (M4, 1–5) i enquesta del client (formulari de Google anònim, QR a `img/enquesta-qr.svg`, fet amb `python3 tools/qr_enquesta.py <url>`). Es desa al mòbil i s’exporta en CSV o PDF. Enllaços directes: `?aval=check`, `?aval=auto`, `?aval=enq` |
 | `meteo.js` | Previsió Open-Meteo per a cada punt, amb la seva altitud |
 | `i18n.js` | Textos de la interfície en 4 idiomes |
 | `data.js` | Hores de control i decisions (cap. 10 del treball), seguretat, llistes i contactes |
