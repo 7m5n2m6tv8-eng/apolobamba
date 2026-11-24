@@ -10,9 +10,9 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 - **Web publicada (GitHub Pages, rama `main`, raíz):** https://7m5n2m6tv8-eng.github.io/apolobamba/. Es la dirección del **QR del flyer** y no debe cambiar.
   - Web del cliente: `index.html`
   - Trabajo académico: `treball.html`
-  - Presentación (14 diapositivas con guion, tecla N): `presentacio.html`
+  - Presentaciones (una por asignatura, con guion, tecla N): `presentacio.html` (elige), `presentacio-organitzacio.html` y `presentacio-orientacio.html`
   - App del guía: `guia/` (…/apolobamba/guia/)
-- Estado a 24/11/2026: PR #16 (pendiente de integrar): instrumentos de evaluación reales (encuesta del cliente en Google Forms con QR; checklist diario y autoevaluación del guía dentro de la app) y apartado «Instruments d’avaluació» en `treball.html`.
+- Estado a 24/11/2026: PR #17 (pendiente de integrar): la presentación se divide en dos, una por asignatura (Organización de actividades / escuela de senderismo, con normativa; y Orientación, cartografía y planificación).
 
 ## Forma de trabajar (obligatorio)
 
@@ -22,6 +22,7 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
    - Textos o secciones de `index.html` → `node tools/prerender.js` (versión estática).
    - Documentos del cliente (ficha, preparación, plan de entrenamiento, libreta de ruta y encuesta, en 4 idiomas) → `node tools/client_docs.js`.
    - Rutas de los planes B y C → `python3 tools/gpx.py` (GPX en `dossiers/gpx/`).
+   - Presentaciones → editar `tools/presentacions.py` y ejecutar `python3 tools/presentacions.py`.
    - **Siempre, al final:** `python3 tools/stamp.py` (actualiza `version.txt`, los `?v=` y la versión de la caché de la app del guía en `guia/sw.js`, para que el móvil cargue la versión nueva).
 3. No hay dependencias ni build: es una web estática. Para probarla: `python3 -m http.server`. Revisa en móvil (390 px) y escritorio, en **ca, es, en y fr**, sin errores de consola ni enlaces rotos. La app `guia/` se prueba aparte.
 4. **Trabajo escrito:** se edita `dossiers/Apolobamba_TD2_Treball_Complet.docx` y se exporta a PDF con el **mismo nombre**. Si cambia algún bloque, se regeneran los PDF de los bloques 01–06 y se actualiza el buscador (`modules.json`). **Nunca renombres archivos de `dossiers/`**, porque la web los enlaza.
@@ -34,7 +35,7 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 | --- | --- |
 | `index.html` | Web del cliente: viaje, etapas (datos principales), programa, precio, condiciones, documentos para el cliente y contacto |
 | `treball.html` | Página "Treball TD2": trabajo completo (PDF/Word), seis bloques con buscador, herramientas del guía (incluida la app), instrumentos de evaluación (`#avaluacio`: encuesta en línea con QR, checklist y autoevaluación en la app; textos `tw.aval*`), fuentes, Instagram y modo exposición |
-| `presentacio.html` | Presentación de 14 diapositivas con guion (la 9 es temporada y planes B; la 10, el plan C) |
+| `presentacio.html` | Página para elegir presentación. Hay **dos presentaciones, una por asignatura**, de unos 15 min y con guion (tecla N): `presentacio-organitzacio.html` (Organització d’activitats · escola de senderisme: empresa, normativa y legislación en 3 diapositivas, contrato y condiciones, cliente, programa, presupuesto, conducción, dinámicas, seguridad, evaluación con el QR de la encuesta, marketing; 15 diapositivas) y `presentacio-orientacio.html` (Orientació, cartografia i planificació: zona, fuentes, atlas, jornadas, cálculo de horarios, luz, aclimatación, puntos de decisión, meteo, planes B y C, herramientas de navegación; 14 diapositivas). **Se generan con `python3 tools/presentacions.py`**: no editar los HTML a mano |
 | `content.js` | Todos los textos (ca/es/en/fr), los datos de las seis jornadas (`window.DAYS`) y la temporada, planes B, plan C, carreteras y criterios (`window.PLANS`, que se escribe con `tools/plans_data.py`) |
 | `site.js` | Construcción de la página, pestañas de jornadas, lista de material y diálogos |
 | `extras.js` | "El teu guia", comparador de altitud, "El territori", test "És per a mi?" y contacto por WhatsApp (número en `CONTACT`, ya configurado) |
@@ -46,7 +47,7 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 | `dossiers/` | Trabajo completo (PDF + DOCX), bloques 01–06, Atles cartogràfic A3 y Formularis operatius |
 | `dossiers/gpx/` | GPX de la ruta principal, de las rutas de cada plan B (días 5–10) y del plan C (generados con `tools/gpx.py` sobre OpenStreetMap) |
 | `dossiers/client/` | Para el cliente, en ca, es, en y fr: ficha del viaje, preparación y material, plan de entrenamiento de 12 semanas, libreta de ruta y **dossier completo** (`Dossier_Viatge_CA`, `Dossier_Viaje_ES`, `Travel_Dossier_EN`, `Dossier_Voyage_FR`; 15 págs., con temporada y alternativas explicadas para el cliente, sin la tabla ni los mapas del plan C; **no se enlaza en la web**: se envía por WhatsApp cuando el cliente contacta) |
-| `tools/` | `stamp.py` (versión), `dossier.js` (dossier del cliente), `plans_data.py` (fuente de temporada, planes B, plan C, ABC y criterios → `window.PLANS`; con `PLANC_WORK` también regenera `guia/planc.js`), `atles.py` (Atles cartogràfic A3, 11 láminas: mapa general, 6 jornadas y 4 etapas del plan C, con las rutas de los planes B; exporta `assets/maps/jornada-*`, `pla-c-*` y `general-*` para el dossier; `--no-export` para no exportar), `prerender.js` (HTML estático), `client_docs.js` (ficha, preparación, entrenamiento, libreta de ruta y encuesta en 4 idiomas), `gpx.py` (GPX), `grafic_pressupost.py` (gráfico del presupuesto), `i18n_*.py` (inglés y francés), `fitxa_data.py` (nivel, requisitos, reserva, cancelación y material en 4 idiomas), `blocs.py` (bloques 01–06, formularios y buscador a partir del trabajo completo), `guia_mapes.py` (georreferencia los mapas del atlas para la app del guía), `qr_enquesta.py` (`python3 tools/qr_enquesta.py <url>` → QR de la encuesta en `guia/img/` y `assets/`) |
+| `tools/` | `stamp.py` (versión), `dossier.js` (dossier del cliente), `plans_data.py` (fuente de temporada, planes B, plan C, ABC y criterios → `window.PLANS`; con `PLANC_WORK` también regenera `guia/planc.js`), `atles.py` (Atles cartogràfic A3, 11 láminas: mapa general, 6 jornadas y 4 etapas del plan C, con las rutas de los planes B; exporta `assets/maps/jornada-*`, `pla-c-*` y `general-*` para el dossier; `--no-export` para no exportar), `prerender.js` (HTML estático), `client_docs.js` (ficha, preparación, entrenamiento, libreta de ruta y encuesta en 4 idiomas), `gpx.py` (GPX), `grafic_pressupost.py` (gráfico del presupuesto), `i18n_*.py` (inglés y francés), `fitxa_data.py` (nivel, requisitos, reserva, cancelación y material en 4 idiomas), `blocs.py` (bloques 01–06, formularios y buscador a partir del trabajo completo), `guia_mapes.py` (georreferencia los mapas del atlas para la app del guía), `qr_enquesta.py` (`python3 tools/qr_enquesta.py <url>` → QR de la encuesta en `guia/img/` y `assets/`), `presentacions.py` (las dos presentaciones y la página para elegir) |
 
 ## Decisiones tomadas (no reabrir sin que Izan lo pida)
 
@@ -115,6 +116,8 @@ Fuentes de contraste (cap. 9 y Annex E del trabajo): track de Gallotrekk en Wiki
 15. **#15**: dossier completo del cliente más comercial (15 páginas): temporada y planes alternativos con los mismos textos cortos que la web (`seasonShort`, `planShort`) y sin la tabla ni los mapas del plan C, que quedan en el atlas, la app y el trabajo. Copia para la Entrega 01: `Pimentel_Izan_Entrega_01_Client.pdf` (no está en el repositorio).
 
 16. **#16**: instrumentos de evaluación reales: encuesta anónima del cliente en Google Forms (ca/es/en/fr, el cliente elige idioma; respuestas en una hoja de Google) con QR; checklist diario y autoevaluación del guía dentro de la app (sin cobertura, exportables en CSV o PDF); apartado «Instruments d’avaluació» en la página del trabajo, en 4 idiomas.
+
+17. **#17**: presentación dividida en dos, una por asignatura: Organización de actividades (escuela de senderismo), con tres diapositivas de normativa y legislación, y Orientación, cartografía y planificación (fuentes, atlas, horarios, luz, decisiones, meteo, planes B y C y navegación). Página para elegir en `presentacio.html`; generador `tools/presentacions.py`.
 
 ## Pendiente
 
