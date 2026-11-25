@@ -14,7 +14,7 @@ Web publicada (és l’adreça del QR del flyer): https://7m5n2m6tv8-eng.github.
 | `content.js` | Tots els textos (català, castellà, anglès i francès) i les dades de les sis jornades |
 | `guia/` | App mòbil del guia (funciona sense cobertura, mateix model que l’app del Catllaràs): pantalles Ara, Punts, Mapa, Plans, SOS i Info; horari, llum, GPS sobre el traçat, hores límit i decisions, mapa amb teselles d’OpenTopoMap desades i els mapes de l’atles de fons, plans B i C per seguir, meteo Open-Meteo per punts, coordenades WGS84/UTM, llistes i GPX. Vegeu `guia/README.md`. Track GPS a `guia/track.js` (199 punts, Gallotrekk, Wikiloc, 2012). Adreça: `…/apolobamba/guia/` |
 | `site.js` | Construcció de la pàgina, pestanyes de les jornades, llista de material i diàlegs |
-| `presentacio.html` | Presentació del treball en 14 diapositives amb guió (tecla N) |
+| `presentacio.html` | Tria entre les dues presentacions del treball (una per assignatura, amb guió: tecla N) |
 | `extras.js` | Guia, comparador d’altitud, territori, test i contacte per WhatsApp (número a `CONTACT`) |
 | `sw.js` | Permet obrir la web sense connexió un cop visitada |
 | `modules.js` · `modules.json` | Blocs del treball amb cercador (només a `treball.html`) |

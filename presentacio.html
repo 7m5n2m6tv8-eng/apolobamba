@@ -12,27 +12,31 @@
 h1,h2{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.015em;line-height:1.05}h1{font-size:4.2em}h2{font-size:2.5em;margin-bottom:.55em}
 p{margin:0 0 .6em;line-height:1.45}ul{margin:0;padding-left:1.1em;line-height:1.5}li{margin-bottom:.35em}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:5%;flex:1;align-items:start;min-height:0}.cols.c3{grid-template-columns:repeat(3,1fr);gap:3%}.cols.w{grid-template-columns:1.25fr .75fr}.cols.m{grid-template-columns:.8fr 1.2fr}
-.card{background:var(--cream);border-radius:.5em;padding:1em 1.1em}.card b{display:block;font-size:1.05em;margin-bottom:.25em}.card small{color:var(--muted);font-size:.8em;line-height:1.4;display:block}.card+.card{margin-top:.55em}
+.card{background:var(--cream);border-radius:.5em;padding:1em 1.1em}.card b{display:block;font-size:1.05em;margin-bottom:.25em}.card small{color:var(--muted);font-size:.88em;line-height:1.4;display:block}.card+.card{margin-top:.55em}
 .dark .card{background:rgba(255,255,255,.08)}.dark .card small{color:#c9d3cb}
 .big{font-family:var(--serif);font-size:3.4em;line-height:1;color:var(--forest)}.dark .big{color:var(--gold)}
 .stat{display:grid;grid-template-columns:repeat(4,1fr);gap:3%;margin-top:auto}.stat div{border-top:.12em solid var(--gold);padding-top:.5em}.stat span{font-size:.75em;opacity:.85}
 img{max-width:100%;display:block;border-radius:.4em}.fit{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;height:100%}.fit img{max-height:100%;width:auto;max-width:100%;object-fit:contain}
 .bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.38}.over{position:relative;display:flex;flex-direction:column;height:100%}
-table{border-collapse:collapse;width:100%;font-size:.78em}td,th{text-align:left;padding:.42em .5em;border-bottom:1px solid #dfe3d8}th{font-size:.8em;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}tr.w td{font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:.84em}td,th{text-align:left;padding:.42em .5em;border-bottom:1px solid #dfe3d8}th{font-size:.8em;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}tr.w td{font-weight:600}
 table.c td,table.c th{font-size:.92em;padding:.35em .45em}table.c td:last-child{white-space:nowrap}
-.foot{position:absolute;left:6%;right:6%;bottom:3.2%;display:flex;justify-content:space-between;font-size:.55em;color:var(--muted)}.dark .foot{color:#b9c7be}
+.foot{position:absolute;left:6%;right:6%;bottom:3.2%;display:flex;justify-content:space-between;font-size:.62em;color:var(--muted)}.dark .foot{color:#b9c7be}
 .bar{position:fixed;left:0;bottom:0;height:4px;background:var(--gold);transition:width .2s;z-index:5}
-.ui{position:fixed;right:12px;top:10px;display:flex;gap:8px;z-index:6}.ui button,.ui a{font:600 13px/1 inherit;color:#fff;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.3);border-radius:6px;padding:9px 12px;cursor:pointer;text-decoration:none}
+.ui{position:fixed;right:12px;top:10px;display:flex;gap:8px;z-index:6;transition:opacity .4s}.ui.hide{opacity:0;pointer-events:none}.ui button,.ui a{font:600 13px/1 inherit;color:#fff;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.3);border-radius:6px;padding:9px 12px;cursor:pointer;text-decoration:none}
 .notes{position:fixed;left:0;right:0;bottom:0;background:rgba(10,25,20,.96);color:#eef0e8;padding:16px 22px 22px;font-size:15px;line-height:1.5;max-height:38vh;overflow:auto;display:none;z-index:4}.notes.on{display:block}.notes b{color:var(--gold)}
 .nav{position:fixed;top:0;bottom:0;width:22%;z-index:3;cursor:pointer}.nav.l{left:0}.nav.r{right:0;width:78%}
 @media print{.ui,.bar,.nav,.notes{display:none}.deck{position:static;display:block}.slide{display:flex!important;flex-direction:column;width:100vw;height:56.25vw;page-break-after:always}@page{size:13.333in 7.5in;margin:0}}
 .months{display:grid;grid-template-columns:repeat(12,1fr);gap:.25em;margin:.4em 0 .5em}.months span{font-size:.62em;text-align:center;padding:1.3em 0 .3em;border-radius:.25em;background:#eceee7;color:#7b8378;font-weight:700}.months .best{background:var(--forest);color:#fff}.months .ok{background:#9daa86;color:#102c25}.months .risk{background:#e2cfa6;color:#102c25}
-.mini{font-size:.7em;color:var(--muted);line-height:1.4}.dark .mini{color:#c9d3cb}
+.mini{font-size:.8em;color:var(--muted);line-height:1.4}.dark .mini{color:#c9d3cb}
 .band{background:var(--forest);color:var(--cream);border-radius:.5em;padding:.75em 1em;margin-top:.8em}
-.lv{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5%;margin-bottom:.8em}.lv div{background:var(--cream);border-radius:.5em;padding:.8em .9em}.lv b{display:block;font-size:.95em}.lv i{font-style:normal;color:#8a7a4e;font-weight:700;font-size:.8em;letter-spacing:.06em;text-transform:uppercase}.lv small{display:block;color:var(--muted);font-size:.72em;line-height:1.35;margin-top:.3em}
+.lv{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5%;margin-bottom:.8em}.lv div{background:var(--cream);border-radius:.5em;padding:.8em .9em}.lv b{display:block;font-size:.95em}.lv i{font-style:normal;color:#8a7a4e;font-weight:700;font-size:.8em;letter-spacing:.06em;text-transform:uppercase}.lv small{display:block;color:var(--muted);font-size:.8em;line-height:1.35;margin-top:.3em}
 .dots{display:flex;gap:.25em;margin:.35em 0}.dots span{width:.7em;height:.7em;border-radius:50%;background:#d9ddd0}.dots span.on{background:var(--forest)}
 .qr{background:#fff;border-radius:.5em;padding:.7em;text-align:center;border:1px solid #dfe3d8}.qr img{width:100%;max-width:10em;margin:0 auto}.qr small{display:block;font-size:.65em;color:var(--muted);margin-top:.4em}
-.law{font-size:.68em;color:var(--muted);margin-top:.25em;display:block}
+.law{font-size:.8em;color:var(--muted);margin-top:.25em;display:block}
+ol{margin:0;padding-left:1.3em;line-height:1.5}ol li{margin-bottom:.5em}
+table.s td:first-child{width:17%}table.s td:last-child{white-space:normal;width:21%;font-weight:600;color:var(--forest)}
+.hb{margin:.2em 0 .6em}.hb .r{display:grid;grid-template-columns:36% 1fr 17%;align-items:center;gap:.6em;margin:.5em 0;font-size:.85em}.hb i{display:block;height:1.15em;background:var(--forest);border-radius:.2em}.hb .o i{background:#aab5a3}.hb b{text-align:right;font-weight:600;white-space:nowrap}
+.tl{display:flex;height:2.6em;border-radius:.4em;overflow:hidden;margin:.5em 0 .35em;font-size:.8em}.tl div{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;white-space:nowrap;overflow:hidden}.tl .n{background:#3b4a44}.tl .w{background:var(--forest)}.tl .g{background:#e5c98d;color:#102c25}.tl .d{background:#9daa86}
 .subj{display:inline-block;align-self:flex-start;font-size:.6em;letter-spacing:.12em;text-transform:uppercase;font-weight:700;border:1px solid var(--gold);color:var(--gold);border-radius:2em;padding:.45em 1em;margin-bottom:1.2em}
 
 body{overflow:auto}.pick{min-height:100%;display:flex;flex-direction:column;justify-content:center;max-width:1100px;margin:0 auto;padding:48px 24px;color:var(--cream)}
@@ -45,6 +49,6 @@ body{overflow:auto}.pick{min-height:100%;display:flex;flex-direction:column;just
 <main class="pick"><p class="k">Treball TD2 · Andes Wild Trek · Apolobamba</p><h1>Presentacions</h1>
 <p>Una presentació per assignatura, d’uns 15 minuts cadascuna. Dins de la presentació: fletxes o clic per avançar, tecla N per al guió i botó de pantalla completa.</p>
 <div class="two">
-<a href="presentacio-organitzacio.html"><span>Assignatura 1</span><b>Organització d’activitats de muntanya · Escola de senderisme</b><small>Empresa, normativa i legislació, contracte i condicions, client, programa, pressupost, conducció del grup, dinàmiques, seguretat, avaluació i màrqueting.</small><em>15 diapositives →</em></a>
-<a href="presentacio-orientacio.html"><span>Assignatura 2</span><b>Orientació, cartografia i planificació</b><small>Zona i fonts, atles cartogràfic, jornades, càlcul d’horaris i de llum, aclimatació, punts de decisió, meteorologia, plans B i C i eines de navegació.</small><em>14 diapositives →</em></a>
+<a href="presentacio-organitzacio.html"><span>Assignatura 1</span><b>Organització d’activitats de muntanya · Escola de senderisme</b><small>Empresa, normativa i legislació, contracte i condicions, client, programa, pressupost, conducció del grup, dinàmiques, seguretat, avaluació i màrqueting.</small><em>14 diapositives →</em></a>
+<a href="presentacio-orientacio.html"><span>Assignatura 2</span><b>Orientació, cartografia i planificació</b><small>Zona i fonts, atles cartogràfic, jornades, càlcul d’horaris i de llum, aclimatació, punts de decisió, meteorologia, plans B i C i eines de navegació.</small><em>15 diapositives →</em></a>
 </div><a class="back" href="treball.html">← Tornar al treball</a></main></body></html>
