@@ -12,7 +12,7 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
   - Trabajo académico: `treball.html`
   - Presentaciones (una por asignatura, con guion, tecla N): `presentacio.html` (elige), `presentacio-organitzacio.html` y `presentacio-orientacio.html`
   - App del guía: `guia/` (…/apolobamba/guia/)
-- Estado a 24/11/2026: PR #19 (pendiente de integrar): revisión completa del trabajo escrito (incoherencias corregidas y normativa ampliada y comprobada), fecha del trabajo 24/11/2026.
+- Estado a 25/11/2026: PR #19 integrada (revisión del trabajo escrito). PR #20 (pendiente de integrar): mejora de las dos presentaciones.
 
 ## Forma de trabajar (obligatorio)
 
@@ -35,7 +35,7 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 | --- | --- |
 | `index.html` | Web del cliente: viaje, etapas (datos principales), programa, precio, condiciones, documentos para el cliente y contacto |
 | `treball.html` | Página "Treball TD2": trabajo completo (PDF/Word), seis bloques con buscador, herramientas del guía (incluida la app), instrumentos de evaluación (`#avaluacio`: encuesta en línea con QR, checklist y autoevaluación en la app; textos `tw.aval*`), fuentes, Instagram y modo exposición |
-| `presentacio.html` | Página para elegir presentación. Hay **dos presentaciones, una por asignatura**, de unos 15 min y con guion (tecla N): `presentacio-organitzacio.html` (Organització d’activitats · escola de senderisme: empresa, normativa y legislación en 3 diapositivas, contrato y condiciones, cliente, programa, presupuesto, conducción, dinámicas, seguridad, evaluación con el QR de la encuesta, marketing; 15 diapositivas) y `presentacio-orientacio.html` (Orientació, cartografia i planificació: zona, fuentes, atlas, jornadas, cálculo de horarios, luz, aclimatación, puntos de decisión, meteo, planes B y C, herramientas de navegación; 14 diapositivas). **Se generan con `python3 tools/presentacions.py`**: no editar los HTML a mano |
+| `presentacio.html` | Página para elegir presentación. Hay **dos presentaciones, una por asignatura**, de unos 15 min y con guion (tecla N): `presentacio-organitzacio.html` (Organització d’activitats · escola de senderisme: empresa, mapa legal y contrato en 2 diapositivas, cliente, programa, presupuesto con lo que incluye y no incluye, conducción, dinámicas, mapa de riesgos, evaluación con el QR de la encuesta, marketing; 14 diapositivas) y `presentacio-orientacio.html` (Orientació, cartografia i planificació: zona, fuentes, atlas, jornadas, cálculo de horarios, luz, aclimatación, puntos de decisión, meteo, planes B y C, navegación con niebla, herramientas de navegación; 15 diapositivas). **Se generan con `python3 tools/presentacions.py`**: no editar los HTML a mano |
 | `content.js` | Todos los textos (ca/es/en/fr), los datos de las seis jornadas (`window.DAYS`) y la temporada, planes B, plan C, carreteras y criterios (`window.PLANS`, que se escribe con `tools/plans_data.py`) |
 | `site.js` | Construcción de la página, pestañas de jornadas, lista de material y diálogos |
 | `extras.js` | "El teu guia", comparador de altitud, "El territori", test "És per a mi?" y contacto por WhatsApp (número en `CONTACT`, ya configurado) |
@@ -122,6 +122,8 @@ Fuentes de contraste (cap. 9 y Annex E del trabajo): track de Gallotrekk en Wiki
 18. **#18**: fuentes presentadas como base de 2012 puesta al día con fuentes de 2022–2026 (web en 4 idiomas, dossier, app del guía y presentación de Orientación, con una tabla de fuentes nueva); altitudes del plan C en la presentación alineadas con los datos (Incacancha 4.060 m, Charazani 3.195 m).
 
 19. **#19**: revisión del trabajo escrito (Word, PDF, bloques y buscador; ahora 68 págs.): normativa ampliada y comprobada (RDL 1/2007 libro IV y RDL 23/2018, Ley 13/2002 y Decreto 75/2020 de turismo, Ley 3/2008 solo en Cataluña, Decreto 56/2003 como referencia, RGPD y LOPDGDD) también en la presentación de Organización; códigos de bibliografía duplicados corregidos ([V1–V3], [R12], [R13]) y citas que faltaban; días en lugar de «etapas» del GPX; partidas Q del presupuesto sin doble cómputo e incluido el plan C; teléfonos de emergencia en el Annex B; plan B del día 7 y plan C con la carretera cortada aclarados; final en Curva como resultado probable; pistas mineras por jornada (también en la web); idiomas del grupo; kit de dinámicas con 16 tarjetas (145 g); Annex C actualizado; PK y cotas con el mismo formato; fecha 24/11/2026.
+
+20. **#20**: presentaciones mejoradas para la defensa (25/11/2026): organización con mapa legal y estado de cada trámite, contrato más corto, presupuesto con barras legibles y «inclou / no inclou», mapa de riesgos en lugar de la diapositiva de seguridad y «inclou/exclou» del precio; orientación con barra de luz, perfil del día 7 con la hora límite, diapositiva nueva de navegación con niebla (azimut calculado desde el GPX), cartografía con datum y carta oficial, textos más cortos y tamaños mayores; botones ocultos al proyectar; altitud del Pas Sunchulli (5.032 m, hasta 5.100 m según otras fuentes), totales «arrodonits», IAE de agencia a confirmar y «tres instrumentos operativos» (no «en uso»). Hay que contrastar con la carta oficial del IGM (1:50.000) y calcular la declinación magnética antes de la defensa.
 
 ## Pendiente
 
