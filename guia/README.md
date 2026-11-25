@@ -10,7 +10,7 @@ App web per al mòbil del guia de la travessa Pelechuco – Charazani. Funciona 
 2. **Info → Ajustos:** posar la data del dia 1 (arribada a La Paz). Les jornades a peu són els dies 5 a 10.
 3. **Mapa → «Descarregar el mapa de la ruta»:** teselles d’OpenTopoMap dels zooms 11 a 15 al voltant del track, del pla C i dels plans B.
 4. **Ara → «Actualitzar meteo ara»:** la previsió queda desada i es veu sense cobertura, amb l’hora en què es va baixar.
-5. **SOS → Contactes:** omplir operador, contacte extern, assegurança, centre sanitari, transport i comunicador satèl·lit.
+5. **SOS → Contactes:** omplir operador, contacte extern, assegurança, centre sanitari, transport i Garmin inReach (GPS i comunicador satèl·lit).
 
 ## Pantalles
 
