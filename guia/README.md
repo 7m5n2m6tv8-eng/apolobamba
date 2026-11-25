@@ -38,6 +38,7 @@ App web per al mòbil del guia de la travessa Pelechuco – Charazani. Funciona 
 | `data.js` | Hores de control i decisions (cap. 10 del treball), seguretat, llistes i contactes |
 | `track.js` / `planc.js` | Track de 2012 i traçat del pla C i dels plans B |
 | `mapes.js` / `img/` | Mapes de l’atles georeferenciats (els genera `python3 tools/guia_mapes.py` després de `tools/atles.py`) |
+| `camp.js` | Eines de camp (model del Catllaràs): «Ara» en vista simple, **guió de la jornada** (què dir a cada punt i criteris de conducció), **text per dictar o enviar en una emergència** i missatge curt per al Garmin inReach (WGS84, UTM 19S, punt i sortida més propers), caminada simulada al mode prova i protecció del desplaçament sobre el mapa |
 | `sw.js` | Funcionament sense cobertura. Les teselles es desen a part i no s’esborren en actualitzar l’app |
 
 ## Fonts i llicències

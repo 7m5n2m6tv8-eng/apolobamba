@@ -359,7 +359,7 @@ function aplicaIdioma() {
 }
 function setLang(l) {
   L = l; store.set('lang', l); $('#metAraAct').textContent = ''; aplicaIdioma(); renderStatic(); pintaSelectors(); renderPunts(); renderSos();
-  if (window.pla) pla.selector(); if (window.mapa) mapa.botons(); if (window.meteo) meteo.pinta(); if (window.aval) aval.pinta(); tick(); pintaWake();
+  if (window.pla) pla.selector(); if (window.mapa) mapa.botons(); if (window.meteo) meteo.pinta(); if (window.aval) aval.pinta(); if (window.camp) camp.pinta(); tick(); pintaWake();
 }
 
 // ---------------- EVENTS ----------------
