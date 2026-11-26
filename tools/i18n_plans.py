@@ -68,10 +68,10 @@ PLANB = {  # par jour: [titre, texte]
      'fr': [['Avant le col d’Akamani', 'Avec orages, mauvaise visibilité, neige ou glace prévus sur les cols : ne pas commencer la montée et rester à Incacancha (jour de réserve).'],
             ['Sortie par l’est', 'Si les cols ne sont pas praticables, sortir par le chemin de l’Akamani vers Huayrapata et la route RN16 (étapes C3 et C4 du plan C) : 19,4 km en deux jours, sans dépasser 4 060 m.'],
             ['Après le col', 'Le camp 3 est à 600 m d’une piste qui mène à Cañisaya (4,8 km) et à Curva (10,3 km) : évacuation en véhicule.']]},
- 10: {'en': [['Curva junction (11:10)', 'Decision point: if the group is short of time or arrival in Charazani would be after 16:40, the trek ends at Curva and continues by vehicle.'],
+ 10: {'en': [['Curva junction (11:10)', 'Decision point: if the group is short of time or arrival in Charazani would be after 16:10 (a 30-minute margin before the cut-off), the trek ends at Curva and continues by vehicle.'],
              ['River bridge', 'In 2019 there was a concrete bridge on the descent to Charazani. Without recent confirmation of the bridge, the trek ends at Curva.'],
              ['Road', 'Before setting off, check with the ABC the state of the RN16 Charazani–Escoma road for the return to La Paz.']],
-      'fr': [['Croisement de Curva (11 h 10)', 'Point de décision : si le groupe est juste en temps ou si l’arrivée à Charazani dépasserait 16 h 40, le trek se termine à Curva et continue en véhicule.'],
+      'fr': [['Croisement de Curva (11 h 10)', 'Point de décision : si le groupe est juste en temps ou si l’arrivée à Charazani dépasserait 16 h 10 (30 min de marge sur l’heure limite), le trek se termine à Curva et continue en véhicule.'],
              ['Pont sur la rivière', 'En 2019, il y avait un pont en béton dans la descente vers Charazani. Sans confirmation récente du pont, l’arrivée se fait à Curva.'],
              ['Route', 'Avant de partir, vérifier auprès de l’ABC l’état de la RN16 Charazani–Escoma pour le retour à La Paz.']]},
 }
