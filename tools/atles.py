@@ -156,6 +156,12 @@ def tile(z, x, y):
                 open(path, 'wb').write(data)
                 break
             except Exception as e:
+                if getattr(e, 'code', None) == 404 and z > 10:
+                    # OpenTopoMap no té aquesta tessel·la: s'amplia la del nivell anterior
+                    print(f'  sense tessel·la {z}/{x}/{y}: s’usa el nivell {z - 1}', file=sys.stderr)
+                    parent = tile(z - 1, x // 2, y // 2)
+                    qx, qy = (x % 2) * 128, (y % 2) * 128
+                    return parent.crop((qx, qy, qx + 128, qy + 128)).resize((256, 256), Image.LANCZOS)
                 if attempt == 3:
                     raise RuntimeError(f'No s’ha pogut baixar {url}: {e}')
                 time.sleep(2 * (attempt + 1))
@@ -383,7 +389,8 @@ def page(c, i, day, pageno=None):
     # etiquetes UTM (km) a dalt i a la dreta
     c.setFont('Sans', 6.8); c.setFillColor(Color(0.1, 0.25, 0.55))
     for kind, v, (X, Y) in UTM_LAB:
-        if kind == 'E' and mx + 20 < X < mx + mw - 20: c.drawCentredString(X, my + mh + 4, f'{v // 1000}')
+        # dins del marc, a dalt (fora no hi cap: tocaria el subtítol); se salta la zona de la fletxa del nord
+        if kind == 'E' and mx + 20 < X < mx + mw - 52: halo_text(c, X, my + mh - 9, f'{v // 1000}', 'Sans', 6.8, Color(0.1, 0.25, 0.55), anchor='center', halo=2.2)
         if kind == 'N' and my + 20 < Y < my + mh - 20: c.drawString(mx + mw + 3, Y - 2.4, f'{v // 1000}')
     c.setFont('Sans', 7.5)
     c.drawCentredString(mx + mw / 2, my - 24, 'Longitud · WGS84')
@@ -395,7 +402,7 @@ def page(c, i, day, pageno=None):
     path = c.beginPath(); path.moveTo(nx, ny + 22); path.lineTo(nx - 6, ny + 2); path.lineTo(nx, ny + 7); path.lineTo(nx + 6, ny + 2); path.close()
     c.setFillColor(INK); c.drawPath(path, stroke=0, fill=1)
     c.setFont('Sans-Bold', 9); c.drawCentredString(nx, ny + 25, 'N')
-    halo_text(c, nx - 56, ny - 18, f'Declinació {DECL} (juny 2027)', 'Sans-Bold', 7.5, INK, halo=2.6)
+    halo_text(c, nx + 14, ny - 18, f'Declinació {DECL} (juny 2027)', 'Sans-Bold', 7.5, INK, anchor='right', halo=2.6)
 
     m_per_pt = haversine(unmerc(X0, cy), unmerc(X1, cy)) / mw
     length = nice(mw * m_per_pt / 5, 1)
