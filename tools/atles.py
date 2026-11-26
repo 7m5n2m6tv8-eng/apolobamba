@@ -107,6 +107,31 @@ pdfmetrics.registerFont(TTFont('Cond', cond if os.path.exists(cond) else FD + 'D
 condb = FD + 'DejaVuSansCondensed-Bold.ttf'
 pdfmetrics.registerFont(TTFont('Cond-Bold', condb if os.path.exists(condb) else FD + 'DejaVuSans-Bold.ttf'))
 
+# ---------- UTM 19S (WGS84) ----------
+UTM_ZONE, DECL = 19, '9,8° O'
+def utm_inv(E, N, zone=UTM_ZONE, south=True):
+    """UTM (WGS84) -> (lat, lon) en graus."""
+    a, f = 6378137.0, 1 / 298.257223563; e2 = f * (2 - f); ep2 = e2 / (1 - e2); k0 = 0.9996
+    x = E - 500000.0; y = N - (10000000.0 if south else 0)
+    M = y / k0; mu = M / (a * (1 - e2 / 4 - 3 * e2**2 / 64 - 5 * e2**3 / 256))
+    e1 = (1 - math.sqrt(1 - e2)) / (1 + math.sqrt(1 - e2))
+    p1 = mu + (3 * e1 / 2 - 27 * e1**3 / 32) * math.sin(2 * mu) + (21 * e1**2 / 16 - 55 * e1**4 / 32) * math.sin(4 * mu) \
+        + (151 * e1**3 / 96) * math.sin(6 * mu) + (1097 * e1**4 / 512) * math.sin(8 * mu)
+    n1 = a / math.sqrt(1 - e2 * math.sin(p1)**2); t1 = math.tan(p1)**2; c1 = ep2 * math.cos(p1)**2
+    r1 = a * (1 - e2) / (1 - e2 * math.sin(p1)**2)**1.5; d = x / (n1 * k0)
+    lat = p1 - (n1 * math.tan(p1) / r1) * (d**2 / 2 - (5 + 3 * t1 + 10 * c1 - 4 * c1**2 - 9 * ep2) * d**4 / 24
+        + (61 + 90 * t1 + 298 * c1 + 45 * t1**2 - 252 * ep2 - 3 * c1**2) * d**6 / 720)
+    lon = (d - (1 + 2 * t1 + c1) * d**3 / 6 + (5 - 2 * c1 + 28 * t1 - 3 * c1**2 + 8 * ep2 + 24 * t1**2) * d**5 / 120) / math.cos(p1)
+    return math.degrees(lat), (zone - 1) * 6 - 180 + 3 + math.degrees(lon)
+
+def utm_fwd(lat, lon, zone=UTM_ZONE):
+    """(lat, lon) -> UTM (E, N) hemisferi sud, per iteració sobre utm_inv."""
+    E, N = 500000.0, 10000000.0 + lat * 110574.0
+    for _ in range(8):
+        la, lo = utm_inv(E, N, zone)
+        N += (lat - la) * 110574.0; E += (lon - lo) * 111320.0 * math.cos(math.radians(lat))
+    return E, N
+
 # ---------- Web Mercator i teselles ----------
 def merc(lat, lon):
     """Coordenades normalitzades 0..1 (x cap a l'est, y cap al sud)."""
@@ -252,6 +277,20 @@ def page(c, i, day, pageno=None):
 
     c.saveState()
     p = c.beginPath(); p.rect(mx, my, mw, mh); c.clipPath(p, stroke=0)
+    # quadrícula UTM 19S cada 1 km (WGS84)
+    latN_, lonW_ = unmerc(X0, Y0); latS_, lonE_ = unmerc(X1, Y1)
+    cs = [utm_fwd(latN_, lonW_), utm_fwd(latN_, lonE_), utm_fwd(latS_, lonW_), utm_fwd(latS_, lonE_)]
+    Emin, Emax = min(q[0] for q in cs), max(q[0] for q in cs); Nmin, Nmax = min(q[1] for q in cs), max(q[1] for q in cs)
+    UTM_LAB = []
+    c.setStrokeColor(Color(0.1, 0.25, 0.55, 0.55)); c.setLineWidth(0.45)
+    for E in range(int(math.ceil(Emin / 1000)) * 1000, int(Emax) + 1, 1000):
+        pts = [to_page(*utm_inv(E, N)) for N in range(int(Nmin) - 500, int(Nmax) + 1500, 500)]
+        pa = c.beginPath(); pa.moveTo(*pts[0]); [pa.lineTo(*q) for q in pts[1:]]; c.drawPath(pa, stroke=1, fill=0)
+        UTM_LAB.append(('E', E, to_page(*utm_inv(E, Nmax))))
+    for N in range(int(math.ceil(Nmin / 1000)) * 1000, int(Nmax) + 1, 1000):
+        pts = [to_page(*utm_inv(E, N)) for E in range(int(Emin) - 500, int(Emax) + 1500, 500)]
+        pa = c.beginPath(); pa.moveTo(*pts[0]); [pa.lineTo(*q) for q in pts[1:]]; c.drawPath(pa, stroke=1, fill=0)
+        UTM_LAB.append(('N', N, to_page(*utm_inv(Emax, N))))
     # resta de la travessa
     def poly(points, color, width, dash=None):
         path = c.beginPath()
@@ -341,6 +380,11 @@ def page(c, i, day, pageno=None):
             c.line(mx, Y, mx - 4, Y)
             c.saveState(); c.translate(mx - 8, Y); c.rotate(90); c.drawCentredString(0, 0, deg(v, 3)); c.restoreState()
         v += step
+    # etiquetes UTM (km) a dalt i a la dreta
+    c.setFont('Sans', 6.8); c.setFillColor(Color(0.1, 0.25, 0.55))
+    for kind, v, (X, Y) in UTM_LAB:
+        if kind == 'E' and mx + 20 < X < mx + mw - 20: c.drawCentredString(X, my + mh + 4, f'{v // 1000}')
+        if kind == 'N' and my + 20 < Y < my + mh - 20: c.drawString(mx + mw + 3, Y - 2.4, f'{v // 1000}')
     c.setFont('Sans', 7.5)
     c.drawCentredString(mx + mw / 2, my - 24, 'Longitud · WGS84')
     c.saveState(); c.translate(mx - 25, my + mh / 2); c.rotate(90); c.drawCentredString(0, 0, 'Latitud · WGS84'); c.restoreState()
@@ -351,6 +395,7 @@ def page(c, i, day, pageno=None):
     path = c.beginPath(); path.moveTo(nx, ny + 22); path.lineTo(nx - 6, ny + 2); path.lineTo(nx, ny + 7); path.lineTo(nx + 6, ny + 2); path.close()
     c.setFillColor(INK); c.drawPath(path, stroke=0, fill=1)
     c.setFont('Sans-Bold', 9); c.drawCentredString(nx, ny + 25, 'N')
+    halo_text(c, nx - 56, ny - 18, f'Declinació {DECL} (juny 2027)', 'Sans-Bold', 7.5, INK, halo=2.6)
 
     m_per_pt = haversine(unmerc(X0, cy), unmerc(X1, cy)) / mw
     length = nice(mw * m_per_pt / 5, 1)
@@ -489,7 +534,7 @@ def page(c, i, day, pageno=None):
     c.drawString(M, 28, 'Mapa base: © OpenTopoMap (CC-BY-SA) · dades © col·laboradors d’OpenStreetMap i SRTM. ' + (
         'Recorregut: camí de l’Akamani a OpenStreetMap (consulta del 17/11/2026) i altituds SRTM; encara no s’ha reconegut sobre el terreny.' if planc else
         'Recorregut: track GPS de Gallotrekk (Wikiloc, 2012), contrastat amb operadors bolivians; encara no s’ha reconegut sobre el terreny.'))
-    c.drawString(M, 17, 'Coordenades WGS84 en graus decimals. Distàncies, desnivells i horaris de planificació. L’escala gràfica és vàlida si s’imprimeix en A3 sense ajustar.')
+    c.drawString(M, 17, 'Marges en graus WGS84; quadrícula blava UTM 19S cada 1 km. Declinació ≈ 9,8° O (juny 2027): azimut magnètic = vertader + 9,8°. Escala vàlida en A3.')
     c.drawRightString(W - M, 17, f'Andes Wild Trek · Izan Pimentel Pérez · novembre de 2026 · pàgina {pageno} de {NPAGES}')
 
 def overview(c):
