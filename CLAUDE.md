@@ -12,7 +12,7 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
   - Trabajo académico: `treball.html`
   - Presentaciones (una por asignatura, con guion, tecla N): `presentacio.html` (elige), `presentacio-organitzacio.html` y `presentacio-orientacio.html`
   - App del guía: `guia/` (…/apolobamba/guia/)
-- Estado a 26/11/2026: PR #20 a #31 integradas (también declinación, recuperación del título/ROPEC perdido y correcciones de la revisión de tres profesores) (presentaciones, título y ROPEC, Garmin inReach, app del guía con herramientas de campo, fitxa de metodología con guía para localizar los lliuraments y flyer final). El trabajo está prácticamente cerrado: Izan no quiere modificar mucho más.
+- Estado a 26/11/2026: PR #20 a #31 integradas; PR #32 (atlas regenerado) pendiente de revisión (también declinación, recuperación del título/ROPEC perdido y correcciones de la revisión de tres profesores) (presentaciones, título y ROPEC, Garmin inReach, app del guía con herramientas de campo, fitxa de metodología con guía para localizar los lliuraments y flyer final). El trabajo está prácticamente cerrado: Izan no quiere modificar mucho más.
 
 ## Forma de trabajar (obligatorio)
 
@@ -150,10 +150,12 @@ Fuentes de contraste (cap. 9 y Annex E del trabajo): track de Gallotrekk en Wiki
 
 31. **#31**: mejoras propuestas en la revisión. Trabajo escrito (ahora 70 págs.; índice y tabla de localización actualizados): apartados nuevos en el cap. 8 «Objectius, evidències i instruments», «Grup tipus i anàlisi del grup» y «Progressió didàctica de J1 a J6», enlazados desde la fitxa; «Protocol de mal d’altura» en el cap. 10 (Lake Louise y pulsioxímetro, criterios de descenso, signos de alarma; la medicación la prescribe medicina del viatge) con [R14] Roach 2018 y [R15] Luks/WMS 2019; revisión del precio (art. 158–159, tope del 8 %) y formulario normalizado (annex II) en el modelo de contrato (cap. 6.2); en el Annex D, oxígeno o cámara hiperbárica a decidir con el operador. Atlas: `tools/atles.py` dibuja la cuadrícula UTM 19S cada 1 km con etiquetas en km y la declinación (≈ 9,8° O); probado con un mapa de fondo vacío, pero el PDF del atlas no se ha regenerado por falta de acceso a OpenTopoMap.
 
+32. **#32**: atlas A3 regenerado con OpenTopoMap (cuadrícula UTM 19S cada 1 km, declinación ≈ 9,8° O, llegadas nuevas de los días 5 y 8 y texto nuevo del día 7); etiquetas UTM dentro del marco y declinación dentro del mapa; si falta una tesela de OpenTopoMap (404), `tools/atles.py` amplía la del nivel anterior. Horas de los puntos de paso de los días 5 y 8 recalculadas en proporción a 6–8 h y 5–7 h (content.js, atlas, app, dossiers, libretas de ruta y las dos tablas del cap. 10 del Word; PDF, bloque 06 y buscador regenerados). Azimuts del atlas comprobados (35 tramos).
+
 ## Pendiente
 
 **En el repositorio (lo puede hacer Claude):**
-- Regenerar el atlas con `python3 tools/atles.py` (ahora con cuadrícula UTM y declinación) (y después `python3 tools/guia_mapes.py`, `node tools/dossier.js` y `python3 tools/stamp.py`) cuando haya acceso a tile.opentopomap.org, para que recoja las llegadas de los días 5 y 8 y el texto nuevo del día 7.
+- **Horas de control del día 8** (`guia/data.js` y cap. 10 del Word): Pas 4 11.40, Agua buena 4 11.55, Pas 5 12.10, Inici Mil Corbes 12.40 y Final Mil Corbes 13.10 quedan antes del final de la franja prevista a ritme lento (7 h). Izan debe decidir si se mueven o se mantienen como puntos de decisión.
 - Mejoras de la revisión todavía sin hacer: margen en el día 10; tabla de azimuts por tramo en el atlas; checklist de la app también para los días 1–4, 11 y reserva, y autoevaluación guardada por código de salida.
 - Si cambian los planes o el plan C: editar `tools/plans_data.py`, ejecutar `python3 tools/plans_data.py`, `python3 tools/atles.py`, `node tools/dossier.js`, `node tools/prerender.js` y `python3 tools/stamp.py`. El capítulo 10.2–10.6 del Word se generó con estos datos: si cambian, hay que actualizarlo a mano.
 - Tracks de los planes B y C: salen de OpenStreetMap (ODbL). Wikiloc y TwoNav no se descargaron (bloquean el acceso automático y no se forzó).
