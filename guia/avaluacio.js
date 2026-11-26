@@ -9,6 +9,7 @@ ca: {
   hAval: 'Avaluació', avalIntro: 'Checklist diari, autoavaluació del guia i enquesta del client. Les dades es desen només en aquest mòbil; exporta-les en tornar.',
   openCheck: 'Checklist del dia', openAuto: 'Autoavaluació del guia', openEnq: 'Enquesta del client', exportCsv: 'Exportar CSV', printPdf: 'Imprimir / PDF', back: '← Tornar', saved: 'Desat al mòbil',
   checkTitle: 'Checklist diari del guia', checkHelp: 'Emplenar abans de sortir i completar al vespre en 5–10 minuts. Marcar Sí / No / NA; qualsevol «No» que condicioni l’activitat obliga a registrar la decisió.',
+  dayPick: 'Dia del checklist', noWalk: 'sense marxa', reserve: 'Dia de reserva', progDays: { 1: 'arribada a La Paz', 2: 'adaptació a La Paz', 3: 'aclimatació i revisió de material', 4: 'trasllat a Pelechuco', 11: 'retorn a La Paz' },
   code: 'Codi de sortida', date: 'Data', guide: 'Guia', stage: 'Etapa',
   before: 'Abans de la marxa', yes: 'Sí', no: 'No', na: 'NA', evidence: 'Evidència, incidència o decisió',
   items: ['Programa, cartografia i GPX disponibles i coherents', 'Meteorologia i informació local revisades amb hora i font', 'Estat del grup valorat de manera individual i confidencial', 'Material personal i col·lectiu necessari comprovat', 'Aigua, alimentació i pernocta de la jornada comprovades', 'Comunicacions, contacte extern i procediment d’avís acordats', 'Punts de decisió, hores límit i alternatives repassats', 'Carreteres consultades (ABC i transportistes, 48 h i 24 h)', 'Fonts d’aigua per sobre de les mines confirmades', 'Pla B de la jornada, punts d’evacuació i GPX carregats', 'Permís del SERNAP i registre al campament de guardaparcs', 'Briefing entès; cap, tancament i recompte acordats'],
@@ -27,6 +28,7 @@ es: {
   hAval: 'Evaluación', avalIntro: 'Checklist diario, autoevaluación del guía y encuesta del cliente. Los datos se guardan solo en este móvil; expórtalos al volver.',
   openCheck: 'Checklist del día', openAuto: 'Autoevaluación del guía', openEnq: 'Encuesta del cliente', exportCsv: 'Exportar CSV', printPdf: 'Imprimir / PDF', back: '← Volver', saved: 'Guardado en el móvil',
   checkTitle: 'Checklist diario del guía', checkHelp: 'Rellenar antes de salir y completar por la noche en 5–10 minutos. Marcar Sí / No / NA; cualquier «No» que condicione la actividad obliga a registrar la decisión.',
+  dayPick: 'Día del checklist', noWalk: 'sin marcha', reserve: 'Día de reserva', progDays: { 1: 'llegada a La Paz', 2: 'adaptación en La Paz', 3: 'aclimatación y revisión de material', 4: 'traslado a Pelechuco', 11: 'regreso a La Paz' },
   code: 'Código de salida', date: 'Fecha', guide: 'Guía', stage: 'Etapa',
   before: 'Antes de la marcha', yes: 'Sí', no: 'No', na: 'NA', evidence: 'Evidencia, incidencia o decisión',
   items: ['Programa, cartografía y GPX disponibles y coherentes', 'Meteorología e información local revisadas con hora y fuente', 'Estado del grupo valorado de forma individual y confidencial', 'Material personal y colectivo necesario comprobado', 'Agua, comida y pernocta de la jornada comprobadas', 'Comunicaciones, contacto externo y procedimiento de aviso acordados', 'Puntos de decisión, horas límite y alternativas repasados', 'Carreteras consultadas (ABC y transportistas, 48 h y 24 h)', 'Fuentes de agua por encima de las minas confirmadas', 'Plan B de la jornada, puntos de evacuación y GPX cargados', 'Permiso del SERNAP y registro en el campamento de guardaparques', 'Briefing entendido; cabeza, cierre y recuento acordados'],
@@ -45,6 +47,7 @@ en: {
   hAval: 'Evaluation', avalIntro: 'Daily checklist, guide self-assessment and client survey. Data are saved only on this phone; export them when you are back.',
   openCheck: 'Today’s checklist', openAuto: 'Guide self-assessment', openEnq: 'Client survey', exportCsv: 'Export CSV', printPdf: 'Print / PDF', back: '← Back', saved: 'Saved on the phone',
   checkTitle: 'Guide’s daily checklist', checkHelp: 'Fill in before setting off and complete in the evening in 5–10 minutes. Tick Yes / No / NA; any “No” that affects the activity means the decision must be recorded.',
+  dayPick: 'Checklist day', noWalk: 'no walking', reserve: 'Reserve day', progDays: { 1: 'arrival in La Paz', 2: 'settling in La Paz', 3: 'acclimatisation and gear check', 4: 'transfer to Pelechuco', 11: 'return to La Paz' },
   code: 'Departure code', date: 'Date', guide: 'Guide', stage: 'Stage',
   before: 'Before setting off', yes: 'Yes', no: 'No', na: 'NA', evidence: 'Evidence, incident or decision',
   items: ['Programme, maps and GPX available and consistent', 'Weather and local information checked, with time and source', 'Group condition assessed individually and confidentially', 'Necessary personal and group equipment checked', 'Water, food and overnight for the day checked', 'Communications, outside contact and alert procedure agreed', 'Decision points, cut-off times and alternatives reviewed', 'Roads checked (ABC and drivers, 48 h and 24 h)', 'Water sources above the mines confirmed', 'Day’s plan B, evacuation points and GPX loaded', 'SERNAP permit and registration at the rangers’ camp', 'Briefing understood; leader, back marker and head count agreed'],
@@ -63,6 +66,7 @@ fr: {
   hAval: 'Évaluation', avalIntro: 'Check-list quotidienne, auto-évaluation du guide et enquête client. Les données restent uniquement sur ce téléphone ; exporte-les au retour.',
   openCheck: 'Check-list du jour', openAuto: 'Auto-évaluation du guide', openEnq: 'Enquête client', exportCsv: 'Exporter en CSV', printPdf: 'Imprimer / PDF', back: '← Retour', saved: 'Enregistré sur le téléphone',
   checkTitle: 'Check-list quotidienne du guide', checkHelp: 'À remplir avant le départ et à compléter le soir en 5 à 10 minutes. Cocher Oui / Non / NA ; tout « Non » qui conditionne l’activité oblige à consigner la décision.',
+  dayPick: 'Jour de la checklist', noWalk: 'sans marche', reserve: 'Jour de réserve', progDays: { 1: 'arrivée à La Paz', 2: 'adaptation à La Paz', 3: 'acclimatation et contrôle du matériel', 4: 'transfert à Pelechuco', 11: 'retour à La Paz' },
   code: 'Code du départ', date: 'Date', guide: 'Guide', stage: 'Étape',
   before: 'Avant la marche', yes: 'Oui', no: 'Non', na: 'NA', evidence: 'Preuve, incident ou décision',
   items: ['Programme, cartographie et GPX disponibles et cohérents', 'Météo et informations locales vérifiées, avec heure et source', 'État du groupe évalué de façon individuelle et confidentielle', 'Matériel personnel et collectif nécessaire vérifié', 'Eau, repas et nuit de la journée vérifiés', 'Communications, contact extérieur et procédure d’alerte convenus', 'Points de décision, heures limites et alternatives revus', 'Routes consultées (ABC et transporteurs, 48 h et 24 h)', 'Sources d’eau en amont des mines confirmées', 'Plan B de la journée, points d’évacuation et GPX chargés', 'Permis du SERNAP et enregistrement au camp des gardes', 'Briefing compris ; tête, serre-file et comptage convenus'],
@@ -87,12 +91,21 @@ const aval = (() => {
   const nota = (name, val) => `<span class="tri">${[1, 2, 3, 4, 5].map(n => `<label class="${+val === n ? 'on si' : ''}"><input type="radio" name="${name}" value="${n}" ${+val === n ? 'checked' : ''}>${n}</label>`).join('')}</span>`;
   const camp = (k, lab, val, type) => `<label class="fld">${lab}<input data-av="${k}" ${type ? `type="${type}"` : ''} value="${v(val)}"></label>`;
   const area = (k, lab, val, help) => `<label class="fld">${lab}${help ? `<span class="small mut" style="display:block">${help}</span>` : ''}<textarea data-av="${k}" rows="2">${v(val)}</textarea></label>`;
-  const jId = () => J.id;
-  const C = () => (D.check[jId()] = D.check[jId()] || { data: dataIso(J.dia), etapa: J.tipus === 'A' ? 'D' + J.dia : J.codi, items: {}, reg: {} });
+  // Dies del checklist: les jornades a peu (JORN) i també els dies sense marxa (1–4, 11) i els dos de reserva
+  let sel = null;
+  const EXTRA = [['x1', 1], ['x2', 2], ['x3', 3], ['x4', 4], ['x11', 11], ['r1', 12], ['r2', 13]];
+  const diaDe = id => { const e = EXTRA.find(x => x[0] === id); if (e) return e[1]; const j = JORN.find(x => x.id === id); return j ? j.dia : J.dia; };
+  const etiq = id => { const t = A2(), e = EXTRA.find(x => x[0] === id);
+    if (e) return id[0] === 'r' ? t.reserve + ' ' + id.slice(1) : T('dayShort') + ' ' + e[1] + ' · ' + t.progDays[e[1]] + ' (' + t.noWalk + ')';
+    const j = JORN.find(x => x.id === id); return j ? (j.tipus === 'A' ? T('dayShort') + ' ' + j.dia : j.codi) : id; };
+  const opcions = () => [...EXTRA.slice(0, 4).map(x => x[0]), ...JORN.map(j => j.id), 'x11', 'r1', 'r2'];
+  const jId = () => sel || J.id;
+  const C = () => (D.check[jId()] = D.check[jId()] || { data: dataIso(diaDe(jId())), etapa: EXTRA.some(x => x[0] === jId()) ? etiq(jId()) : (J.id === jId() ? (J.tipus === 'A' ? 'D' + J.dia : J.codi) : etiq(jId())), items: {}, reg: {} });
 
   function pintaCheck() {
     const t = A2(), c = C();
     $('#avBody').innerHTML = `<h2>${t.checkTitle}</h2><p class="small mut">${t.checkHelp}</p>
+      <label class="fld">${t.dayPick}<select id="avDia">${opcions().map(id => `<option value="${id}" ${id === jId() ? 'selected' : ''}>${esc(etiq(id))}</option>`).join('')}</select></label>
       <div class="grid2">${camp('c.codi', t.code, c.codi ?? store.get('codiSortida', ''))}${camp('c.data', t.date, c.data, 'date')}${camp('c.etapa', t.stage, c.etapa)}${camp('c.guia', t.guide, c.guia ?? store.get('guiaNom', ''))}</div>
       <h3>${t.before}</h3>
       ${t.items.map((x, i) => { const it = c.items[i] || {}; return `<div class="avi"><div class="small"><b>${i + 1}.</b> ${esc(x)}</div>${tri('ci' + i, it.v)}<input data-av="ci.${i}" placeholder="${t.evidence}" value="${v(it.e)}"></div>`; }).join('')}
@@ -119,11 +132,12 @@ const aval = (() => {
   }
   let vista = null;
   function obre(qui) {
-    vista = qui; $$('main section').forEach(x => x.classList.toggle('act', x.id === 's-aval')); window.scrollTo(0, 0);
+    vista = qui; if (qui === 'check') sel = null; $$('main section').forEach(x => x.classList.toggle('act', x.id === 's-aval')); window.scrollTo(0, 0);
     ({ check: pintaCheck, auto: pintaAuto, enq: pintaEnq })[qui]();
   }
   function onInput(e) {
     const el = e.target, k = el.dataset.av, name = el.name;
+    if (el.id === 'avDia') { sel = el.value; pintaCheck(); return; }
     if (!k && !name) return;
     if (vista === 'check') {
       const c = C();
@@ -143,7 +157,7 @@ const aval = (() => {
   const q = s => '"' + String(s ?? '').replace(/"/g, '""') + '"';
   function csv() {
     const t = A2(), rows = [['tipus', 'codi', 'data', 'etapa', 'guia', 'apartat', 'valor', 'text']];
-    const etiqueta = id => { const x = JORN.find(j => j.id === id); return x ? (x.tipus === 'A' ? 'D' + x.dia : x.codi) : id; };
+    const etiqueta = id => etiq(id);
     for (const id in D.check) {
       const c = D.check[id], base = ['checklist', c.codi, c.data, c.etapa || etiqueta(id), c.guia];
       t.items.forEach((x, i) => rows.push([...base, x, (c.items[i] || {}).v, (c.items[i] || {}).e]));

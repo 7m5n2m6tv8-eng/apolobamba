@@ -94,11 +94,11 @@ PLANB = [
         ['Después del paso', 'El Campamento 3 está a 600 m de una pista que lleva a Cañisaya (4,8 km) y a Curva (10,3 km): evacuación en vehículo.'],
     ]},
     {'day': 10, 'ca': [
-        ['Cruïlla de Curva (11.10)', 'Punt de decisió: si el grup va just de temps o l’arribada a Charazani passaria de les 16.40, la travessa acaba a Curva i es continua en vehicle.'],
+        ['Cruïlla de Curva (11.10)', 'Punt de decisió: si el grup va just de temps o l’arribada a Charazani passaria de les 16.10 (30 min de marge sobre la hora límit), la travessa acaba a Curva i es continua en vehicle.'],
         ['Pont del riu', 'El 2019 hi havia un pont de formigó a la baixada cap a Charazani. Sense confirmació recent del pont, el final és a Curva.'],
         ['Carretera', 'Abans de sortir, comprovar a l’ABC l’estat de la RN16 Charazani–Escoma per al retorn a La Paz.'],
     ], 'es': [
-        ['Cruce de Curva (11:10)', 'Punto de decisión: si el grupo va justo de tiempo o la llegada a Charazani pasaría de las 16:40, la travesía termina en Curva y se sigue en vehículo.'],
+        ['Cruce de Curva (11:10)', 'Punto de decisión: si el grupo va justo de tiempo o la llegada a Charazani pasaría de las 16:10 (30 min de margen sobre la hora límite), la travesía termina en Curva y se sigue en vehículo.'],
         ['Puente del río', 'En 2019 había un puente de hormigón en la bajada hacia Charazani. Sin confirmación reciente del puente, el final es en Curva.'],
         ['Carretera', 'Antes de salir, comprobar en la ABC el estado de la RN16 Charazani–Escoma para el regreso a La Paz.'],
     ]},

@@ -68,7 +68,7 @@ NOTES = {
     9: ['Amb tempesta, neu o gel previstos als colls, no es comença la pujada: quedar-se a Incacancha.',
         'Sortida per l’est: etapes C3 i C4 del pla C (19,4 km, màxim 4.060 m).',
         'Evacuació: el Campament 3 és a 600 m d’una pista a Cañisaya (4,8 km) i Curva.'],
-    10: ['Cruïlla de Curva (11.10): si el grup va just de temps, final a Curva i vehicle.',
+    10: ['Cruïlla de Curva (11.10): si el grup va just o Charazani passaria de les 16.10, final a Curva i vehicle.',
          'Sense confirmació recent del pont, el final és a Curva.',
          'Abans de sortir, comprovar a l’ABC la RN16 Charazani–Escoma.'],
     'C1': ['Jornada curta d’aclimatació. Camp a Cañisaya acordat amb la comunitat.',
@@ -479,7 +479,13 @@ def page(c, i, day, pageno=None):
         c.setFillColor(INK); c.setFont('Sans', 8.5)
         c.drawString(x + 22, y - 1, f'km {dec(p["km"])} · {fmt(p["ele"])} m · {p["time"]} h')
         c.setFillColor(MUTED); c.setFont('Sans', 7.5)
-        c.drawString(x + 22, y - 11, f'{deg(p["ll"][0])}  {deg(p["ll"][1])}')
+        az = ''
+        if n + 1 < len(day['points']):
+            q = day['points'][n + 1]['ll']; la1, lo1, la2, lo2 = map(math.radians, (p['ll'][0], p['ll'][1], q[0], q[1]))
+            b = (math.degrees(math.atan2(math.sin(lo2 - lo1) * math.cos(la2), math.cos(la1) * math.sin(la2) - math.sin(la1) * math.cos(la2) * math.cos(lo2 - lo1))) + 360) % 360
+            d = haversine(p['ll'], q) / 1000
+            az = f'   → {n + 2}: {dec(d)} km recta · az. {round(b):03d}° V / {round((b + 9.8) % 360):03d}° M'
+        c.drawString(x + 22, y - 11, f'{deg(p["ll"][0])}  {deg(p["ll"][1])}' + az)
 
     y -= 34
     c.setFillColor(ACCENT); c.setFont('Sans-Bold', 9.5); c.drawString(x, y, 'A TENIR EN COMPTE · PLANS B' if not planc else 'A TENIR EN COMPTE'); y -= 4
@@ -534,7 +540,7 @@ def page(c, i, day, pageno=None):
     c.drawString(M, 28, 'Mapa base: © OpenTopoMap (CC-BY-SA) · dades © col·laboradors d’OpenStreetMap i SRTM. ' + (
         'Recorregut: camí de l’Akamani a OpenStreetMap (consulta del 17/11/2026) i altituds SRTM; encara no s’ha reconegut sobre el terreny.' if planc else
         'Recorregut: track GPS de Gallotrekk (Wikiloc, 2012), contrastat amb operadors bolivians; encara no s’ha reconegut sobre el terreny.'))
-    c.drawString(M, 17, 'Marges en graus WGS84; quadrícula blava UTM 19S cada 1 km. Declinació ≈ 9,8° O (juny 2027): azimut magnètic = vertader + 9,8°. Escala vàlida en A3.')
+    c.drawString(M, 17, 'Marges en graus WGS84; quadrícula blava UTM 19S cada 1 km. Declinació ≈ 9,8° O (juny 2027): azimut magnètic (M) = vertader (V) + 9,8°; els azimuts dels punts de pas són en línia recta. Escala vàlida en A3.')
     c.drawRightString(W - M, 17, f'Andes Wild Trek · Izan Pimentel Pérez · novembre de 2026 · pàgina {pageno} de {NPAGES}')
 
 def overview(c):
