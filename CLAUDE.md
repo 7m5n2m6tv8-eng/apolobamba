@@ -12,7 +12,7 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
   - Trabajo académico: `treball.html`
   - Presentaciones (una por asignatura, con guion, tecla N): `presentacio.html` (elige), `presentacio-organitzacio.html` y `presentacio-orientacio.html`
   - App del guía: `guia/` (…/apolobamba/guia/)
-- Estado a 25/11/2026: PR #20 integrada (mejora de las dos presentaciones). PR #21 integrada (título, ROPEC y Garmin inReach). PR #22 integrada (app del guía con las herramientas de campo del Catllaràs).
+- Estado a 26/11/2026: PR #20 a #25 integradas (presentaciones, título y ROPEC, Garmin inReach, app del guía con herramientas de campo, fitxa de metodología con guía para localizar los lliuraments y flyer final). El trabajo está prácticamente cerrado: Izan no quiere modificar mucho más.
 
 ## Forma de trabajar (obligatorio)
 
@@ -130,6 +130,12 @@ Fuentes de contraste (cap. 9 y Annex E del trabajo): track de Gallotrekk en Wiki
 21. **#21**: Izan como titular del título y del ROPEC en el trabajo (cap. 3, Annex D), la presentación de Organización (mapa legal y conclusiones) y los textos relacionados; Garmin inReach como comunicador del guía en el trabajo, las presentaciones, la web, la app y los dossiers; PDF, bloques y buscador regenerados (68 págs.).
 
 22. **#22**: app del guía mejorada con lo mejor de la app del Catllaràs (`guia/camp.js`, 4 idiomas): vista simple en «Ara», guion de la jornada con la frase tipo de cada punto, texto para dictar o enviar en una emergencia (WGS84, UTM 19S, punto y salida en vehículo más cercanos) con mensaje corto para el Garmin inReach, caminada simulada en el mode prova y protección del desplazamiento sobre el mapa. No se trae el mapa del tiempo del Atlántico del Catllaràs, que no aplica a Bolivia.
+
+23. **#23**: corrección de la línea de estado de este archivo.
+
+24. **#24**: metodología fácil de evaluar (rúbrica: fitxa de metodologia /40, checklist diari /20, enquesta del client /20 y autoavaluació del guia /20). La fitxa del cap. 8 tiene ahora los apartados Dades de la travessia, Objectiu, Públic i anàlisi del grup, Continguts, Etapes i progressió, Estratègia de conducció, Recursos, Temporització y Avaluació; tabla «On trobar cada lliurament de metodologia» al principio del cap. 8 (p. 17) y entradas del Annex A (M1–M5, pp. 56–61) en el índice. PDF, bloques y buscador regenerados (68 págs.).
+
+25. **#25**: flyer final rehecho (`assets/flyer.jpg` y `assets/flyer.pdf`): URL escrita bajo el QR, texto en lugar del falso botón, «Des de 2.700 € per persona» como precio de referencia y contacto por WhatsApp. Misma figura sustituida en el cap. 7 del trabajo. El QR apunta a la misma dirección. Izan entrega aparte una guía de una página para la profesora (no está en el repositorio ni debe añadirse).
 
 ## Pendiente
 
