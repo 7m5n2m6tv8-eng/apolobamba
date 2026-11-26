@@ -58,7 +58,7 @@ NOTES = {
         'Nit 508 m més amunt que Pelechuco: valoració de cada persona al vespre i al matí.'],
     6: ['Jornada curta de recuperació. Camp acordat amb la comunitat d’Hilo Hilo.',
         'Pla B: Hilo Hilo té pista a Pelechuco (uns 20 km). Dia de reserva si algú necessita més aclimatació.'],
-    7: ['Hora límit al Pas Sunchulli: 14.40. Si no, mitja volta cap a Hilo Hilo. Amb neu dura o gel no es creua.',
+    7: ['Última mitja volta còmoda: Agua buena 3, 13.40. Hora límit al Pas Sunchulli: 14.40; si no, mitja volta i 4×4 per la pista. Amb neu dura o gel no es creua.',
         'Evacuació: la pista Hilo Hilo–Sorapata arriba al pas; després del pas, Sunchully (2,6 km) té pista a Sorapata.',
         'Aigua: res del riu Sunchulli ni per sota de les mines; 2–3 l per persona des d’Agua buena 3.',
         'Campament 2: lluny del campament miner, a l’emplaçament més baix de la vall (≈4.500 m).'],

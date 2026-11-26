@@ -64,13 +64,13 @@ PLANB = [
     ]},
     {'day': 7, 'ca': [
         ['Abans de les 10.10', 'Amb retard, símptomes o previsió desfavorable al primer control: tornar a Hilo Hilo.'],
-        ['Hora límit al pas: 14.40', 'Si el grup no hi és a l’hora, mitja volta cap a Hilo Hilo. La pista Hilo Hilo–Sorapata puja per la vall fins al pas: un 4×4 hi pot arribar per evacuar.'],
+        ['Hora límit al pas: 14.40', 'L’últim punt de mitja volta còmoda és Agua buena 3 a les 13.40. Si a les 14.40 el grup no és al pas, mitja volta: el retorn a peu fins a Hilo Hilo dura unes 3 h, de manera que es demana el 4×4 per la pista Hilo Hilo–Sorapata, que puja per la vall fins al pas.'],
         ['Pas tancat', 'Amb neu dura o gel no es creua: dia de reserva a Hilo Hilo. Si continua tancat, retirada a Pelechuco en vehicle i trasllat a Charazani per fer el pla C.'],
         ['Després del pas', 'Sunchully (comunitat minera, 4.540 m) és a 2,6 km del Campament 2 per pista, amb sortida en vehicle cap a Sorapata (7,4 km) i, pel pas, cap a Hilo Hilo i Pelechuco (uns 38 km). L’evacuació en vehicle s’acorda abans de sortir.'],
         ['Aigua', 'No s’agafa aigua del riu Sunchulli ni de cap curs per sota de les mines. Sortir d’Agua buena 3 amb 2–3 litres per persona per a la tarda i la nit.'],
     ], 'es': [
         ['Antes de las 10:10', 'Con retraso, síntomas o previsión desfavorable en el primer control: volver a Hilo Hilo.'],
-        ['Hora límite en el paso: 14:40', 'Si el grupo no ha llegado a esa hora, media vuelta hacia Hilo Hilo. La pista Hilo Hilo–Sorapata sube por el valle hasta el paso: un 4×4 puede llegar para evacuar.'],
+        ['Hora límite en el paso: 14:40', 'El último punto de media vuelta cómoda es Agua buena 3 a las 13:40. Si a las 14:40 el grupo no está en el paso, media vuelta: el regreso a pie hasta Hilo Hilo dura unas 3 h, así que se pide el 4×4 por la pista Hilo Hilo–Sorapata, que sube por el valle hasta el paso.'],
         ['Paso cerrado', 'Con nieve dura o hielo no se cruza: día de reserva en Hilo Hilo. Si sigue cerrado, retirada a Pelechuco en vehículo y traslado a Charazani para hacer el plan C.'],
         ['Después del paso', 'Sunchully (comunidad minera, 4.540 m) está a 2,6 km del Campamento 2 por pista, con salida en vehículo hacia Sorapata (7,4 km) y, por el paso, hacia Hilo Hilo y Pelechuco (unos 38 km). La evacuación en vehículo se acuerda antes de salir.'],
         ['Agua', 'No se coge agua del río Sunchulli ni de ningún curso por debajo de las minas. Salir de Agua buena 3 con 2–3 litros por persona para la tarde y la noche.'],
