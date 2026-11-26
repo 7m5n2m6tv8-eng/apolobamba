@@ -12,7 +12,7 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
   - Trabajo académico: `treball.html`
   - Presentaciones (una por asignatura, con guion, tecla N): `presentacio.html` (elige), `presentacio-organitzacio.html` y `presentacio-orientacio.html`
   - App del guía: `guia/` (…/apolobamba/guia/)
-- Estado a 26/11/2026: PR #20 a #25 integradas (presentaciones, título y ROPEC, Garmin inReach, app del guía con herramientas de campo, fitxa de metodología con guía para localizar los lliuraments y flyer final). El trabajo está prácticamente cerrado: Izan no quiere modificar mucho más.
+- Estado a 26/11/2026: PR #20 a #30 integradas (también declinación, recuperación del título/ROPEC perdido y correcciones de la revisión de tres profesores) (presentaciones, título y ROPEC, Garmin inReach, app del guía con herramientas de campo, fitxa de metodología con guía para localizar los lliuraments y flyer final). El trabajo está prácticamente cerrado: Izan no quiere modificar mucho más.
 
 ## Forma de trabajar (obligatorio)
 
@@ -68,7 +68,8 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 - Topónimos normalizados en catalán ("Pas Sunchulli", no "Paso Sunchulli") y decimales con coma. La referencia es la tabla de normalización del trabajo (cap. 9). Los puntos de agua se llaman **"Agua buena 1–4"** (nombre del GPS, con la nota de que el agua se trata siempre); no se traducen.
 - **Llegada a Charazani (día 10): 15.10–16.40**, igual que la duración de 8–9 h 30 min. La hora límite sigue siendo las 16.40.
 - **Temporada:** ventana recomendada del 15 de junio al 31 de julio; salida propuesta, segunda quincena de junio de 2027. Mayo y septiembre, posibles; agosto, con riesgo de nevadas fuertes (1993, 2019); diciembre–abril, no.
-- **Planes B por jornada** (texto en `tools/plans_data.py`): hora límite 14.40 en el Pas Sunchulli; en el día 8, bajada alternativa a las Mil Corbes por el sur del Pas 5 (2,9 km, −600 m, unos 200 m sin cartografiar), noche en Quellwa Cota o regreso al Campament 2; final en Curva; salidas en vehículo por pistas mineras (≈36 % del camino va por pista, según OpenStreetMap).
+- **Planes B por jornada** (texto en `tools/plans_data.py`): hora límite 14.40 en el Pas Sunchulli, con el último punto de media vuelta cómoda en Agua buena 3 a las 13.40; si a las 14.40 no se está en el paso, media vuelta y 4×4 por la pista Hilo Hilo–Sorapata (a pie hasta Hilo Hilo son unas 3 h); en el día 8, bajada alternativa a las Mil Corbes por el sur del Pas 5 (2,9 km, −600 m, unos 200 m sin cartografiar), noche en Quellwa Cota o regreso al Campament 2; final en Curva; salidas en vehículo por pistas mineras (≈36 % del camino va por pista, según OpenStreetMap).
+- **Precio con plan C y días de reserva:** con el plan C el precio para el cliente no cambia (la diferencia de las partidas Q la cubre el margen); los 2 días de reserva son una provisión: si no se usan, el servicio acaba el día 11 y las noches extra en La Paz las paga el cliente.
 - **Plan C · Cañisaya – Akamani – Charazani:** 4 etapas; el día 4 se va en vehículo de La Paz a Curva (≈9 h, noche ≈3.740 m) y se duerme allí (C1 Curva→Cañisaya, C2 →Pas d’Akamani→Incacancha, C3 →Pas Lorisani→Huayrapata, C4 →Pas de Chatalayo→RN16→Charazani), 34,6 km, +2.070/−2.440 m, máx. 4.661 m. Datos de OpenStreetMap y SRTM (±10 %), pendientes de reconocer. Se activa antes de salir (paso cerrado, conflicto minero, sin permisos) o desde Incacancha.
 - **Título y ROPEC (25/11/2026):** el trabajo trata a Izan como **titular del título de tècnic esportiu en mitja muntanya (TD2) e inscrito al ROPEC**; no se inventa ningún número de inscripción (se adjunta copia al expediente). Se mantiene el límite del título (no habilita para terreno técnico de alta montaña) y que el registro catalán no vale en Bolivia. La acreditación del guía local en Bolivia sigue pendiente. La web sigue diciendo que es un proyecto académico.
 - **Garmin inReach:** el guía principal lleva un **Garmin inReach (GPS y comunicador satélite)** con suscripción activa: mensajes, SOS (centro de emergencias de Garmin), previsión por punto y enlace de seguimiento para el contacto externo. Aparece en el trabajo (cap. 4.3, 10, Annex D, partida «Material col·lectiu» de 400 € como alquiler/amortización con suscripción), las presentaciones, la web (material de la organización), la app y los dossiers. El presupuesto no cambia: si la cotización real del dispositivo y la suscripción no cabe en los 400 €, hay que reajustarlo.
@@ -81,10 +82,10 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
 | --- | --- | --- | --- |
 | 1–3 | La Paz: llegada, adaptación y aclimatación | Paseos suaves, revisión de material | Hotel ≈3.650 m |
 | 4 | La Paz → Pelechuco | ~12 h en 4×4 | Alojamiento local, 3.660 m |
-| 5 | Pelechuco → Campament 1 | 9,7 km · +1.047/−540 m · 6–8 h | Tienda, 4.168 m |
+| 5 | Pelechuco → Campament 1 | 9,7 km · +1.047/−540 m · 6–8 h · llegada 13.10–15.10 | Tienda, 4.168 m |
 | 6 | Campament 1 → Hilo Hilo | 4,2 km · 2–3 h | Tienda, 4.010 m |
 | 7 | Hilo Hilo → Pas Sunchulli (5.032 m) → Campament 2 | 11,4 km · +1.062/−354 m · 7–9 h · hora límite en el collado: 14:40 | Tienda, 4.500–4.700 m (objetivo ≈4.500 m) |
-| 8 | Campament 2 → Incacancha (Mil Curvas) | 8,3 km · +211/−867 m · 5–7 h | Tienda, 4.060 m |
+| 8 | Campament 2 → Incacancha (Mil Curvas) | 8,3 km · +211/−867 m · 5–7 h · llegada 12.10–14.10 | Tienda, 4.060 m |
 | 9 | Incacancha → Campament 3 (paso Akamani) | 4,1 km · +602/−491 m · 4–6 h | Tienda, 4.171 m |
 | 10 | Campament 3 → Charazani (posible final en Curva) | 15,8 km · +497/−1.473 m · 8–9 h 30 min | Alojamiento local, 3.195 m |
 | 11 | Charazani → La Paz | 7–8 h en vehículo | Fin del servicio |
@@ -137,9 +138,21 @@ Fuentes de contraste (cap. 9 y Annex E del trabajo): track de Gallotrekk en Wiki
 
 25. **#25**: flyer final rehecho (`assets/flyer.jpg` y `assets/flyer.pdf`): URL escrita bajo el QR, texto en lugar del falso botón, «Des de 2.700 € per persona» como precio de referencia y contacto por WhatsApp. Misma figura sustituida en el cap. 7 del trabajo. El QR apunta a la misma dirección. Izan entrega aparte una guía de una página para la profesora (no está en el repositorio ni debe añadirse).
 
+26. **#26**: CLAUDE.md con las PR #23 a #25.
+
+27. **#27**: declinación magnética (NOAA WMMHR-2025, 20/06/2027: 9,84° O en Pelechuco, 9,79° O en Charazani) en la presentación de Orientación y en el cap. 10 del trabajo; carta del IGM como pendiente en el Annex D.
+
+28. **#28**: Annex D sin la nota detallada del inReach (lo cubre «Cotitzacions locals…»).
+
+29. **#29**: recupera en el trabajo escrito los cambios de la PR #21 (titular TD2/ROPEC e inReach), que se habían perdido al añadir el IAE 755.2 desde una versión antigua del Word. **Antes de editar el docx, partir siempre del de `main` actual.**
+
+30. **#30**: correcciones de la revisión de tres «profesores» (Organización 7,8/10, Orientación 7,5/10, Metodología 84/100): plan C al mismo precio y días de reserva explicados en el presupuesto (cap. 5.4); media vuelta del día 7 con último punto en Agua buena 3 a las 13.40 y 4×4 por la pista (web, planes B, app, presentación y trabajo, 4 idiomas); llegadas de los días 5 (13.10–15.10) y 8 (12.10–14.10) coherentes con la duración; fuentes «2022 a 2025»; «Altres partides» en la presentación; «Revisió final» en el método de la web; el QR de la encuesta ya no se anuncia en la libreta de ruta. El atlas A3 no se ha podido regenerar (sin acceso a las teselas de OpenTopoMap): mantiene la llegada antigua de los días 5 y 8 y el texto anterior del día 7; `tools/atles.py` ya está corregido y basta ejecutarlo con red.
+
 ## Pendiente
 
 **En el repositorio (lo puede hacer Claude):**
+- Regenerar el atlas con `python3 tools/atles.py` (y después `python3 tools/guia_mapes.py`, `node tools/dossier.js` y `python3 tools/stamp.py`) cuando haya acceso a tile.opentopomap.org, para que recoja las llegadas de los días 5 y 8 y el texto nuevo del día 7.
+- Mejoras propuestas en la revisión, sin hacer: objetivos observables unidos a evidencia e instrumento; grupo tipo en «Públic i anàlisi del grup»; progresión didáctica J1–J5; protocolo de mal de altura (Lake Louise, pulsioxímetro); margen en el día 10; cláusula de revisión de precio y formulario normalizado de viaje combinado; atlas con cuadrícula UTM, declinación y tabla de azimuts; checklist de la app también para los días 1–4, 11 y reserva, y autoevaluación guardada por código de salida.
 - Si cambian los planes o el plan C: editar `tools/plans_data.py`, ejecutar `python3 tools/plans_data.py`, `python3 tools/atles.py`, `node tools/dossier.js`, `node tools/prerender.js` y `python3 tools/stamp.py`. El capítulo 10.2–10.6 del Word se generó con estos datos: si cambian, hay que actualizarlo a mano.
 - Tracks de los planes B y C: salen de OpenStreetMap (ODbL). Wikiloc y TwoNav no se descargaron (bloquean el acceso automático y no se forzó).
 - **Fotos por jornada:** cada pestaña de etapa y cada página de jornada del dossier tienen una foto de Wikimedia Commons (CC BY-SA 4.0), guardada en `assets/jornada-1…6.webp` (1.600 px) y `-small` (800 px). Datos y créditos en `window.STAGE_PHOTOS` (`photo-credits.js`) y `assets/PHOTOGRAPHY.md`; textos `stagePhotoAlt` y `stagePhotoNote`. Solo las jornadas 1 (Pelechuco) y 6 (Charazani–Curva) son del sitio exacto; las demás son paisaje de la zona y lo dicen. No hay fotos libres en Commons del Pas Sunchulli, Hilo Hilo, Incacancha ni Akamani. Si Izan aporta fotos propias, sustituir los archivos con el mismo nombre, actualizar los créditos y ejecutar `node tools/dossier.js`. En el dossier, los mapas de jornada se limitan a 80 mm de alto para que quepa la foto.
