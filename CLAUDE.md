@@ -153,6 +153,8 @@ Fuentes de contraste (cap. 9 y Annex E del trabajo): track de Gallotrekk en Wiki
 
 32. **#33**: atlas A3 regenerado con OpenTopoMap (cuadrícula UTM 19S cada 1 km, declinación ≈ 9,8° O, llegadas nuevas de los días 5 y 8 y texto nuevo del día 7); etiquetas UTM dentro del marco y declinación dentro del mapa; si falta una tesela de OpenTopoMap (404), `tools/atles.py` amplía la del nivel anterior. Horas de los puntos de paso de los días 5 y 8 recalculadas en proporción a 6–8 h y 5–7 h (content.js, atlas, app, dossiers, libretas de ruta y las dos tablas del cap. 10 del Word; PDF, bloque 06 y buscador regenerados). Azimuts del atlas comprobados (35 tramos). Las horas de control del día 8 se mantienen como puntos de decisión.
 
+33. **#34**: presentación de Orientación (diapositiva «Cartografia» y guion): el atlas lleva también la cuadrícula UTM 19 S cada 1 km y la declinación. El resto de la presentación ya era coherente con el atlas regenerado (horarios, días 5 y 8, día 7 y azimut de la niebla).
+
 ## Pendiente
 
 **En el repositorio (lo puede hacer Claude):**
