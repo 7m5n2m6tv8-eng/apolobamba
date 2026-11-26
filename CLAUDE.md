@@ -12,7 +12,7 @@ Contexto para seguir trabajando en este repositorio. Léelo entero antes de toca
   - Trabajo académico: `treball.html`
   - Presentaciones (una por asignatura, con guion, tecla N): `presentacio.html` (elige), `presentacio-organitzacio.html` y `presentacio-orientacio.html`
   - App del guía: `guia/` (…/apolobamba/guia/)
-- Estado a 26/11/2026: PR #20 a #31 y #33 (atlas regenerado) integradas (también declinación, recuperación del título/ROPEC perdido y correcciones de la revisión de tres profesores) (presentaciones, título y ROPEC, Garmin inReach, app del guía con herramientas de campo, fitxa de metodología con guía para localizar los lliuraments y flyer final). El trabajo está prácticamente cerrado: Izan no quiere modificar mucho más.
+- Estado a 26/11/2026: PR #20 a #31, #33 (atlas regenerado) y #34 integradas (también declinación, recuperación del título/ROPEC perdido y correcciones de la revisión de tres profesores) (presentaciones, título y ROPEC, Garmin inReach, app del guía con herramientas de campo, fitxa de metodología con guía para localizar los lliuraments y flyer final). El trabajo está prácticamente cerrado: Izan no quiere modificar mucho más.
 
 ## Forma de trabajar (obligatorio)
 
