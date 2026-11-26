@@ -2,7 +2,7 @@
 // - CACHE: l'app. tools/stamp.py hi posa la versió del repositori: quan canvia, els mòbils baixen la nova i surt el botó «Actualitzar».
 // - TILES: teselles d'OpenTopoMap desades des de la pantalla Mapa; NO s'esborren en actualitzar l'app.
 // - La previsió d'Open-Meteo no passa per aquí: l'app la desa al mòbil.
-const CACHE = 'guia-apolobamba-03d595ee46';
+const CACHE = 'guia-apolobamba-c42e08a1f8';
 const TILES = 'apolobamba-teselles-v1';
 const FILES = ['./', 'index.html', 'i18n.js', 'app.js', 'pla.js', 'mapa.js', 'meteo.js', 'avaluacio.js', 'camp.js', 'img/enquesta-qr.svg', 'dades.js', 'data.js', 'track.js', 'planc.js', 'mapes.js',
   'img/mapa-general.jpg', 'img/mapa-d5.jpg', 'img/mapa-d6.jpg', 'img/mapa-d7.jpg', 'img/mapa-d8.jpg', 'img/mapa-d9.jpg', 'img/mapa-d10.jpg',
